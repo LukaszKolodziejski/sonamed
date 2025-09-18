@@ -55,7 +55,8 @@
     "resend": "^4.5.1",
     "styled-jsx": "5.1.1",
     "three": "^0.175.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "nx": "20.7.1"
   },
   "devDependencies": {
     "@eslint/compat": "^1.1.1",
@@ -82,7 +83,6 @@
     "eslint-plugin-jsx-a11y": "6.10.1",
     "eslint-plugin-react": "7.35.0",
     "eslint-plugin-react-hooks": "5.0.0",
-    "nx": "20.7.1",
     "postcss": "8.4.38",
     "prettier": "^2.6.2",
     "sharp": "^0.34.1",
