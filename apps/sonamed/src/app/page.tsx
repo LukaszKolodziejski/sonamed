@@ -81,7 +81,6 @@ export default function HomePage() {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: 'easeOut',
       },
     },
   };
@@ -155,7 +154,7 @@ export default function HomePage() {
                   animate={{
                     backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
                   }}
-                  transition={{ duration: 5, repeat: Infinity, ease: 'linear' }}
+                  transition={{ duration: 5, repeat: Infinity }}
                 >
                   Prawo jazdy w 2 miesiące!
                 </motion.div>
