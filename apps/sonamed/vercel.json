@@ -1,5 +1,5 @@
 {
-    "buildCommand": "npm run build",
+    "buildCommand": "npx nx build sonamed",
     "outputDirectory": "apps/sonamed/.next",
     "framework": "nextjs",
     "installCommand": "npm install"
