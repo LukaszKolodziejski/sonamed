@@ -165,7 +165,7 @@ export default function HomePage() {
                 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-4 md:mb-6 break-words"
               >
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
-                  sonamed
+                  Sonamed - działa juhu !!!
                 </span>
                 <motion.span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mt-2 md:mt-4 text-2xl sm:text-3xl md:text-5xl">
                   Profesjonalne kursy prawa jazdy kategorii B
