@@ -1,0 +1,16 @@
+GOOGLE_MAPS = https://www.google.pl/maps/place/PRYWATNY+GABINET+STOMATOLOGICZNY+Sonia+Sugier-Karpi%C5%84ska/@54.116372,17.9544402,19z/data=!4m15!1m8!3m7!1s0x4702764b8846a631:0xf0e98b1339958389!2sKalinowa+28,+83-400+Ko%C5%9Bcierzyna!3b1!8m2!3d54.1164711!4d17.9548345!16s%2Fg%2F11gdstlrfp!3m5!1s0x4702764c8621e901:0xaa74ed50e878dae9!8m2!3d54.1164407!4d17.9549671!16s%2Fg%2F11hyxnbvy9!5m1!1e4?entry=ttu&g_ep=EgoyMDI1MDkxNy4wIKXMDSoASAFQAw%3D%3D
+PHONE_1 = +48501054824
+ADDRESS = Kalinowa 28, 83-400 Kościerzyna
+
+COMPANY_NAME= SONAMED
+COMPANY_NAME_FULL= SONAMED SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ
+KRS = 0001194341
+NIP = 5911727761
+REGON = 542733830
+
+INSTAGRAM = https://www.instagram.com/stomatolog.kaszuby/
+FACEBOOK = https://www.facebook.com/sonia.gabinet
+EMAIL = sonamed.biuro@gmail.com
+
+OWNER = lek. dent. Sonia Sugier-Karpińska
+MANAGEMENT = lek. Nina Karpińska

@@ -7,44 +7,10 @@ const OUTPUT_FILE = path.join(__dirname, '../src/data/galleryImages.ts');
 
 // Konfiguracja kategorii i ich opisów
 const CATEGORIES = {
-  boss: {
-    title: 'Robert Langer - Właściciel sonamed',
-    descriptions: [
-      'Doświadczony instruktor i właściciel szkoły nauki jazdy sonamed',
-      'Profesjonalne podejście i wieloletnie doświadczenie w szkoleniu kierowców',
-      'Pasjonat bezpiecznej jazdy i edukacji przyszłych kierowców',
-    ],
-  },
-  instructors: {
-    title: 'Nasi Instruktorzy',
-    descriptions: [
-      'Wykwalifikowana kadra instruktorska z wieloletnim doświadczeniem',
-      'Profesjonalne podejście i indywidualne podejście do kursanta',
-      'Cierpliwość i zaangażowanie w proces nauczania',
-    ],
-  },
   office: {
-    title: 'Nasza Siedziba',
+    title: 'lek. dent. Sonia Sugier-Karpińska - Właściciel sonamed',
     descriptions: [
-      'Nowoczesna siedziba w centrum Bydgoszczy',
-      'Komfortowe sale wykładowe wyposażone w najnowszy sprzęt',
-      'Przyjazne miejsce do nauki i rozwoju',
-    ],
-  },
-  cars: {
-    title: 'Flota Pojazdów',
-    descriptions: [
-      'Nowoczesne samochody szkoleniowe',
-      'Pojazdy wyposażone w systemy bezpieczeństwa',
-      'Komfortowe auta przystosowane do nauki jazdy',
-    ],
-  },
-  course: {
-    title: 'Szkolenia i Kursy',
-    descriptions: [
-      'Profesjonalne szkolenia teoretyczne i praktyczne',
-      'Kursy dostosowane do indywidualnych potrzeb',
-      'Przygotowanie do egzaminu w realnych warunkach',
+      'Doświadczony lekarz dentysta z wieloletnią praktyką. Specjalizuje się w kompleksowym leczeniu stomatologicznym, łącząc najnowoczesne metody z indywidualnym podejściem do każdego pacjenta.',
     ],
   },
 };

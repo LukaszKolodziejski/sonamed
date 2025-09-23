@@ -4,28 +4,34 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Script from 'next/script';
 import {
-  FaTooth,
-  FaUserMd,
-  FaMicroscope,
+  FaCar,
+  FaUserGraduate,
+  FaChalkboardTeacher,
+  FaMedal,
   FaQuoteRight,
-  FaHeart,
-  FaShieldAlt,
-  FaStar,
 } from 'react-icons/fa';
 import {
+  HiOutlineAcademicCap,
   HiOutlineClock,
-  HiOutlineHeart,
+  HiOutlineUserGroup,
+  HiLightningBolt,
 } from 'react-icons/hi';
 import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
-import { sonamedClinicData } from '@/constants/page1';
-import { colors } from '@/constants/colors';
+import { useReservationCounter } from '@/hooks/useReservationCounter';
+import {
+  getStudentsCount,
+  getExperienceYears,
+  INSTRUCTORS_COUNT,
+  formatNumber,
+} from '@/constants_old/stats';
 
 export default function HomePage() {
   const mainRef = useRef(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const { remainingPlaces, monthName } = useReservationCounter();
 
   useEffect(() => {
     const checkMobile = () => {
@@ -99,9 +105,10 @@ export default function HomePage() {
         data-homepage
         className="relative w-full min-h-screen overflow-x-hidden"
       >
-        <div className="absolute inset-0 w-full h-full z-0" style={{background: `linear-gradient(135deg, ${colors.brand.primary}80, ${colors.brand.secondary}80, ${colors.brand.accent}70)`}}>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(62,131,146,0.4),transparent_50%)] z-10"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(122,165,157,0.4),transparent_50%)] z-10"></div>
+        <div className="absolute inset-0 w-full h-full z-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-indigo-900/80 to-purple-900/70 z-20"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(67,56,202,0.4),transparent_50%)] z-10"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(99,102,241,0.4),transparent_50%)] z-10"></div>
 
           <div className="absolute inset-0 overflow-hidden">
             <video
@@ -120,7 +127,7 @@ export default function HomePage() {
           </div>
 
           {!isVideoLoaded && (
-            <div className="absolute inset-0 flex items-center justify-center text-white" style={{background: `linear-gradient(135deg, ${colors.brand.primary}, ${colors.brand.secondary})`}}>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-900 to-indigo-900 flex items-center justify-center text-white">
               <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-white"></div>
             </div>
           )}
@@ -143,14 +150,13 @@ export default function HomePage() {
                 className="mb-8 md:mb-6 mt-2 sm:mt-0"
               >
                 <motion.div
-                  className="inline-block px-4 py-2 md:px-6 md:py-2 rounded-full text-white text-xs md:text-sm font-medium"
-                  style={{background: `linear-gradient(90deg, ${colors.brand.primary}, ${colors.brand.secondary}, ${colors.brand.accent})`}}
+                  className="inline-block px-4 py-2 md:px-6 md:py-2 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white text-xs md:text-sm font-medium"
                   animate={{
                     backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
                   }}
                   transition={{ duration: 5, repeat: Infinity }}
                 >
-                  Piękny uśmiech bez kompromisów!
+                  Prawo jazdy w 2 miesiące!
                 </motion.div>
               </motion.div>
 
@@ -158,20 +164,19 @@ export default function HomePage() {
                 variants={fadeInUp}
                 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-4 md:mb-6 break-words"
               >
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200">
-                  {sonamedClinicData.hero.brandName}
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
+                  Sonamed - działa juhu !!!
                 </span>
-                <motion.span className="block text-transparent bg-clip-text mt-2 md:mt-4 text-2xl sm:text-3xl md:text-5xl" style={{background: `linear-gradient(90deg, ${colors.brand.accent}, ${colors.brand.primary})`}}>
-                  {sonamedClinicData.hero.mainTitle} {sonamedClinicData.hero.subtitle}
+                <motion.span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mt-2 md:mt-4 text-2xl sm:text-3xl md:text-5xl">
+                  Profesjonalne kursy prawa jazdy kategorii B
                 </motion.span>
               </motion.h1>
 
               <motion.p
                 variants={fadeInUp}
-                className="mt-4 md:mt-6 text-lg sm:text-xl md:text-2xl leading-8 max-w-2xl mx-auto break-words"
-                style={{color: `${colors.background.primary}f0`}}
+                className="mt-4 md:mt-6 text-lg sm:text-xl md:text-2xl leading-8 text-blue-100 max-w-2xl mx-auto break-words"
               >
-                {sonamedClinicData.whatMakesUsDifferent.description.slice(0, 120)}...
+                Najwyższa zdawalność w Bydgoszczy od {getExperienceYears()} lat
               </motion.p>
 
               <motion.div
@@ -181,17 +186,17 @@ export default function HomePage() {
                 transition={{ delay: 1, duration: 0.8 }}
               >
                 <Link
-                  href="/kontakt"
-                  className="w-full sm:w-auto group relative overflow-hidden rounded-full px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                  style={{background: `linear-gradient(90deg, ${colors.brand.primary}, ${colors.brand.secondary})`}}
+                  href="/rezerwacja"
+                  className="w-full sm:w-auto group relative overflow-hidden rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
-                  <span className="relative z-10">{sonamedClinicData.hero.ctaButtons[0]}</span>
+                  <span className="relative z-10">Zarezerwuj miejsce</span>
                   <span className="block text-xs md:text-sm mt-0.5 md:mt-1 opacity-90 relative z-10">
-                    Skontaktuj się z nami już dziś
+                    {remainingPlaces < 5
+                      ? `Ostatnie ${remainingPlaces} wolne miejsca w ${monthName}!`
+                      : `Ostatnich ${remainingPlaces} wolnych miejsc w ${monthName}!`}
                   </span>
                   <motion.span
-                    className="absolute inset-0 z-0"
-                    style={{background: `linear-gradient(90deg, ${colors.brand.secondary}, ${colors.brand.primary})`}}
+                    className="absolute inset-0 bg-gradient-to-r from-orange-500 to-yellow-400 z-0"
                     initial={{ x: '-100%' }}
                     whileHover={{ x: '0%' }}
                     transition={{ duration: 0.5 }}
@@ -200,12 +205,12 @@ export default function HomePage() {
                 </Link>
 
                 <Link
-                  href="/cennik"
+                  href="/kursy"
                   className="w-full sm:w-auto group relative overflow-hidden rounded-full backdrop-blur-md bg-white/10 border border-white/20 px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
-                  <span className="relative z-10">{sonamedClinicData.hero.ctaButtons[1]}</span>
+                  <span className="relative z-10">Sprawdź kursy</span>
                   <span className="block text-xs md:text-sm mt-0.5 md:mt-1 opacity-90">
-                    Zobacz nasze usługi i ceny
+                    Ceny promocyjne do końca miesiąca
                   </span>
                   <motion.span
                     className="absolute inset-0 bg-white/20 z-0"
@@ -240,9 +245,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative py-12 sm:py-16 md:py-24" style={{background: `linear-gradient(180deg, ${colors.brand.primary}20, ${colors.brand.secondary}30)`}}>
+      <section className="relative bg-gradient-to-b from-indigo-900 to-blue-950 py-12 sm:py-16 md:py-24">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(62,131,146,0.2),transparent_60%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(79,70,229,0.2),transparent_60%)]"></div>
         </div>
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div
@@ -253,13 +258,13 @@ export default function HomePage() {
             className="text-center mb-8 sm:mb-12"
           >
             <h2 className="text-4xl font-bold text-white mb-4">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200">
-                Nowoczesne technologie medyczne
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-indigo-100">
+                Nowoczesna flota
               </span>
             </h2>
-            <p className="text-gray-200 max-w-2xl mx-auto">
-              Wykorzystujemy najnowocześniejsze urządzenia i technologie 
-              zapewniające najwyższą jakość leczenia
+            <p className="text-blue-200 max-w-2xl mx-auto">
+              Ucz się prowadzić na najnowszych modelach pojazdów wyposażonych w
+              zaawansowane systemy bezpieczeństwa
             </p>
           </motion.div>
 
@@ -292,22 +297,22 @@ export default function HomePage() {
               <div className="space-y-6">
                 {[
                   {
-                    title: 'Leczenie pod mikroskopem',
+                    title: 'Bezpieczna nauka',
                     description:
-                      'Precyzyjne zabiegi wykonywane z wykorzystaniem nowoczesnej mikroskopii dentystycznej',
-                    icon: <FaMicroscope style={{color: colors.brand.primary}} />,
+                      'Wszystkie nasze pojazdy są wyposażone w systemy wspomagające naukę jazdy',
+                    icon: <FaCar className="text-blue-400" />,
                   },
                   {
-                    title: 'Diagnostyka cyfrowa',
+                    title: 'Komfortowe wnętrze',
                     description:
-                      'Zaawansowane skanowanie wewnątrzustne i projektowanie cyfrowe uśmiechu DSD',
-                    icon: <FaTooth style={{color: colors.brand.secondary}} />,
+                      'Klimatyzowane pojazdy zapewniające komfort podczas każdej lekcji',
+                    icon: <FaCar className="text-purple-400" />,
                   },
                   {
-                    title: 'Bezpieczeństwo pacjenta',
+                    title: 'Podwójne sterowanie',
                     description:
-                      'Najwyższe standardy sterylizacji i bezpieczeństwa w każdym zabiegu',
-                    icon: <FaShieldAlt style={{color: colors.brand.accent}} />,
+                      'Instruktor zawsze może przejąć kontrolę w sytuacji zagrożenia',
+                    icon: <FaCar className="text-pink-400" />,
                   },
                 ].map((feature, index) => (
                   <motion.div
@@ -337,14 +342,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative py-12 sm:py-16 md:py-24 overflow-hidden" style={{background: `linear-gradient(180deg, ${colors.brand.secondary}30, ${colors.brand.primary}40)`}}>
+      <section className="relative bg-gradient-to-b from-blue-950 to-indigo-950 py-12 sm:py-16 md:py-24 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black/20 to-transparent"></div>
 
           <div className="absolute inset-0">
-            <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full blur-3xl" style={{background: `linear-gradient(45deg, ${colors.brand.primary}30, transparent)`}}></div>
-            <div className="absolute top-40 -left-20 w-72 h-72 rounded-full blur-3xl" style={{background: `linear-gradient(45deg, ${colors.brand.secondary}20, transparent)`}}></div>
-            <div className="absolute bottom-0 right-1/4 w-64 h-64 rounded-full blur-3xl" style={{background: `linear-gradient(45deg, ${colors.brand.accent}20, transparent)`}}></div>
+            <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-gradient-to-br from-purple-600/30 to-transparent blur-3xl"></div>
+            <div className="absolute top-40 -left-20 w-72 h-72 rounded-full bg-gradient-to-br from-blue-600/20 to-transparent blur-3xl"></div>
+            <div className="absolute bottom-0 right-1/4 w-64 h-64 rounded-full bg-gradient-to-br from-cyan-500/20 to-transparent blur-3xl"></div>
           </div>
 
           <svg
@@ -405,11 +410,11 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl mb-6">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-200 to-white">
-                Nasza klinika w liczbach
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-white">
+                Nasza szkoła w liczbach
               </span>
             </h2>
-            <div className="w-24 h-1 mx-auto rounded-full" style={{background: `linear-gradient(90deg, ${colors.brand.secondary}, ${colors.brand.primary})`}}></div>
+            <div className="w-24 h-1 mx-auto bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
           </motion.div>
 
           <motion.div
@@ -422,28 +427,28 @@ export default function HomePage() {
             <dl className="grid grid-cols-2 gap-6 md:grid-cols-4 text-center">
               {[
                 {
-                  icon: <FaHeart />,
-                  value: '1000+',
-                  label: 'Zadowolonych pacjentów',
-                  color: `${colors.brand.primary}`,
+                  icon: <FaUserGraduate />,
+                  value: `${formatNumber(getStudentsCount())}+`,
+                  label: 'Kursantów',
+                  color: 'from-blue-400 to-blue-600',
                 },
                 {
                   icon: <HiOutlineClock />,
-                  value: '15+',
+                  value: `${getExperienceYears()}+`,
                   label: 'Lat doświadczenia',
-                  color: `${colors.brand.secondary}`,
+                  color: 'from-purple-400 to-purple-600',
                 },
                 {
-                  icon: <FaUserMd />,
-                  value: `${sonamedClinicData.team.members.length}`,
-                  label: 'Specjalistów',
-                  color: `${colors.brand.accent}`,
+                  icon: <FaChalkboardTeacher />,
+                  value: `${INSTRUCTORS_COUNT}`,
+                  label: 'Instruktorów',
+                  color: 'from-pink-400 to-pink-600',
                 },
                 {
-                  icon: <FaStar />,
-                  value: '100%',
-                  label: 'Profesjonalizmu',
-                  color: `${colors.brand.primary}`,
+                  icon: <FaMedal />,
+                  value: '98%',
+                  label: 'Zadowolenia',
+                  color: 'from-yellow-400 to-orange-500',
                 },
               ].map((stat, index) => (
                 <motion.div
@@ -455,20 +460,17 @@ export default function HomePage() {
                   <div className="absolute inset-0 rounded-2xl bg-white/5 border border-white/10 group-hover:border-white/20 transition-all duration-300 backdrop-blur-sm"></div>
 
                   <div
-                    className="absolute inset-0 rounded-2xl opacity-20 blur-xl group-hover:opacity-30 transition-opacity duration-300"
-                    style={{background: `linear-gradient(135deg, ${stat.color}40, transparent)`}}
+                    className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${stat.color} opacity-20 blur-xl group-hover:opacity-30 transition-opacity duration-300`}
                   ></div>
 
                   <div className="relative z-10">
                     <div
-                      className="text-4xl rounded-xl p-4 text-white mb-5 shadow-lg"
-                      style={{background: `linear-gradient(135deg, ${stat.color}, ${stat.color}cc)`}}
+                      className={`text-4xl bg-gradient-to-br ${stat.color} rounded-xl p-4 text-white mb-5 shadow-lg`}
                     >
                       {stat.icon}
                     </div>
                     <motion.dt
-                      className="text-4xl md:text-5xl font-bold mb-2"
-                      style={{color: stat.color}}
+                      className={`text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${stat.color} mb-2`}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
@@ -476,7 +478,7 @@ export default function HomePage() {
                     >
                       {stat.value}
                     </motion.dt>
-                    <dd className="text-base text-gray-100">{stat.label}</dd>
+                    <dd className="text-base text-blue-100">{stat.label}</dd>
                   </div>
                 </motion.div>
               ))}
@@ -485,9 +487,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative py-12 sm:py-16 md:py-24 overflow-hidden" style={{background: `linear-gradient(180deg, ${colors.brand.primary}40, ${colors.brand.secondary}50)`}}>
+      <section className="relative py-12 sm:py-16 md:py-24 bg-gradient-to-b from-indigo-950 to-purple-950 overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(122,165,157,0.15),transparent_70%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(124,58,237,0.15),transparent_70%)]"></div>
         </div>
 
         <div className="container mx-auto px-6">
@@ -499,13 +501,13 @@ export default function HomePage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-white mb-4">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200">
-                Jak przebiega leczenie w SONAMED
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-blue-300">
+                Zdobądź swoje prawo jazdy
               </span>
             </h2>
-            <p className="text-gray-200 max-w-2xl mx-auto">
-              Przeprowadzimy Cię przez cały proces - od pierwszej konsultacji po 
-              osiągnięcie wymarzonego uśmiechu
+            <p className="text-blue-200 max-w-2xl mx-auto">
+              Przeprowadzimy Cię przez cały proces - od kursu teoretycznego po
+              egzamin praktyczny
             </p>
           </motion.div>
 
@@ -520,27 +522,27 @@ export default function HomePage() {
               {[
                 {
                   step: '01',
-                  title: 'Konsultacja i diagnostyka',
+                  title: 'Kurs teoretyczny',
                   description:
-                    'Szczegółowe badanie, RTG, dokumentacja fotograficzna i cyfrowy projekt uśmiechu DSD',
+                    'Kompleksowe szkolenie z przepisów ruchu drogowego i zasad bezpieczeństwa',
                 },
                 {
                   step: '02',
-                  title: 'Plan leczenia',
+                  title: 'Jazdy praktyczne',
                   description:
-                    'Opracowanie indywidualnego planu leczenia dopasowanego do Twoich potrzeb',
+                    'Nauka prowadzenia pojazdu pod okiem doświadczonych instruktorów',
                 },
                 {
                   step: '03',
-                  title: 'Realizacja zabiegu',
+                  title: 'Egzamin wewnętrzny',
                   description:
-                    'Profesjonalne wykonanie zabiegu z wykorzystaniem najnowocześniejszego sprzętu',
+                    'Przygotowanie do egzaminu państwowego w warunkach zbliżonych do rzeczywistych',
                 },
                 {
                   step: '04',
-                  title: 'Opieka po zabiegu',
+                  title: 'Egzamin państwowy',
                   description:
-                    'Kontrolne wizyty i kompleksowa opieka zapewniająca trwałość efektów',
+                    'Wsparcie podczas egzaminu i wysoka zdawalność dzięki naszemu przygotowaniu',
                 },
               ].map((step, index) => (
                 <motion.div
@@ -553,22 +555,22 @@ export default function HomePage() {
                 >
                   <div className="flex-shrink-0">
                     <div className="relative h-12 w-12">
-                      <div className="absolute inset-0 rounded-full blur-md opacity-80" style={{background: `linear-gradient(135deg, ${colors.brand.primary}, ${colors.brand.secondary})`}}></div>
-                      <div className="relative flex items-center justify-center h-12 w-12 rounded-full border-2" style={{backgroundColor: colors.brand.primary, borderColor: colors.brand.accent}}>
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 blur-md opacity-80"></div>
+                      <div className="relative flex items-center justify-center h-12 w-12 rounded-full bg-purple-900 border border-purple-400">
                         <span className="text-lg font-bold text-white">
                           {step.step}
                         </span>
                       </div>
                     </div>
                     {index < 3 && (
-                      <div className="w-0.5 h-16 ml-6 mt-2" style={{background: `linear-gradient(180deg, ${colors.brand.primary}, ${colors.brand.secondary})`}}></div>
+                      <div className="w-0.5 h-16 bg-gradient-to-b from-purple-500 to-blue-500 ml-6 mt-2"></div>
                     )}
                   </div>
                   <div className="pt-2">
                     <h3 className="text-xl font-bold text-white mb-2">
                       {step.title}
                     </h3>
-                    <p className="text-gray-200">{step.description}</p>
+                    <p className="text-blue-200">{step.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -593,14 +595,13 @@ export default function HomePage() {
 
               <div className="absolute bottom-6 right-6 z-10">
                 <motion.div
-                  className="text-white px-6 py-3 rounded-full shadow-lg flex items-center space-x-2"
-                  style={{background: `linear-gradient(90deg, ${colors.brand.primary}, ${colors.brand.secondary})`}}
+                  className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white px-6 py-3 rounded-full shadow-lg flex items-center space-x-2"
                   whileHover={{ scale: 1.05 }}
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
-                  <span className="font-medium">100% indywidualne podejście</span>
-                  <HiOutlineHeart style={{color: colors.brand.accent}} />
+                  <span className="font-medium">Wysokie 95% zdawalności</span>
+                  <HiLightningBolt className="text-yellow-300" />
                 </motion.div>
               </div>
             </motion.div>
@@ -614,11 +615,10 @@ export default function HomePage() {
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             <Link
-              href="/kontakt"
-              className="group inline-flex items-center px-8 py-4 rounded-full text-white font-medium text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105"
-              style={{background: `linear-gradient(90deg, ${colors.brand.primary}, ${colors.brand.secondary})`}}
+              href="/rezerwacja"
+              className="group inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-medium text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105"
             >
-              <span>Umów konsultację</span>
+              <span>Zapisz się na kurs</span>
               <svg
                 className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
                 fill="none"
@@ -638,11 +638,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative py-12 sm:py-16 md:py-24 overflow-hidden" style={{background: `linear-gradient(180deg, ${colors.brand.secondary}50, ${colors.brand.primary}40)`}}>
+      <section className="bg-gradient-to-b from-purple-950 to-indigo-950 py-12 sm:py-16 md:py-24 relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(122,165,157,0.1),transparent_70%)]"></div>
-          <div className="absolute -right-40 top-20 w-80 h-80 rounded-full blur-3xl" style={{background: `${colors.brand.accent}10`}}></div>
-          <div className="absolute -left-40 bottom-20 w-80 h-80 rounded-full blur-3xl" style={{background: `${colors.brand.primary}10`}}></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(79,70,229,0.1),transparent_70%)]"></div>
+          <div className="absolute -right-40 top-20 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute -left-40 bottom-20 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -658,39 +658,39 @@ export default function HomePage() {
                 href="/cennik"
                 className="hover:opacity-80 transition-opacity duration-300"
               >
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200">
-                  {sonamedClinicData.services.title}
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-indigo-300">
+                  Kurs prawa jazdy kategorii B
                 </span>
               </Link>
             </h2>
-            <p className="text-gray-200 max-w-2xl mx-auto">
-              Kompleksowe usługi stomatologiczne wykonywane z najwyższą precyzją 
-              i wykorzystaniem nowoczesnych technologii
+            <p className="text-blue-200 max-w-2xl mx-auto">
+              Profesjonalne szkolenie na samochód osobowy z doświadczonymi
+              instruktorami
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                icon: <FaTooth className="w-8 h-8" />,
-                title: 'Stomatologia estetyczna',
+                icon: <HiOutlineAcademicCap className="w-8 h-8" />,
+                title: 'Teoria',
                 description:
-                  'Licówki, bonding, wybielanie - kompleksowe zabiegi poprawiające wygląd zębów',
-                color: colors.brand.primary,
+                  '30 godzin lekcyjnych z wykorzystaniem nowoczesnych materiałów szkoleniowych',
+                color: 'from-blue-500 to-cyan-500',
               },
               {
-                icon: <FaMicroscope className="w-8 h-8" />,
-                title: 'Leczenie pod mikroskopem',
+                icon: <FaCar className="w-8 h-8" />,
+                title: 'Praktyka',
                 description:
-                  'Precyzyjne endodoncja i leczenie kanałowe z użyciem najnowocześniejszego sprzętu',
-                color: colors.brand.secondary,
+                  '30 godzin jazd praktycznych na nowoczesnych samochodach z podwójną kontrolą',
+                color: 'from-purple-500 to-pink-500',
               },
               {
-                icon: <HiOutlineHeart className="w-8 h-8" />,
-                title: 'Implantoprotetyka',
+                icon: <FaMedal className="w-8 h-8" />,
+                title: 'Egzamin',
                 description:
-                  'Implanty i protezy - przywróć pełny uśmiech nawet w jeden dzień',
-                color: colors.brand.accent,
+                  'Przygotowanie do egzaminu państwowego z wysoką zdawalnością',
+                color: 'from-yellow-500 to-orange-500',
               },
             ].map((feature, index) => (
               <motion.div
@@ -703,14 +703,12 @@ export default function HomePage() {
               >
                 <div className="absolute -top-4 -right-4">
                   <div
-                    className="w-24 h-24 rounded-full opacity-10 blur-2xl group-hover:opacity-20 transition-opacity duration-300"
-                    style={{background: `linear-gradient(135deg, ${feature.color}, ${feature.color}80)`}}
+                    className={`w-24 h-24 rounded-full bg-gradient-to-br ${feature.color} opacity-10 blur-2xl group-hover:opacity-20 transition-opacity duration-300`}
                   ></div>
                 </div>
 
                 <div
-                  className="inline-flex p-3 rounded-lg mb-6 text-white"
-                  style={{background: `linear-gradient(135deg, ${feature.color}, ${feature.color}cc)`}}
+                  className={`inline-flex p-3 rounded-lg bg-gradient-to-br ${feature.color} mb-6`}
                 >
                   {feature.icon}
                 </div>
@@ -718,11 +716,10 @@ export default function HomePage() {
                 <h3 className="text-xl font-bold text-white mb-4">
                   {feature.title}
                 </h3>
-                <p className="text-gray-200 mb-6">{feature.description}</p>
+                <p className="text-blue-200 mb-6">{feature.description}</p>
 
                 <motion.div
-                  className="h-1 w-16 rounded-full"
-                  style={{background: `linear-gradient(90deg, ${colors.brand.primary}, ${colors.brand.secondary})`}}
+                  className="h-1 w-16 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
                   whileHover={{ width: '100%' }}
                   transition={{ duration: 0.3 }}
                 />
@@ -741,7 +738,7 @@ export default function HomePage() {
               href="/cennik"
               className="group relative overflow-hidden rounded-full backdrop-blur-md bg-white/10 border border-white/20 px-8 py-4 text-lg font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
-              <span className="relative z-10">Zobacz pełny cennik</span>
+              <span className="relative z-10">Zobacz kursy</span>
               <motion.span
                 className="absolute inset-0 bg-white/20 z-0"
                 initial={{ scale: 0, opacity: 0 }}
@@ -753,9 +750,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative py-12 sm:py-16 md:py-24 overflow-hidden" style={{background: `linear-gradient(180deg, ${colors.brand.primary}40, ${colors.brand.secondary}30)`}}>
+      <section className="bg-gradient-to-b from-indigo-950 to-blue-950 py-12 sm:py-16 md:py-24 relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(122,165,157,0.1),transparent_70%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(59,130,246,0.1),transparent_70%)]"></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -767,51 +764,51 @@ export default function HomePage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-white mb-4">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200">
-                Co mówią nasi pacjenci
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-cyan-200">
+                Co mówią nasi kursanci
               </span>
             </h2>
-            <p className="text-gray-200 max-w-2xl mx-auto">
-              Opinie osób, które powierzyły nam troskę o swój uśmiech
+            <p className="text-blue-200 max-w-2xl mx-auto">
+              Opinie osób, które zdobyły prawo jazdy dzięki naszej szkole
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                name: 'Magdalena',
-                role: 'Licówki ceramiczne',
+                name: 'Anna',
+                role: 'Kategoria B',
                 quote:
-                  'Nigdy nie myślałam, że mój uśmiech może wyglądać tak naturalnie i pięknie. Dr Sonia przeprowadziła mnie przez cały proces z ogromną cierpliwością. Jestem zachwycona efektem!',
+                  'Nie sądziłam, że uda mi się kiedykolwiek zdać prawo jazdy a stało się tak jeszcze za pierwszym razem, Pan Robert bardzo cierpliwy, miły, instruktor na wielki medal. Serdecznie zachęcam i polecam Szkołę jazdy sonamed.',
                 stars: 5,
               },
               {
-                name: 'Tomasz',
-                role: 'Implanty',
+                name: 'Piotr',
+                role: 'Kategoria B',
                 quote:
-                  'Po latach problemów z zębami w końcu mogę się swobodnie uśmiechać. Profesjonalizm zespołu SONAMED jest na najwyższym poziomie. Polecam każdemu!',
+                  'Nie mając do tej pory dotyczenia z kierownicą, a dzięki Panu Rafałowi wystarczyło 30 godzin i egzamin zdany za 1 podejściem. Serdecznie polecam Szkołę jazdy sonamed.',
                 stars: 5,
               },
               {
-                name: 'Joanna',
-                role: 'Ortodoncja Invisalign',
+                name: 'Karolina',
+                role: 'Kategoria B',
                 quote:
-                  'Niewidoczne nakładki to była najlepsza decyzja. Nikt nie zauważył, że noszę aparat, a efekt przeszedł moje najśmielsze oczekiwania. Dziękuję!',
+                  'Świetna szkoła jazdy! Egzamin zdany za pierwszym razem, a instruktor Rafał to prawdziwy profesjonalista świetnie przygotowuje do egzaminu i doskonale zna przepisy. Polecam!',
                 stars: 5,
               },
               {
-                name: 'Umów wizytę',
-                role: 'Konsultacja',
+                name: 'Więcej opinii',
+                role: '',
                 quote:
-                  'Zapisz się na bezpłatną konsultację i przekonaj się o naszej jakości usług',
-                link: sonamedClinicData.contact.phone,
+                  'Sprawdź wszystkie opinie naszych kursantów na portalu SuperPrawoJazdy',
+                link: 'https://www.superprawojazdy.pl/szkola-jazdy-sonamed,5277.htm',
                 stars: 5,
               },
             ].map((testimonial, index) => (
               <Link
                 key={index}
-                href={index === 3 ? "/kontakt" : "/kontakt"}
-                target={index === 3 ? "_self" : "_self"}
+                href="https://www.superprawojazdy.pl/szkola-jazdy-sonamed,5277.htm"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="block"
               >
@@ -824,15 +821,15 @@ export default function HomePage() {
                 >
                   <div className="absolute -top-6 left-6">
                     <div className="h-12 w-12 relative">
-                      <div className="absolute inset-0 rounded-full blur-md opacity-80" style={{background: `linear-gradient(135deg, ${colors.brand.primary}, ${colors.brand.secondary})`}}></div>
-                      <div className="relative flex items-center justify-center h-12 w-12 rounded-full text-white border-2" style={{backgroundColor: colors.brand.primary, borderColor: colors.brand.accent}}>
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 blur-md opacity-80"></div>
+                      <div className="relative flex items-center justify-center h-12 w-12 rounded-full bg-blue-900 border border-blue-400 text-white">
                         <FaQuoteRight />
                       </div>
                     </div>
                   </div>
 
                   <div className="pt-8 pb-4">
-                    <p className="text-gray-100 mb-6 hover:text-white transition-colors">
+                    <p className="text-blue-100 mb-6 hover:text-blue-300 transition-colors">
                       {testimonial.quote}
                     </p>
                   </div>
@@ -842,16 +839,19 @@ export default function HomePage() {
                       <h4 className="text-white font-medium">
                         {testimonial.name}
                       </h4>
-                      <p className="text-gray-300 text-sm">
+                      <p className="text-blue-300 text-sm">
                         {testimonial.role}
                       </p>
                     </div>
-                    <div className="ml-auto flex">
+                    <div className="ml-auto flex text-yellow-400">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <svg
                           key={i}
-                          className="w-4 h-4"
-                          style={{color: i < testimonial.stars ? colors.brand.accent : '#9ca3af'}}
+                          className={`w-4 h-4 ${
+                            i < testimonial.stars
+                              ? 'text-yellow-400'
+                              : 'text-gray-400'
+                          }`}
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
@@ -868,9 +868,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative py-12 sm:py-16 md:py-24 overflow-hidden" style={{background: `linear-gradient(180deg, ${colors.brand.secondary}30, ${colors.brand.primary}20)`}}>
+      <section className="bg-gradient-to-b from-slate-900 to-gray-900 py-12 sm:py-16 md:py-24 relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(122,165,157,0.1),transparent_70%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.1),transparent_70%)]"></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -882,37 +882,38 @@ export default function HomePage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-white mb-4">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-100 to-blue-100">
                 Często zadawane pytania
               </span>
             </h2>
-            <p className="text-gray-200 max-w-2xl mx-auto">
+            <p className="text-blue-200 max-w-2xl mx-auto">
               Odpowiedzi na najczęściej zadawane pytania dotyczące naszych
-              usług stomatologicznych
+              kursów
             </p>
           </motion.div>
 
           <div className="max-w-3xl mx-auto space-y-6">
             {[
               {
-                question: 'Czy pierwszy wizyta jest płatna?',
+                question: 'Ile trwa kurs na prawo jazdy kat. B?',
                 answer:
-                  'Pierwsza konsultacja w naszej klinice kosztuje 200 zł i obejmuje szczegółowe badanie jamy ustnej oraz omówienie możliwości leczenia. W przypadku podjęcia decyzji o leczeniu, koszt konsultacji jest zaliczany na poczet wykonywanych zabiegów.',
+                  'Kurs na prawo jazdy kategorii B składa się z 30 godzin zajęć teoretycznych oraz 30 godzin zajęć praktycznych. Całkowity czas trwania kursu zależy od indywidualnego tempa nauki, ale zwykle wynosi od 1 do 3 miesięcy.',
               },
               {
-                question: 'Jak długo trwa proces wykonania licówek ceramicznych?',
+                question:
+                  'Jakie dokumenty są potrzebne, aby zapisać się na kurs?',
                 answer:
-                  'Proces wykonania licówek ceramicznych trwa zwykle 2-3 wizyty w ciągu 2-3 tygodni. Pierwsza wizyta to przygotowanie zębów i pobranie wycisków, druga to próba i ewentualne korekty, a trzecia to ostateczne naklejenie licówek.',
+                  'Do zapisu na kurs potrzebujesz: dowodu osobistego, numeru PESEL, orzeczenia lekarskiego o braku przeciwwskazań do kierowania pojazdami, oraz zdjęcia do dokumentów. W przypadku osób niepełnoletnich wymagana jest również zgoda rodziców lub opiekunów prawnych.',
               },
               {
-                question: 'Czy zabiegi stomatologiczne są bolesne?',
+                question: 'Jak wygląda egzamin państwowy?',
                 answer:
-                  'W naszej klinice dbamy o maksymalny komfort pacjentów. Wszystkie zabiegi wykonujemy pod znieczuleniem miejscowym, które jest bezpłatne. W przypadku bardziej skomplikowanych zabiegów oferujemy również sedację śróżylną.',
+                  'Egzamin państwowy składa się z dwóch części: teoretycznej i praktycznej. Część teoretyczna to test komputerowy składający się z pytań jednokrotnego wyboru. Część praktyczna obejmuje wykonanie zadań na placu manewrowym oraz jazdę w ruchu drogowym pod nadzorem egzaminatora.',
               },
               {
-                question: 'Jakie formy płatności akceptujecie?',
+                question: 'Czy oferujecie jazdy doszkalające przed egzaminem?',
                 answer:
-                  'Akceptujemy płatności gotówkowe, kartą płatniczą, przelewem bankowym. Oferujemy również możliwość płatności ratalnych dla kosztowniejszych zabiegów. Szczegóły finansowania omówimy podczas konsultacji.',
+                  'Tak, oferujemy dodatkowe jazdy doszkalające dla osób, które chcą lepiej przygotować się do egzaminu praktycznego. Możesz wykupić dowolną liczbę dodatkowych godzin jazdy z instruktorem.',
               },
             ].map((faq, index) => (
               <motion.div
@@ -928,7 +929,7 @@ export default function HomePage() {
                     {faq.question}
                   </h3>
                   <div className="flex-shrink-0 ml-4">
-                    <div className="h-6 w-6 rounded-full flex items-center justify-center" style={{backgroundColor: colors.brand.primary}}>
+                    <div className="h-6 w-6 rounded-full bg-blue-500 flex items-center justify-center">
                       <svg
                         className="w-4 h-4 text-white"
                         fill="none"
@@ -947,7 +948,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="mt-4">
-                  <p className="text-gray-100">{faq.answer}</p>
+                  <p className="text-blue-100">{faq.answer}</p>
                 </div>
               </motion.div>
             ))}
@@ -955,9 +956,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative py-12 sm:py-16 md:py-24 overflow-hidden" style={{background: `linear-gradient(180deg, ${colors.brand.primary}20, ${colors.brand.secondary}30)`}}>
+      <section className="bg-gradient-to-b from-gray-900 to-gray-950 py-12 sm:py-16 md:py-24 relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(122,165,157,0.15),transparent_70%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.15),transparent_70%)]"></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -966,8 +967,7 @@ export default function HomePage() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="rounded-3xl overflow-hidden shadow-2xl"
-            style={{background: `linear-gradient(135deg, ${colors.brand.primary}, ${colors.brand.secondary})`, boxShadow: `0 25px 50px -12px ${colors.brand.primary}20`}}
+            className="rounded-3xl bg-gradient-to-br from-blue-900 to-indigo-900 overflow-hidden shadow-2xl shadow-blue-500/20"
           >
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="p-12 lg:p-16">
@@ -978,17 +978,18 @@ export default function HomePage() {
                   transition={{ duration: 0.8 }}
                 >
                   <h2 className="text-4xl font-bold text-white mb-4">
-                    Zacznij swoją przygodę z pięknym uśmiechem już dziś
+                    Rozpocznij swoją przygodę z kierownicą już dziś
                   </h2>
-                  <p className="text-gray-100 text-lg mb-8">
-                    {sonamedClinicData.appointmentForm.description}
+                  <p className="text-blue-100 text-lg mb-8">
+                    Zapisz się na kurs i zdobądź prawo jazdy pod okiem
+                    doświadczonych instruktorów
                   </p>
                   <ul className="space-y-4 mb-10">
                     {[
-                      'Elastyczne terminy wizyt',
-                      'Doświadczeni specjaliści',
-                      'Nowoczesny sprzęt medyczny',
-                      'Indywidualne podejście do pacjenta',
+                      'Elastyczne terminy zajęć',
+                      'Profesjonalni instruktorzy',
+                      'Nowoczesna flota pojazdów',
+                      'Wysoka zdawalność egzaminów',
                     ].map((item, index) => (
                       <motion.li
                         key={index}
@@ -996,11 +997,10 @@ export default function HomePage() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className="flex items-center text-gray-100"
+                        className="flex items-center text-blue-100"
                       >
                         <svg
-                          className="w-5 h-5 mr-3"
-                          style={{color: colors.brand.accent}}
+                          className="w-5 h-5 text-green-400 mr-3"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
@@ -1017,10 +1017,9 @@ export default function HomePage() {
                   </ul>
                   <Link
                     href="/kontakt"
-                    className="inline-flex items-center px-8 py-4 rounded-full text-white font-medium text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105"
-                    style={{background: `linear-gradient(90deg, ${colors.brand.accent}, ${colors.brand.primary})`}}
+                    className="inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-medium text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105"
                   >
-                    <span>{sonamedClinicData.appointmentForm.title}</span>
+                    <span>Skontaktuj się z nami</span>
                     <svg
                       className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
                       fill="none"
@@ -1048,7 +1047,7 @@ export default function HomePage() {
                   sizes="(max-width: 1280px) 100vw, 1280px"
                   priority
                 />
-                <div className="absolute inset-0" style={{background: `linear-gradient(90deg, ${colors.brand.primary}, transparent)`}}></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-900 to-transparent"></div>
 
                 <motion.div
                   className="absolute top-16 right-16 bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 shadow-xl w-64"
@@ -1058,20 +1057,20 @@ export default function HomePage() {
                   transition={{ duration: 0.8, delay: 0.3 }}
                 >
                   <div className="flex items-center mb-4">
-                    <div className="p-3 rounded-lg mr-4" style={{backgroundColor: `${colors.brand.primary}20`}}>
-                      <FaTooth className="text-2xl" style={{color: colors.brand.accent}} />
+                    <div className="p-3 bg-blue-500/20 rounded-lg mr-4">
+                      <HiOutlineUserGroup className="text-blue-300 text-2xl" />
                     </div>
                     <div>
-                      <h4 className="text-white font-medium">Precyzja wykonania</h4>
-                      <p className="text-gray-200 text-sm">
-                        Najwyższa jakość
+                      <h4 className="text-white font-medium">Małe grupy</h4>
+                      <p className="text-blue-200 text-sm">
+                        Indywidualne podejście
                       </p>
                     </div>
                   </div>
-                  <div className="h-1 w-full rounded-full mb-4" style={{background: `linear-gradient(90deg, ${colors.brand.primary}, ${colors.brand.secondary})`}}></div>
-                  <p className="text-gray-100 text-sm">
-                    Każdy zabieg wykonujemy z najwyższą precyzją, wykorzystując 
-                    nowoczesne technologie i wieloletnie doświadczenie.
+                  <div className="h-1 w-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mb-4"></div>
+                  <p className="text-blue-100 text-sm">
+                    Szkolimy w małych grupach, aby zapewnić każdemu uczestnikowi
+                    indywidualne podejście i maksymalną efektywność nauki.
                   </p>
                 </motion.div>
               </div>
