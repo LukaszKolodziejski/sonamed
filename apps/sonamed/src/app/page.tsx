@@ -12,19 +12,15 @@ import {
   FaShieldAlt,
   FaStar,
 } from 'react-icons/fa';
-import {
-  HiOutlineClock,
-  HiOutlineHeart,
-} from 'react-icons/hi';
+import { HiOutlineClock, HiOutlineHeart } from 'react-icons/hi';
 import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { sonamedClinicData } from '@/constants/page1';
 import { colors } from '@/constants/colors';
+import AnimeSection from '@/components/ux/AnimeSection';
 
 export default function HomePage() {
   const mainRef = useRef(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -36,37 +32,6 @@ export default function HomePage() {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
-
-  useEffect(() => {
-    if (!videoRef?.current) {
-      return;
-    }
-
-    const handleVideoLoaded = () => {
-      setIsVideoLoaded(true);
-    };
-
-    const currentVideo = videoRef.current;
-    currentVideo.addEventListener('loadeddata', handleVideoLoaded);
-
-    const timer = setTimeout(() => {
-      if (!isVideoLoaded) {
-        setIsVideoLoaded(true);
-      }
-    }, 3000);
-
-    currentVideo.currentTime = 0;
-    currentVideo.play().catch(() => {
-      setIsVideoLoaded(true);
-    });
-
-    return () => {
-      if (currentVideo) {
-        currentVideo.removeEventListener('loadeddata', handleVideoLoaded);
-      }
-      clearTimeout(timer);
-    };
-  }, [isVideoLoaded]);
 
   const fadeInUp = {
     hidden: { opacity: 0, y: isMobile ? 30 : 60 },
@@ -99,32 +64,7 @@ export default function HomePage() {
         data-homepage
         className="relative w-full min-h-screen overflow-x-hidden"
       >
-        <div className="absolute inset-0 w-full h-full z-0" style={{background: `linear-gradient(135deg, ${colors.brand.primary}80, ${colors.brand.secondary}80, ${colors.brand.accent}70)`}}>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(62,131,146,0.4),transparent_50%)] z-10"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(122,165,157,0.4),transparent_50%)] z-10"></div>
-
-          <div className="absolute inset-0 overflow-hidden">
-            <video
-              ref={videoRef}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              className={`object-cover w-full h-full transform translate-y-20 ${
-                isVideoLoaded ? 'opacity-100' : 'opacity-0'
-              } transition-opacity duration-1000`}
-            >
-              <source src="/videos/main_video.mp4" type="video/mp4" />
-            </video>
-          </div>
-
-          {!isVideoLoaded && (
-            <div className="absolute inset-0 flex items-center justify-center text-white" style={{background: `linear-gradient(135deg, ${colors.brand.primary}, ${colors.brand.secondary})`}}>
-              <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-white"></div>
-            </div>
-          )}
-        </div>
+        <AnimeSection />
 
         <div className="relative z-30 w-full max-w-[100vw] overflow-x-hidden">
           <motion.div
@@ -144,7 +84,9 @@ export default function HomePage() {
               >
                 <motion.div
                   className="inline-block px-4 py-2 md:px-6 md:py-2 rounded-full text-white text-xs md:text-sm font-medium"
-                  style={{background: `linear-gradient(90deg, ${colors.brand.primary}, ${colors.brand.secondary}, ${colors.brand.accent})`}}
+                  style={{
+                    background: `linear-gradient(90deg, ${colors.brand.primary}, ${colors.brand.secondary}, ${colors.brand.accent})`,
+                  }}
                   animate={{
                     backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
                   }}
@@ -161,17 +103,29 @@ export default function HomePage() {
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200">
                   {sonamedClinicData.hero.brandName}
                 </span>
-                <motion.span className="block text-transparent bg-clip-text mt-2 md:mt-4 text-2xl sm:text-3xl md:text-5xl" style={{background: `linear-gradient(90deg, ${colors.brand.accent}, ${colors.brand.primary})`}}>
-                  {sonamedClinicData.hero.mainTitle} {sonamedClinicData.hero.subtitle}
+                <motion.span
+                  // className="block text-transparent bg-clip-text mt-2 md:mt-4 text-2xl sm:text-3xl md:text-5xl"
+                  className="block  bg-clip-text mt-2 md:mt-4 text-2xl sm:text-3xl md:text-5xl"
+                  style={{
+                    // background: `linear-gradient(90deg, ${colors.brand.accent}, ${colors.brand.primary})`,
+                    color: `${colors.brand.accent}`,
+                  }}
+                >
+                  {sonamedClinicData.hero.mainTitle}{' '}
+                  {sonamedClinicData.hero.subtitle}
                 </motion.span>
               </motion.h1>
 
               <motion.p
                 variants={fadeInUp}
                 className="mt-4 md:mt-6 text-lg sm:text-xl md:text-2xl leading-8 max-w-2xl mx-auto break-words"
-                style={{color: `${colors.background.primary}f0`}}
+                style={{ color: `${colors.background.primary}f0` }}
               >
-                {sonamedClinicData.whatMakesUsDifferent.description.slice(0, 120)}...
+                {sonamedClinicData.whatMakesUsDifferent.description.slice(
+                  0,
+                  120
+                )}
+                ...
               </motion.p>
 
               <motion.div
@@ -183,15 +137,21 @@ export default function HomePage() {
                 <Link
                   href="/kontakt"
                   className="w-full sm:w-auto group relative overflow-hidden rounded-full px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                  style={{background: `linear-gradient(90deg, ${colors.brand.primary}, ${colors.brand.secondary})`}}
+                  style={{
+                    background: `linear-gradient(90deg, ${colors.brand.primary}, ${colors.brand.secondary})`,
+                  }}
                 >
-                  <span className="relative z-10">{sonamedClinicData.hero.ctaButtons[0]}</span>
+                  <span className="relative z-10">
+                    {sonamedClinicData.hero.ctaButtons[0]}
+                  </span>
                   <span className="block text-xs md:text-sm mt-0.5 md:mt-1 opacity-90 relative z-10">
                     Skontaktuj się z nami już dziś
                   </span>
                   <motion.span
                     className="absolute inset-0 z-0"
-                    style={{background: `linear-gradient(90deg, ${colors.brand.secondary}, ${colors.brand.primary})`}}
+                    style={{
+                      background: `linear-gradient(90deg, ${colors.brand.secondary}, ${colors.brand.primary})`,
+                    }}
                     initial={{ x: '-100%' }}
                     whileHover={{ x: '0%' }}
                     transition={{ duration: 0.5 }}
@@ -203,7 +163,9 @@ export default function HomePage() {
                   href="/cennik"
                   className="w-full sm:w-auto group relative overflow-hidden rounded-full backdrop-blur-md bg-white/10 border border-white/20 px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
-                  <span className="relative z-10">{sonamedClinicData.hero.ctaButtons[1]}</span>
+                  <span className="relative z-10">
+                    {sonamedClinicData.hero.ctaButtons[1]}
+                  </span>
                   <span className="block text-xs md:text-sm mt-0.5 md:mt-1 opacity-90">
                     Zobacz nasze usługi i ceny
                   </span>
@@ -240,7 +202,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative py-12 sm:py-16 md:py-24" style={{background: `linear-gradient(180deg, ${colors.brand.primary}20, ${colors.brand.secondary}30)`}}>
+      <section
+        className="relative py-12 sm:py-16 md:py-24"
+        style={{
+          background: `linear-gradient(180deg, ${colors.brand.primary}20, ${colors.brand.secondary}30)`,
+        }}
+      >
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(62,131,146,0.2),transparent_60%)]"></div>
         </div>
@@ -258,7 +225,7 @@ export default function HomePage() {
               </span>
             </h2>
             <p className="text-gray-200 max-w-2xl mx-auto">
-              Wykorzystujemy najnowocześniejsze urządzenia i technologie 
+              Wykorzystujemy najnowocześniejsze urządzenia i technologie
               zapewniające najwyższą jakość leczenia
             </p>
           </motion.div>
@@ -295,19 +262,23 @@ export default function HomePage() {
                     title: 'Leczenie pod mikroskopem',
                     description:
                       'Precyzyjne zabiegi wykonywane z wykorzystaniem nowoczesnej mikroskopii dentystycznej',
-                    icon: <FaMicroscope style={{color: colors.brand.primary}} />,
+                    icon: (
+                      <FaMicroscope style={{ color: colors.brand.primary }} />
+                    ),
                   },
                   {
                     title: 'Diagnostyka cyfrowa',
                     description:
                       'Zaawansowane skanowanie wewnątrzustne i projektowanie cyfrowe uśmiechu DSD',
-                    icon: <FaTooth style={{color: colors.brand.secondary}} />,
+                    icon: <FaTooth style={{ color: colors.brand.secondary }} />,
                   },
                   {
                     title: 'Bezpieczeństwo pacjenta',
                     description:
                       'Najwyższe standardy sterylizacji i bezpieczeństwa w każdym zabiegu',
-                    icon: <FaShieldAlt style={{color: colors.brand.accent}} />,
+                    icon: (
+                      <FaShieldAlt style={{ color: colors.brand.accent }} />
+                    ),
                   },
                 ].map((feature, index) => (
                   <motion.div
@@ -337,14 +308,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative py-12 sm:py-16 md:py-24 overflow-hidden" style={{background: `linear-gradient(180deg, ${colors.brand.secondary}30, ${colors.brand.primary}40)`}}>
+      <section
+        className="relative py-12 sm:py-16 md:py-24 overflow-hidden"
+        style={{
+          background: `linear-gradient(180deg, ${colors.brand.secondary}30, ${colors.brand.primary}40)`,
+        }}
+      >
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black/20 to-transparent"></div>
 
           <div className="absolute inset-0">
-            <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full blur-3xl" style={{background: `linear-gradient(45deg, ${colors.brand.primary}30, transparent)`}}></div>
-            <div className="absolute top-40 -left-20 w-72 h-72 rounded-full blur-3xl" style={{background: `linear-gradient(45deg, ${colors.brand.secondary}20, transparent)`}}></div>
-            <div className="absolute bottom-0 right-1/4 w-64 h-64 rounded-full blur-3xl" style={{background: `linear-gradient(45deg, ${colors.brand.accent}20, transparent)`}}></div>
+            <div
+              className="absolute -top-20 -right-20 w-96 h-96 rounded-full blur-3xl"
+              style={{
+                background: `linear-gradient(45deg, ${colors.brand.primary}30, transparent)`,
+              }}
+            ></div>
+            <div
+              className="absolute top-40 -left-20 w-72 h-72 rounded-full blur-3xl"
+              style={{
+                background: `linear-gradient(45deg, ${colors.brand.secondary}20, transparent)`,
+              }}
+            ></div>
+            <div
+              className="absolute bottom-0 right-1/4 w-64 h-64 rounded-full blur-3xl"
+              style={{
+                background: `linear-gradient(45deg, ${colors.brand.accent}20, transparent)`,
+              }}
+            ></div>
           </div>
 
           <svg
@@ -409,7 +400,12 @@ export default function HomePage() {
                 Nasza klinika w liczbach
               </span>
             </h2>
-            <div className="w-24 h-1 mx-auto rounded-full" style={{background: `linear-gradient(90deg, ${colors.brand.secondary}, ${colors.brand.primary})`}}></div>
+            <div
+              className="w-24 h-1 mx-auto rounded-full"
+              style={{
+                background: `linear-gradient(90deg, ${colors.brand.secondary}, ${colors.brand.primary})`,
+              }}
+            ></div>
           </motion.div>
 
           <motion.div
@@ -456,19 +452,23 @@ export default function HomePage() {
 
                   <div
                     className="absolute inset-0 rounded-2xl opacity-20 blur-xl group-hover:opacity-30 transition-opacity duration-300"
-                    style={{background: `linear-gradient(135deg, ${stat.color}40, transparent)`}}
+                    style={{
+                      background: `linear-gradient(135deg, ${stat.color}40, transparent)`,
+                    }}
                   ></div>
 
                   <div className="relative z-10">
                     <div
                       className="text-4xl rounded-xl p-4 text-white mb-5 shadow-lg"
-                      style={{background: `linear-gradient(135deg, ${stat.color}, ${stat.color}cc)`}}
+                      style={{
+                        background: `linear-gradient(135deg, ${stat.color}, ${stat.color}cc)`,
+                      }}
                     >
                       {stat.icon}
                     </div>
                     <motion.dt
                       className="text-4xl md:text-5xl font-bold mb-2"
-                      style={{color: stat.color}}
+                      style={{ color: stat.color }}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
@@ -485,7 +485,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative py-12 sm:py-16 md:py-24 overflow-hidden" style={{background: `linear-gradient(180deg, ${colors.brand.primary}40, ${colors.brand.secondary}50)`}}>
+      <section
+        className="relative py-12 sm:py-16 md:py-24 overflow-hidden"
+        style={{
+          background: `linear-gradient(180deg, ${colors.brand.primary}40, ${colors.brand.secondary}50)`,
+        }}
+      >
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(122,165,157,0.15),transparent_70%)]"></div>
         </div>
@@ -504,7 +509,7 @@ export default function HomePage() {
               </span>
             </h2>
             <p className="text-gray-200 max-w-2xl mx-auto">
-              Przeprowadzimy Cię przez cały proces - od pierwszej konsultacji po 
+              Przeprowadzimy Cię przez cały proces - od pierwszej konsultacji po
               osiągnięcie wymarzonego uśmiechu
             </p>
           </motion.div>
@@ -553,15 +558,31 @@ export default function HomePage() {
                 >
                   <div className="flex-shrink-0">
                     <div className="relative h-12 w-12">
-                      <div className="absolute inset-0 rounded-full blur-md opacity-80" style={{background: `linear-gradient(135deg, ${colors.brand.primary}, ${colors.brand.secondary})`}}></div>
-                      <div className="relative flex items-center justify-center h-12 w-12 rounded-full border-2" style={{backgroundColor: colors.brand.primary, borderColor: colors.brand.accent}}>
+                      <div
+                        className="absolute inset-0 rounded-full blur-md opacity-80"
+                        style={{
+                          background: `linear-gradient(135deg, ${colors.brand.primary}, ${colors.brand.secondary})`,
+                        }}
+                      ></div>
+                      <div
+                        className="relative flex items-center justify-center h-12 w-12 rounded-full border-2"
+                        style={{
+                          backgroundColor: colors.brand.primary,
+                          borderColor: colors.brand.accent,
+                        }}
+                      >
                         <span className="text-lg font-bold text-white">
                           {step.step}
                         </span>
                       </div>
                     </div>
                     {index < 3 && (
-                      <div className="w-0.5 h-16 ml-6 mt-2" style={{background: `linear-gradient(180deg, ${colors.brand.primary}, ${colors.brand.secondary})`}}></div>
+                      <div
+                        className="w-0.5 h-16 ml-6 mt-2"
+                        style={{
+                          background: `linear-gradient(180deg, ${colors.brand.primary}, ${colors.brand.secondary})`,
+                        }}
+                      ></div>
                     )}
                   </div>
                   <div className="pt-2">
@@ -594,13 +615,17 @@ export default function HomePage() {
               <div className="absolute bottom-6 right-6 z-10">
                 <motion.div
                   className="text-white px-6 py-3 rounded-full shadow-lg flex items-center space-x-2"
-                  style={{background: `linear-gradient(90deg, ${colors.brand.primary}, ${colors.brand.secondary})`}}
+                  style={{
+                    background: `linear-gradient(90deg, ${colors.brand.primary}, ${colors.brand.secondary})`,
+                  }}
                   whileHover={{ scale: 1.05 }}
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
-                  <span className="font-medium">100% indywidualne podejście</span>
-                  <HiOutlineHeart style={{color: colors.brand.accent}} />
+                  <span className="font-medium">
+                    100% indywidualne podejście
+                  </span>
+                  <HiOutlineHeart style={{ color: colors.brand.accent }} />
                 </motion.div>
               </div>
             </motion.div>
@@ -616,7 +641,9 @@ export default function HomePage() {
             <Link
               href="/kontakt"
               className="group inline-flex items-center px-8 py-4 rounded-full text-white font-medium text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105"
-              style={{background: `linear-gradient(90deg, ${colors.brand.primary}, ${colors.brand.secondary})`}}
+              style={{
+                background: `linear-gradient(90deg, ${colors.brand.primary}, ${colors.brand.secondary})`,
+              }}
             >
               <span>Umów konsultację</span>
               <svg
@@ -638,11 +665,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative py-12 sm:py-16 md:py-24 overflow-hidden" style={{background: `linear-gradient(180deg, ${colors.brand.secondary}50, ${colors.brand.primary}40)`}}>
+      <section
+        className="relative py-12 sm:py-16 md:py-24 overflow-hidden"
+        style={{
+          background: `linear-gradient(180deg, ${colors.brand.secondary}50, ${colors.brand.primary}40)`,
+        }}
+      >
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(122,165,157,0.1),transparent_70%)]"></div>
-          <div className="absolute -right-40 top-20 w-80 h-80 rounded-full blur-3xl" style={{background: `${colors.brand.accent}10`}}></div>
-          <div className="absolute -left-40 bottom-20 w-80 h-80 rounded-full blur-3xl" style={{background: `${colors.brand.primary}10`}}></div>
+          <div
+            className="absolute -right-40 top-20 w-80 h-80 rounded-full blur-3xl"
+            style={{ background: `${colors.brand.accent}10` }}
+          ></div>
+          <div
+            className="absolute -left-40 bottom-20 w-80 h-80 rounded-full blur-3xl"
+            style={{ background: `${colors.brand.primary}10` }}
+          ></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -664,7 +702,7 @@ export default function HomePage() {
               </Link>
             </h2>
             <p className="text-gray-200 max-w-2xl mx-auto">
-              Kompleksowe usługi stomatologiczne wykonywane z najwyższą precyzją 
+              Kompleksowe usługi stomatologiczne wykonywane z najwyższą precyzją
               i wykorzystaniem nowoczesnych technologii
             </p>
           </motion.div>
@@ -704,13 +742,17 @@ export default function HomePage() {
                 <div className="absolute -top-4 -right-4">
                   <div
                     className="w-24 h-24 rounded-full opacity-10 blur-2xl group-hover:opacity-20 transition-opacity duration-300"
-                    style={{background: `linear-gradient(135deg, ${feature.color}, ${feature.color}80)`}}
+                    style={{
+                      background: `linear-gradient(135deg, ${feature.color}, ${feature.color}80)`,
+                    }}
                   ></div>
                 </div>
 
                 <div
                   className="inline-flex p-3 rounded-lg mb-6 text-white"
-                  style={{background: `linear-gradient(135deg, ${feature.color}, ${feature.color}cc)`}}
+                  style={{
+                    background: `linear-gradient(135deg, ${feature.color}, ${feature.color}cc)`,
+                  }}
                 >
                   {feature.icon}
                 </div>
@@ -722,7 +764,9 @@ export default function HomePage() {
 
                 <motion.div
                   className="h-1 w-16 rounded-full"
-                  style={{background: `linear-gradient(90deg, ${colors.brand.primary}, ${colors.brand.secondary})`}}
+                  style={{
+                    background: `linear-gradient(90deg, ${colors.brand.primary}, ${colors.brand.secondary})`,
+                  }}
                   whileHover={{ width: '100%' }}
                   transition={{ duration: 0.3 }}
                 />
@@ -753,7 +797,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative py-12 sm:py-16 md:py-24 overflow-hidden" style={{background: `linear-gradient(180deg, ${colors.brand.primary}40, ${colors.brand.secondary}30)`}}>
+      <section
+        className="relative py-12 sm:py-16 md:py-24 overflow-hidden"
+        style={{
+          background: `linear-gradient(180deg, ${colors.brand.primary}40, ${colors.brand.secondary}30)`,
+        }}
+      >
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(122,165,157,0.1),transparent_70%)]"></div>
         </div>
@@ -810,8 +859,8 @@ export default function HomePage() {
             ].map((testimonial, index) => (
               <Link
                 key={index}
-                href={index === 3 ? "/kontakt" : "/kontakt"}
-                target={index === 3 ? "_self" : "_self"}
+                href={index === 3 ? '/kontakt' : '/kontakt'}
+                target={index === 3 ? '_self' : '_self'}
                 rel="noopener noreferrer"
                 className="block"
               >
@@ -824,8 +873,19 @@ export default function HomePage() {
                 >
                   <div className="absolute -top-6 left-6">
                     <div className="h-12 w-12 relative">
-                      <div className="absolute inset-0 rounded-full blur-md opacity-80" style={{background: `linear-gradient(135deg, ${colors.brand.primary}, ${colors.brand.secondary})`}}></div>
-                      <div className="relative flex items-center justify-center h-12 w-12 rounded-full text-white border-2" style={{backgroundColor: colors.brand.primary, borderColor: colors.brand.accent}}>
+                      <div
+                        className="absolute inset-0 rounded-full blur-md opacity-80"
+                        style={{
+                          background: `linear-gradient(135deg, ${colors.brand.primary}, ${colors.brand.secondary})`,
+                        }}
+                      ></div>
+                      <div
+                        className="relative flex items-center justify-center h-12 w-12 rounded-full text-white border-2"
+                        style={{
+                          backgroundColor: colors.brand.primary,
+                          borderColor: colors.brand.accent,
+                        }}
+                      >
                         <FaQuoteRight />
                       </div>
                     </div>
@@ -851,7 +911,12 @@ export default function HomePage() {
                         <svg
                           key={i}
                           className="w-4 h-4"
-                          style={{color: i < testimonial.stars ? colors.brand.accent : '#9ca3af'}}
+                          style={{
+                            color:
+                              i < testimonial.stars
+                                ? colors.brand.accent
+                                : '#9ca3af',
+                          }}
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
@@ -868,7 +933,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative py-12 sm:py-16 md:py-24 overflow-hidden" style={{background: `linear-gradient(180deg, ${colors.brand.secondary}30, ${colors.brand.primary}20)`}}>
+      <section
+        className="relative py-12 sm:py-16 md:py-24 overflow-hidden"
+        style={{
+          background: `linear-gradient(180deg, ${colors.brand.secondary}30, ${colors.brand.primary}20)`,
+        }}
+      >
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(122,165,157,0.1),transparent_70%)]"></div>
         </div>
@@ -887,8 +957,8 @@ export default function HomePage() {
               </span>
             </h2>
             <p className="text-gray-200 max-w-2xl mx-auto">
-              Odpowiedzi na najczęściej zadawane pytania dotyczące naszych
-              usług stomatologicznych
+              Odpowiedzi na najczęściej zadawane pytania dotyczące naszych usług
+              stomatologicznych
             </p>
           </motion.div>
 
@@ -900,7 +970,8 @@ export default function HomePage() {
                   'Pierwsza konsultacja w naszej klinice kosztuje 200 zł i obejmuje szczegółowe badanie jamy ustnej oraz omówienie możliwości leczenia. W przypadku podjęcia decyzji o leczeniu, koszt konsultacji jest zaliczany na poczet wykonywanych zabiegów.',
               },
               {
-                question: 'Jak długo trwa proces wykonania licówek ceramicznych?',
+                question:
+                  'Jak długo trwa proces wykonania licówek ceramicznych?',
                 answer:
                   'Proces wykonania licówek ceramicznych trwa zwykle 2-3 wizyty w ciągu 2-3 tygodni. Pierwsza wizyta to przygotowanie zębów i pobranie wycisków, druga to próba i ewentualne korekty, a trzecia to ostateczne naklejenie licówek.',
               },
@@ -928,7 +999,10 @@ export default function HomePage() {
                     {faq.question}
                   </h3>
                   <div className="flex-shrink-0 ml-4">
-                    <div className="h-6 w-6 rounded-full flex items-center justify-center" style={{backgroundColor: colors.brand.primary}}>
+                    <div
+                      className="h-6 w-6 rounded-full flex items-center justify-center"
+                      style={{ backgroundColor: colors.brand.primary }}
+                    >
                       <svg
                         className="w-4 h-4 text-white"
                         fill="none"
@@ -955,7 +1029,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative py-12 sm:py-16 md:py-24 overflow-hidden" style={{background: `linear-gradient(180deg, ${colors.brand.primary}20, ${colors.brand.secondary}30)`}}>
+      <section
+        className="relative py-12 sm:py-16 md:py-24 overflow-hidden"
+        style={{
+          background: `linear-gradient(180deg, ${colors.brand.primary}20, ${colors.brand.secondary}30)`,
+        }}
+      >
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(122,165,157,0.15),transparent_70%)]"></div>
         </div>
@@ -967,7 +1046,10 @@ export default function HomePage() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="rounded-3xl overflow-hidden shadow-2xl"
-            style={{background: `linear-gradient(135deg, ${colors.brand.primary}, ${colors.brand.secondary})`, boxShadow: `0 25px 50px -12px ${colors.brand.primary}20`}}
+            style={{
+              background: `linear-gradient(135deg, ${colors.brand.primary}, ${colors.brand.secondary})`,
+              boxShadow: `0 25px 50px -12px ${colors.brand.primary}20`,
+            }}
           >
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="p-12 lg:p-16">
@@ -1000,7 +1082,7 @@ export default function HomePage() {
                       >
                         <svg
                           className="w-5 h-5 mr-3"
-                          style={{color: colors.brand.accent}}
+                          style={{ color: colors.brand.accent }}
                           fill="currentColor"
                           viewBox="0 0 20 20"
                           xmlns="http://www.w3.org/2000/svg"
@@ -1018,7 +1100,9 @@ export default function HomePage() {
                   <Link
                     href="/kontakt"
                     className="inline-flex items-center px-8 py-4 rounded-full text-white font-medium text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105"
-                    style={{background: `linear-gradient(90deg, ${colors.brand.accent}, ${colors.brand.primary})`}}
+                    style={{
+                      background: `linear-gradient(90deg, ${colors.brand.accent}, ${colors.brand.primary})`,
+                    }}
                   >
                     <span>{sonamedClinicData.appointmentForm.title}</span>
                     <svg
@@ -1048,7 +1132,12 @@ export default function HomePage() {
                   sizes="(max-width: 1280px) 100vw, 1280px"
                   priority
                 />
-                <div className="absolute inset-0" style={{background: `linear-gradient(90deg, ${colors.brand.primary}, transparent)`}}></div>
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background: `linear-gradient(90deg, ${colors.brand.primary}, transparent)`,
+                  }}
+                ></div>
 
                 <motion.div
                   className="absolute top-16 right-16 bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 shadow-xl w-64"
@@ -1058,19 +1147,30 @@ export default function HomePage() {
                   transition={{ duration: 0.8, delay: 0.3 }}
                 >
                   <div className="flex items-center mb-4">
-                    <div className="p-3 rounded-lg mr-4" style={{backgroundColor: `${colors.brand.primary}20`}}>
-                      <FaTooth className="text-2xl" style={{color: colors.brand.accent}} />
+                    <div
+                      className="p-3 rounded-lg mr-4"
+                      style={{ backgroundColor: `${colors.brand.primary}20` }}
+                    >
+                      <FaTooth
+                        className="text-2xl"
+                        style={{ color: colors.brand.accent }}
+                      />
                     </div>
                     <div>
-                      <h4 className="text-white font-medium">Precyzja wykonania</h4>
-                      <p className="text-gray-200 text-sm">
-                        Najwyższa jakość
-                      </p>
+                      <h4 className="text-white font-medium">
+                        Precyzja wykonania
+                      </h4>
+                      <p className="text-gray-200 text-sm">Najwyższa jakość</p>
                     </div>
                   </div>
-                  <div className="h-1 w-full rounded-full mb-4" style={{background: `linear-gradient(90deg, ${colors.brand.primary}, ${colors.brand.secondary})`}}></div>
+                  <div
+                    className="h-1 w-full rounded-full mb-4"
+                    style={{
+                      background: `linear-gradient(90deg, ${colors.brand.primary}, ${colors.brand.secondary})`,
+                    }}
+                  ></div>
                   <p className="text-gray-100 text-sm">
-                    Każdy zabieg wykonujemy z najwyższą precyzją, wykorzystując 
+                    Każdy zabieg wykonujemy z najwyższą precyzją, wykorzystując
                     nowoczesne technologie i wieloletnie doświadczenie.
                   </p>
                 </motion.div>
