@@ -11,11 +11,15 @@ export const colors = {
     white: '#ffffff', // biały
   },
 
+  // Jeden ciemny akcent
+  dark: '#111827', // rgb(17 24 39) - jedyny ciemny kolor
+
   // Aliasy dla łatwiejszego użycia
   brand: {
     primary: '#7aa59d', // główny kolor marki
     secondary: '#3e8392', // drugorzędny kolor marki
     accent: '#a4c7c9', // kolor akcentujący
+    dark: '#111827', // ciemny akcent
   },
 
   background: {

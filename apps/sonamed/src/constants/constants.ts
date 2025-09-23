@@ -13,7 +13,7 @@ export const businessConstants = {
 
   // Dane firmy
   company: {
-    name: 'SONAMED',
+    name: 'Sonamed',
     fullName: 'SONAMED SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ',
     registrationData: {
       krs: '0001194341',

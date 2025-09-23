@@ -1,10 +1,15 @@
 import './globals.css';
 import { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
-const inter = Inter({ subsets: ['latin', 'latin-ext'] });
+const poppins = Poppins({
+  subsets: ['latin', 'latin-ext'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  display: 'swap',
+  variable: '--font-poppins',
+});
 
 export const viewport: Viewport = {
   themeColor: '#3b82f6',
@@ -150,7 +155,7 @@ export default function RootLayout({ children }: Props) {
         />
       </head>
       <body
-        className={`${inter.className} bg-white dark:bg-gray-900 flex flex-col min-h-screen`}
+        className={`${poppins.className} ${poppins.variable} bg-white dark:bg-gray-900 flex flex-col min-h-screen`}
       >
         <Navbar />
         <main

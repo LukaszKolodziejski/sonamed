@@ -76,8 +76,8 @@ export default function Navbar() {
               <Image
                 src="/logo/logo.png"
                 alt="sonamed Logo"
-                width={scrolled ? 100 : 120}
-                height={scrolled ? 33 : 40}
+                width={scrolled ? 55 : 70}
+                height={scrolled ? 55 : 70}
                 className="transition-all duration-300"
                 priority
               />

@@ -11,15 +11,15 @@ export const sonamedClinicData = {
 
   hero: {
     mainTitle: 'Profesjonalna opieka stomatologiczna',
-    subtitle: 'w sercu Kaszub',
-    brandName: 'SONAMED',
+    subtitle: 'w sercu Kaszub od 25+ lat',
+    brandName: 'Sonamed',
     ctaButtons: ['Zarezerwuj wizytę', 'Sprawdź usługi'],
   },
 
   whatMakesUsDifferent: {
     title: 'Co nas wyróżnia?',
     description:
-      'Naszym celem jest stworzenie wyspecjalizowanej kliniki stomatologii estetycznej, gdzie pacjent znajdzie nie tylko najwyższy poziom usług, ale także poczucie bezpieczeństwa, życzliwą opiekę i przyjazną atmosferę.',
+      'Już ponad 35 tys+ wizyt zakończyło się pięknym uśmiechem – Twój może być kolejny!',
     features: [
       {
         title: 'Piękno bez kompromisów',

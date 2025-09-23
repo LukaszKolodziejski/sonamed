@@ -80,19 +80,32 @@ export default function HomePage() {
             >
               <motion.div
                 variants={fadeInUp}
-                className="mb-8 md:mb-6 mt-2 sm:mt-0"
+                className="mb-8 md:mb-12 mt-9 md:mt-0"
               >
                 <motion.div
-                  className="inline-block px-4 py-2 md:px-6 md:py-2 rounded-full text-white text-xs md:text-sm font-medium"
+                  className="inline-block px-5 py-2.5 md:px-7 md:py-3 rounded-full text-xs md:text-sm font-bold tracking-wide shadow-2xl border border-white/30"
                   style={{
-                    background: `linear-gradient(90deg, ${colors.brand.primary}, ${colors.brand.secondary}, ${colors.brand.accent})`,
+                    background: `linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85))`,
+                    color: `${colors.brand.dark}`,
+                    backdropFilter: 'blur(10px)',
+                    boxShadow:
+                      '0 8px 32px rgba(0,0,0,0.1), 0 0 0 1px rgba(255,255,255,0.2)',
                   }}
                   animate={{
-                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                    y: [0, -2, 0],
+                    boxShadow: [
+                      '0 8px 32px rgba(0,0,0,0.1), 0 0 0 1px rgba(255,255,255,0.2)',
+                      '0 12px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.3)',
+                      '0 8px 32px rgba(0,0,0,0.1), 0 0 0 1px rgba(255,255,255,0.2)',
+                    ],
                   }}
-                  transition={{ duration: 5, repeat: Infinity }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
                 >
-                  Piękny uśmiech bez kompromisów!
+                  ✨ Piękny uśmiech bez kompromisów!
                 </motion.div>
               </motion.div>
 
@@ -100,15 +113,18 @@ export default function HomePage() {
                 variants={fadeInUp}
                 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-4 md:mb-6 break-words"
               >
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200">
+                <span
+                  className="bg-clip-text bg-gradient-to-r from-white to-gray-200"
+                  style={{
+                    color: `${colors.primary.lightSea}`,
+                  }}
+                >
                   {sonamedClinicData.hero.brandName}
                 </span>
                 <motion.span
-                  // className="block text-transparent bg-clip-text mt-2 md:mt-4 text-2xl sm:text-3xl md:text-5xl"
                   className="block  bg-clip-text mt-2 md:mt-4 text-2xl sm:text-3xl md:text-5xl"
                   style={{
-                    // background: `linear-gradient(90deg, ${colors.brand.accent}, ${colors.brand.primary})`,
-                    color: `${colors.brand.accent}`,
+                    color: `${colors.neutral.almostWhiteGreenish}`,
                   }}
                 >
                   {sonamedClinicData.hero.mainTitle}{' '}
@@ -136,45 +152,74 @@ export default function HomePage() {
               >
                 <Link
                   href="/kontakt"
-                  className="w-full sm:w-auto group relative overflow-hidden rounded-full px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  className="w-full sm:w-auto group relative overflow-hidden rounded-2xl px-8 md:px-10 py-4 md:py-5 text-base md:text-lg font-bold text-white shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-2 border border-white/10"
                   style={{
-                    background: `linear-gradient(90deg, ${colors.brand.primary}, ${colors.brand.secondary})`,
+                    background: `linear-gradient(135deg, ${colors.brand.dark}, rgba(17,24,39,0.95))`,
+                    boxShadow:
+                      '0 20px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1)',
                   }}
                 >
-                  <span className="relative z-10">
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    <span className="text-lg md:text-xl">💎</span>
                     {sonamedClinicData.hero.ctaButtons[0]}
                   </span>
-                  <span className="block text-xs md:text-sm mt-0.5 md:mt-1 opacity-90 relative z-10">
+                  <span className="block text-xs md:text-sm mt-1 opacity-90 relative z-10 text-gray-300">
                     Skontaktuj się z nami już dziś
                   </span>
                   <motion.span
-                    className="absolute inset-0 z-0"
+                    className="absolute inset-0 z-0 rounded-2xl"
                     style={{
-                      background: `linear-gradient(90deg, ${colors.brand.secondary}, ${colors.brand.primary})`,
+                      background: `linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))`,
                     }}
-                    initial={{ x: '-100%' }}
-                    whileHover={{ x: '0%' }}
-                    transition={{ duration: 0.5 }}
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileHover={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.4 }}
                   />
-                  <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-45 animate-shine" />
+                  <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-45 animate-shine rounded-2xl" />
+                  <motion.div
+                    className="absolute inset-0 rounded-2xl"
+                    style={{
+                      background: `linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%)`,
+                    }}
+                    animate={{
+                      x: ['-100%', '100%'],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      repeatDelay: 3,
+                      ease: 'easeInOut',
+                    }}
+                  />
                 </Link>
 
                 <Link
                   href="/cennik"
-                  className="w-full sm:w-auto group relative overflow-hidden rounded-full backdrop-blur-md bg-white/10 border border-white/20 px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  className="w-full sm:w-auto group relative overflow-hidden rounded-2xl backdrop-blur-xl px-8 md:px-10 py-4 md:py-5 text-base md:text-lg font-semibold text-white shadow-xl hover:shadow-2xl transition-all duration-400 hover:-translate-y-1 border-2 border-white/30"
+                  style={{
+                    background: `linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05))`,
+                    backdropFilter: 'blur(20px)',
+                    boxShadow:
+                      '0 15px 35px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.3)',
+                  }}
                 >
-                  <span className="relative z-10">
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    <span className="text-sm md:text-base">📊</span>
                     {sonamedClinicData.hero.ctaButtons[1]}
                   </span>
-                  <span className="block text-xs md:text-sm mt-0.5 md:mt-1 opacity-90">
+                  <span className="block text-xs md:text-sm mt-1 opacity-90 relative z-10">
                     Zobacz nasze usługi i ceny
                   </span>
                   <motion.span
-                    className="absolute inset-0 bg-white/20 z-0"
+                    className="absolute inset-0 z-0 rounded-2xl"
+                    style={{
+                      background: `linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1))`,
+                    }}
                     initial={{ scale: 0, opacity: 0 }}
                     whileHover={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.4 }}
                   />
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-transparent via-white/10 to-white/20 opacity-50" />
                 </Link>
               </motion.div>
             </motion.div>
@@ -419,19 +464,19 @@ export default function HomePage() {
               {[
                 {
                   icon: <FaHeart />,
-                  value: '1000+',
-                  label: 'Zadowolonych pacjentów',
+                  value: '35000+',
+                  label: 'Wszystkich wizyt w klinice',
                   color: `${colors.brand.primary}`,
                 },
                 {
                   icon: <HiOutlineClock />,
-                  value: '15+',
+                  value: '25+',
                   label: 'Lat doświadczenia',
                   color: `${colors.brand.secondary}`,
                 },
                 {
                   icon: <FaUserMd />,
-                  value: `${sonamedClinicData.team.members.length}`,
+                  value: `${sonamedClinicData.team.members.length + 1}`,
                   label: 'Specjalistów',
                   color: `${colors.brand.accent}`,
                 },
