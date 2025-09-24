@@ -1,11 +1,11 @@
 {
-    "name": "Szkoła Jazdy sonamed Bydgoszcz",
-    "short_name": "sonamed",
-    "description": "Profesjonalna szkoła jazdy w Bydgoszczy. Kursy prawa jazdy kategorii B.",
+    "name": "SONAMED - Centrum Stomatologiczne Kościerzyna",
+    "short_name": "SONAMED",
+    "description": "Profesjonalne centrum stomatologiczne w Kościerzynie. Licówki, implanty, ortodoncja.",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
-    "theme_color": "#3b82f6",
+    "theme_color": "#7aa59d",
     "icons": [
         {
             "src": "/logo/logo.png",

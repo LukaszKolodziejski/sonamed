@@ -12,7 +12,7 @@ const routes = [
     changeFrequency: 'monthly',
   },
   {
-    url: '/kursy',
+    url: '/oferta',
     priority: 0.9,
     changeFrequency: 'weekly',
   },
@@ -22,7 +22,7 @@ const routes = [
     changeFrequency: 'weekly',
   },
   {
-    url: '/rezerwacja',
+    url: '/umow-wizyte',
     priority: 1.0,
     changeFrequency: 'always',
   },

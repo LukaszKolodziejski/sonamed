@@ -15,11 +15,10 @@ export default function Navbar() {
   const navigation = [
     { name: 'Strona główna', href: '/' },
     { name: 'O nas', href: '/o-nas' },
-    { name: 'Kursy', href: '/kursy' },
+    { name: 'Oferta', href: '/oferta' },
     { name: 'Galeria', href: '/galeria' },
-    { name: 'Cennik', href: '/cennik' },
     { name: 'Pytania', href: '/pytania' },
-    { name: 'Rezerwacja', href: '/rezerwacja' },
+    { name: 'Umów wizytę', href: '/umow-wizyte' },
     { name: 'Kontakt', href: '/kontakt' },
   ];
 

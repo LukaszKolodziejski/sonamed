@@ -82,7 +82,7 @@ export default function KursyPage() {
             </div>
             <div className="mt-6 text-center">
               <Link
-                href="/rezerwacja"
+                href="/umow-wizyte"
                 className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-medium text-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
               >
                 Zarezerwuj miejsce
@@ -282,7 +282,7 @@ export default function KursyPage() {
             </h2>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
-                href="/rezerwacja"
+                href="/umow-wizyte"
                 className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium hover:shadow-lg transition-all duration-300 hover:scale-105"
               >
                 Zarezerwuj termin

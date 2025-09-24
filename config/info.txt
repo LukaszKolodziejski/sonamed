@@ -1,4 +1,8 @@
-Ten cały projekt i wszystkie pliki to strona dla szkoły jazdy. Natomiast teraz tworzę kompletnie nową stronę dla kliniki stomatologicznej i medycyny estetycznej. Pod kątem programistycznym możesz kożystać z tego projektu w celu edycji i dostosowaia dla kliniki. W folderze /apps/sonamed/src/constants masz w plikach: [colors.ts, constants.ts, page1.ts] masz wszystkie dane i inforamcje odnośnie tej kliniki stomatologicznej i medycyny estetycznej.
+Ten cały projekt i wszystkie pliki to strona dla szkoły jazdy. Natomiast teraz tworzę kompletnie nową stronę dla centrum stomatologicznego. Pod kątem programistycznym możesz kożystać z tego projektu w celu edycji i dostosowaia dla centrum stomatologicznego. 
+
+W folderze /apps/sonamed/src/constants masz w plikach: [colors.ts, constants.ts, page1.ts] masz wszystkie dane i inforamcje odnośnie tej kliniki stomatologicznej i medycyny estetycznej.
+
+
 W folderze /apps/sonamed/public/icons  masz dostępne icony zębów z którch możesz kożystać oraz również możesz kożystać z paczek "react-icons/hi" i "react-icons/fa" do ikon.
 
 Twoje aktuanle zadanie przeanalizowanie danych wejściowych: [
@@ -6,9 +10,12 @@ Twoje aktuanle zadanie przeanalizowanie danych wejściowych: [
     "NOWE DANE ODNOŚNIE KLINIKI": /apps/sonamed/src/constants/page1.ts
     "NOWE KOLORY": /apps/sonamed/src/constants/colors.ts
     "NOWE IKONY": /apps/sonamed/public/icons
+
 ] 
 
 Na samym początku przeanalizuj wszystkie materiały które Ci przesłałem, a później dami Ci zadanie do wykonania.
+
+
 
 
 
