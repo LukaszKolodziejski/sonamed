@@ -2,24 +2,21 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   HiOutlineClock,
   HiOutlineCalendar,
-  HiOutlineUserGroup,
-  HiLightningBolt,
+  HiOutlineStar,
+  HiOutlineHeart,
+  HiOutlineShieldCheck,
 } from 'react-icons/hi';
-import {
-  FaCar,
-  FaGraduationCap,
-  FaRoad,
-  FaBook,
-  FaPhoneAlt,
-} from 'react-icons/fa';
-import { BsCalendarCheck, BsClock, BsPinMap } from 'react-icons/bs';
-import { CONTACT } from '@/constants_old/contact';
-import { COURSE } from '@/constants_old/course';
+import { FaTooth, FaUserMd, FaPhoneAlt, FaStethoscope } from 'react-icons/fa';
+import { BsPinMap } from 'react-icons/bs';
+import { PAGE_OFFERT_DATA } from '@/constants/page_offert';
+import { colors } from '@/constants/colors';
+import { businessConstants } from '@/constants/constants';
 
-export default function KursyPage() {
+export default function OfertaPage() {
   // Animacje
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
@@ -39,9 +36,14 @@ export default function KursyPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-blue-950 via-indigo-950 to-purple-950">
+      <section
+        className="relative py-24 overflow-hidden"
+        style={{
+          background: colors.gradients.primary,
+        }}
+      >
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.15),transparent_70%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(60,140,125,0.15),transparent_70%)]"></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -52,40 +54,43 @@ export default function KursyPage() {
             className="text-center mb-16"
           >
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-300">
-                Kursy na prawo jazdy
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-100">
+                {PAGE_OFFERT_DATA.mainHeading}
               </span>
             </h1>
-            <p className="text-xl text-blue-200 max-w-2xl mx-auto">
-              Profesjonalne szkolenia z doświadczonymi instruktorami
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+              {PAGE_OFFERT_DATA.mainDescription}
             </p>
           </motion.div>
 
-          {/* Najbliższy termin - wyróżniony */}
+          {/* Wyróżniona informacja o zespole */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="max-w-3xl mx-auto bg-gradient-to-r from-yellow-400/10 to-orange-500/10 backdrop-blur-sm rounded-2xl p-8 border border-yellow-500/20"
+            className="max-w-4xl mx-auto bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20"
           >
-            <div className="flex items-center justify-center space-x-4 text-yellow-300 mb-4">
-              <HiLightningBolt className="text-3xl" />
-              <h2 className="text-2xl font-semibold">Najbliższy kurs</h2>
+            <div className="flex items-center justify-center space-x-4 text-white mb-6">
+              <FaUserMd className="text-3xl" />
+              <h2 className="text-2xl font-semibold">Profesjonalny zespół</h2>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-white mb-2">
-                {COURSE.NEXT_START_DATE}
+              <p className="text-2xl font-bold text-white mb-2">
+                {PAGE_OFFERT_DATA.additionalSections.team.owner}
               </p>
-              <p className="text-xl text-blue-200">
-                Start o godzinie {COURSE.START_TIME}
+              <p className="text-lg text-white/80 mb-4">
+                {PAGE_OFFERT_DATA.additionalSections.team.management}
+              </p>
+              <p className="text-white/70 mb-6">
+                {PAGE_OFFERT_DATA.additionalSections.team.description}
               </p>
             </div>
             <div className="mt-6 text-center">
               <Link
                 href="/umow-wizyte"
-                className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-medium text-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
+                className="inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-white to-gray-100 text-gray-800 font-medium text-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
               >
-                Zarezerwuj miejsce
+                Umów wizytę
                 <HiOutlineCalendar className="ml-2" />
               </Link>
             </div>
@@ -93,209 +98,708 @@ export default function KursyPage() {
         </div>
       </section>
 
-      {/* Informacje o kursie */}
-      <section className="relative py-24 bg-gradient-to-b from-purple-950 to-indigo-950">
-        <div className="container mx-auto px-6">
+      {/* Nasze usługi - główna sekcja */}
+      <section className="relative py-32 bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden">
+        {/* Floating dental icons background */}
+        <div className="absolute inset-0 opacity-5">
+          {[...Array(12)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -20, 0],
+                rotate: [0, 5, -5, 0],
+              }}
+              transition={{
+                duration: 4 + Math.random() * 4,
+                repeat: Infinity,
+                delay: Math.random() * 4,
+              }}
+            >
+              <FaTooth
+                className="text-6xl"
+                style={{ color: colors.brand.primary }}
+              />
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          {/* Nagłówek sekcji */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, type: 'spring' }}
+              className="inline-flex items-center justify-center w-24 h-24 rounded-full mb-8 shadow-2xl"
+              style={{
+                background: colors.gradients.primary,
+              }}
+            >
+              <FaTooth className="text-4xl text-white" />
+            </motion.div>
+
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
+              Pełna gama usług
+              <br />
+              <span className="bg-gradient-to-r from-teal-600 via-teal-500 to-emerald-500 bg-clip-text text-transparent">
+                stomatologicznych
+              </span>
+            </h2>
+            <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+              Oferujemy{' '}
+              <span className="font-semibold text-gray-900">
+                kompleksową opiekę stomatologiczną
+              </span>{' '}
+              w
+              <span
+                className="font-semibold"
+                style={{ color: colors.brand.primary }}
+              >
+                {' '}
+                nowoczesnych warunkach
+              </span>
+              z wykorzystaniem najnowszych technologii
+            </p>
+          </motion.div>
+
+          {/* Siatka usług */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
           >
-            {/* Czas trwania */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-blue-500/20"
-            >
-              <div className="flex items-center space-x-4 mb-4">
-                <div className="p-3 bg-blue-500/20 rounded-lg">
-                  <HiOutlineClock className="text-2xl text-blue-400" />
-                </div>
-                <h3 className="text-xl font-semibold text-white">
-                  Czas trwania
-                </h3>
-              </div>
-              <ul className="space-y-3">
-                <li className="flex items-start text-blue-200">
-                  <FaBook className="mt-1 mr-3 text-blue-400" />
-                  <div>
-                    <span className="font-medium text-white">Teoria:</span>
-                    <br />
-                    {COURSE.DURATION.THEORY.HOURS} godzin lekcyjnych (
-                    {COURSE.DURATION.THEORY.WEEKS} tygodnie)
-                  </div>
-                </li>
-                <li className="flex items-start text-blue-200">
-                  <FaCar className="mt-1 mr-3 text-blue-400" />
-                  <div>
-                    <span className="font-medium text-white">Praktyka:</span>
-                    <br />
-                    {COURSE.DURATION.PRACTICE.HOURS} godzin zegarowych (
-                    {COURSE.DURATION.PRACTICE.WEEKS} tygodni)
-                  </div>
-                </li>
-              </ul>
-            </motion.div>
+            {PAGE_OFFERT_DATA.services.map((service, index) => (
+              <motion.div
+                key={service.id}
+                variants={fadeInUp}
+                className="group relative bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-200/50"
+                whileHover={{
+                  y: -12,
+                  rotateY: 5,
+                  scale: 1.02,
+                }}
+                style={{
+                  background:
+                    'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
+                  boxShadow: '0 10px 40px -10px rgba(60, 140, 125, 0.2)',
+                }}
+              >
+                {/* Animated background gradient on hover */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: `linear-gradient(135deg, ${colors.brand.primary}05 0%, ${colors.secondary.tealSoft}10 100%)`,
+                  }}
+                />
 
-            {/* Harmonogram */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-purple-500/20"
-            >
-              <div className="flex items-center space-x-4 mb-4">
-                <div className="p-3 bg-purple-500/20 rounded-lg">
-                  <BsCalendarCheck className="text-2xl text-purple-400" />
-                </div>
-                <h3 className="text-xl font-semibold text-white">
-                  Harmonogram
-                </h3>
-              </div>
-              <ul className="space-y-3">
-                <li className="flex items-start text-blue-200">
-                  <BsClock className="mt-1 mr-3 text-purple-400" />
-                  <div>
-                    <span className="font-medium text-white">
-                      Tryb tygodniowy:
-                    </span>
-                    <br />
-                    {COURSE.SCHEDULE.WEEKDAY.DAYS}, godz.{' '}
-                    {COURSE.SCHEDULE.WEEKDAY.TIME}
-                  </div>
-                </li>
-                <li className="flex items-start text-blue-200">
-                  <BsClock className="mt-1 mr-3 text-purple-400" />
-                  <div>
-                    <span className="font-medium text-white">
-                      Tryb weekendowy:
-                    </span>
-                    <br />
-                    {COURSE.SCHEDULE.WEEKEND.INFO}
-                  </div>
-                </li>
-              </ul>
-            </motion.div>
+                {/* Floating tooth icon */}
+                <motion.div
+                  className="absolute -top-4 -right-4 opacity-5 group-hover:opacity-10 transition-opacity duration-300"
+                  animate={{
+                    rotate: [0, 10, -10, 0],
+                  }}
+                  transition={{
+                    duration: 6,
+                    repeat: Infinity,
+                  }}
+                >
+                  <FaTooth
+                    className="text-8xl"
+                    style={{ color: colors.brand.primary }}
+                  />
+                </motion.div>
 
-            {/* Lokalizacja */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-emerald-500/20"
-            >
-              <div className="flex items-center space-x-4 mb-4">
-                <div className="p-3 bg-emerald-500/20 rounded-lg">
-                  <BsPinMap className="text-2xl text-emerald-400" />
+                <div className="relative z-10">
+                  {/* Icon and Category */}
+                  <div className="flex items-center justify-between mb-6">
+                    <motion.div
+                      className="p-4 rounded-2xl shadow-lg"
+                      style={{
+                        background: colors.gradients.simple,
+                      }}
+                      whileHover={{
+                        rotate: 360,
+                        scale: 1.1,
+                      }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      <Image
+                        src={`/icons/Offer-icons-${(index % 10) + 9}.png`}
+                        alt={service.title}
+                        width={40}
+                        height={40}
+                        className="w-10 h-10 filter brightness-0 invert"
+                      />
+                    </motion.div>
+
+                    <span
+                      className="text-xs font-bold px-3 py-2 rounded-full border-2 uppercase tracking-wider"
+                      style={{
+                        backgroundColor: `${colors.secondary.tealSoft}20`,
+                        color: colors.brand.primary,
+                        borderColor: `${colors.brand.primary}30`,
+                      }}
+                    >
+                      {
+                        PAGE_OFFERT_DATA.serviceCategories[
+                          service.category as keyof typeof PAGE_OFFERT_DATA.serviceCategories
+                        ]
+                      }
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <motion.h3
+                    className="text-xl font-bold mb-4 text-gray-900 group-hover:text-gray-800"
+                    whileHover={{ x: 4 }}
+                  >
+                    {service.title}
+                  </motion.h3>
+
+                  {/* Description */}
+                  <p className="text-gray-600 text-sm leading-relaxed mb-6 line-clamp-3">
+                    {service.description}
+                  </p>
+
+                  {/* CTA */}
+                  <motion.div
+                    className="pt-4 border-t-2 border-gray-100 group-hover:border-opacity-50"
+                    whileHover={{ y: -2 }}
+                  >
+                    <Link
+                      href="/umow-wizyte"
+                      className="inline-flex items-center font-semibold text-sm group-hover:translate-x-2 transition-all duration-300"
+                      style={{ color: colors.brand.primary }}
+                    >
+                      Dowiedz się więcej
+                      <motion.svg
+                        className="w-5 h-5 ml-2"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        whileHover={{ x: 4 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </motion.svg>
+                    </Link>
+                  </motion.div>
                 </div>
-                <h3 className="text-xl font-semibold text-white">
-                  Lokalizacja
-                </h3>
-              </div>
-              <div className="space-y-3">
-                <p className="text-blue-200">
-                  <span className="font-medium text-white">Adres:</span>
-                  <br />
-                  Bydgoszcz, ul. K. Ujejskiego 46a – Pawilon
-                </p>
-                <p className="text-blue-200">
-                  <span className="font-medium text-white">
-                    Dla zamiejscowych:
-                  </span>
-                  <br />
-                  Możliwość rozpoczęcia jazd z PKS
-                </p>
-              </div>
-            </motion.div>
+
+                {/* Premium glow effect */}
+                <div
+                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    boxShadow: `inset 0 1px 0 0 rgba(255, 255, 255, 0.4), 
+                               0 0 60px -10px ${colors.brand.primary}30`,
+                  }}
+                />
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Dodatkowe informacje */}
-      <section className="relative py-24 bg-gradient-to-b from-indigo-950 to-blue-950">
-        <div className="container mx-auto px-6">
+      {/* Co nas wyróżnia */}
+      <section
+        className="relative py-32 overflow-hidden"
+        style={{
+          background: `linear-gradient(135deg, #1f2937 0%, #374151 50%, #111827 100%)`,
+        }}
+      >
+        {/* Animated particles background */}
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 rounded-full"
+              style={{
+                backgroundColor: colors.secondary.tealSoft,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -100, 0],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 3 + Math.random() * 4,
+                repeat: Infinity,
+                delay: Math.random() * 5,
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <h2 className="text-3xl font-bold text-white mb-4">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-blue-300">
-                Co nas wyróżnia
+            <motion.div
+              initial={{ rotateY: -90 }}
+              whileInView={{ rotateY: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="inline-block mb-8"
+            >
+              <div
+                className="inline-flex items-center justify-center w-32 h-32 rounded-full shadow-2xl"
+                style={{
+                  background: colors.gradients.primary,
+                  boxShadow: `0 0 60px ${colors.brand.primary}40`,
+                }}
+              >
+                <FaUserMd className="text-5xl text-white" />
+              </div>
+            </motion.div>
+
+            <h2 className="text-5xl md:text-7xl font-bold text-white mb-6">
+              Dlaczego warto wybrać{' '}
+              <span
+                className="bg-gradient-to-r bg-clip-text text-transparent"
+                style={{
+                  backgroundImage: `linear-gradient(45deg, ${colors.secondary.tealSoft}, ${colors.secondary.tealMedium})`,
+                }}
+              >
+                Sonamed?
               </span>
             </h2>
+            <p className="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+              {PAGE_OFFERT_DATA.additionalSections.membership.description}
+            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             {[
               {
-                icon: <FaCar className="text-3xl text-blue-400" />,
-                title: 'Nowe samochody',
-                description: 'Szkolenie na nowych Oplach Corsach',
+                icon: <FaUserMd className="text-4xl text-white" />,
+                title: 'Doświadczony zespół',
+                description:
+                  'Wykwalifikowani lekarze stomatologowie z wieloletnim doświadczeniem',
+                color: 'from-blue-500 to-blue-700',
+                bgColor: 'rgba(59, 130, 246, 0.1)',
+                glowColor: '#3b82f6',
               },
               {
-                icon: (
-                  <HiOutlineUserGroup className="text-3xl text-purple-400" />
-                ),
-                title: 'Małe grupy',
-                description: 'Indywidualne podejście do kursanta',
+                icon: <HiOutlineShieldCheck className="text-4xl text-white" />,
+                title: 'Nowoczesny sprzęt',
+                description:
+                  'Najnowocześniejsze technologie i sprzęt diagnostyczny',
+                color: 'from-emerald-500 to-emerald-700',
+                bgColor: 'rgba(16, 185, 129, 0.1)',
+                glowColor: '#10b981',
               },
               {
-                icon: <FaGraduationCap className="text-3xl text-emerald-400" />,
-                title: 'Doświadczeni instruktorzy',
-                description: 'Wieloletnie doświadczenie w szkoleniu',
+                icon: <HiOutlineHeart className="text-4xl text-white" />,
+                title: 'Indywidualne podejście',
+                description:
+                  'Każdy pacjent otrzymuje spersonalizowaną opiekę i plan leczenia',
+                color: 'from-pink-500 to-pink-700',
+                bgColor: 'rgba(236, 72, 153, 0.1)',
+                glowColor: '#ec4899',
               },
               {
-                icon: <FaRoad className="text-3xl text-yellow-400" />,
-                title: 'Elastyczne terminy',
-                description: 'Dostosowane do Twoich potrzeb',
+                icon: <FaStethoscope className="text-4xl text-white" />,
+                title: 'Kompleksowa opieka',
+                description:
+                  'Pełen zakres usług stomatologicznych w jednym miejscu',
+                color: 'from-purple-500 to-purple-700',
+                bgColor: 'rgba(168, 85, 247, 0.1)',
+                glowColor: '#a855f7',
               },
             ].map((feature, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 50, rotateX: -30 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-blue-500/20 text-center"
+                transition={{
+                  delay: index * 0.2,
+                  duration: 0.8,
+                  type: 'spring',
+                  stiffness: 100,
+                }}
+                whileHover={{
+                  y: -10,
+                  scale: 1.05,
+                  rotateY: 5,
+                }}
+                className="group relative rounded-3xl p-8 text-center transition-all duration-500 cursor-pointer"
+                style={{
+                  background: `linear-gradient(145deg, ${feature.bgColor}, rgba(255, 255, 255, 0.05))`,
+                  backdropFilter: 'blur(20px)',
+                  border: `2px solid rgba(255, 255, 255, 0.1)`,
+                  boxShadow: `0 20px 40px -10px rgba(0, 0, 0, 0.3), 
+                             0 0 0 1px rgba(255, 255, 255, 0.05),
+                             inset 0 1px 0 rgba(255, 255, 255, 0.1)`,
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = `
+                    0 30px 60px -10px rgba(0, 0, 0, 0.4),
+                    0 0 100px -20px ${feature.glowColor}50,
+                    0 0 0 1px rgba(255, 255, 255, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2)
+                  `;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = `
+                    0 20px 40px -10px rgba(0, 0, 0, 0.3), 
+                    0 0 0 1px rgba(255, 255, 255, 0.05),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1)
+                  `;
+                }}
               >
-                <div className="flex justify-center mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-semibold text-white mb-2">
+                {/* Floating background element */}
+                <motion.div
+                  className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: `radial-gradient(circle at center, ${feature.glowColor}10 0%, transparent 70%)`,
+                  }}
+                  animate={{
+                    scale: [1, 1.1, 1],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                  }}
+                />
+
+                {/* Icon */}
+                <motion.div
+                  className={`inline-flex p-6 rounded-2xl bg-gradient-to-r ${feature.color} mb-6 shadow-2xl`}
+                  whileHover={{
+                    rotate: 360,
+                    scale: 1.1,
+                  }}
+                  transition={{ duration: 0.6 }}
+                  style={{
+                    boxShadow: `0 10px 30px -5px ${feature.glowColor}40`,
+                  }}
+                >
+                  {feature.icon}
+                </motion.div>
+
+                {/* Title */}
+                <motion.h3
+                  className="text-2xl font-bold text-white mb-4 group-hover:text-gray-100"
+                  whileHover={{ scale: 1.05 }}
+                >
                   {feature.title}
-                </h3>
-                <p className="text-blue-200">{feature.description}</p>
+                </motion.h3>
+
+                {/* Description */}
+                <p className="text-lg text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
+                  {feature.description}
+                </p>
+
+                {/* Bottom accent line */}
+                <motion.div
+                  className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 rounded-full bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    background: `linear-gradient(90deg, ${feature.glowColor}00, ${feature.glowColor}, ${feature.glowColor}00)`,
+                    width: '60%',
+                  }}
+                />
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="relative py-16 bg-gradient-to-b from-blue-950 to-gray-900">
-        <div className="container mx-auto px-6">
+          {/* Dodatkowa sekcja z lokalizacją */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-center"
+            className="mt-16 max-w-4xl mx-auto bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20"
           >
-            <h2 className="text-3xl font-bold text-white mb-6">
-              Nie czekaj, zapisz się już dziś!
-            </h2>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/umow-wizyte"
-                className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium hover:shadow-lg transition-all duration-300 hover:scale-105"
-              >
-                Zarezerwuj termin
-                <HiOutlineCalendar className="ml-2" />
-              </Link>
-              <a
-                href={`tel:${CONTACT.PHONE_RAW}`}
-                className="inline-flex items-center px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium hover:bg-white/20 transition-all duration-300"
-              >
-                Zadzwoń: {CONTACT.PHONE}
-                <FaPhoneAlt className="ml-2" />
-              </a>
+            <div className="text-center mb-8">
+              <BsPinMap className="text-4xl text-white mx-auto mb-4" />
+              <h3 className="text-2xl font-semibold text-white mb-4">
+                Nasza lokalizacja
+              </h3>
             </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-semibold text-white mb-2">Adres:</h4>
+                  <p className="text-white/80">
+                    {PAGE_OFFERT_DATA.locations[0].address}
+                    <br />
+                    {PAGE_OFFERT_DATA.locations[0].city}
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-white mb-2">
+                    Godziny otwarcia:
+                  </h4>
+                  <p className="text-white/80">
+                    {PAGE_OFFERT_DATA.locations[0].hours.weekdays}
+                    <br />
+                    {PAGE_OFFERT_DATA.locations[0].hours.saturday}
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-semibold text-white mb-2">Kontakt:</h4>
+                  <p className="text-white/80">
+                    Tel: {businessConstants.contact.phone}
+                    <br />
+                    Email: {businessConstants.contact.email}
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-white mb-2">
+                    Social Media:
+                  </h4>
+                  <div className="flex space-x-4">
+                    <a
+                      href={businessConstants.socialMedia.instagram.url}
+                      className="text-white/80 hover:text-white transition-colors"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Instagram
+                    </a>
+                    <a
+                      href={businessConstants.socialMedia.facebook.url}
+                      className="text-white/80 hover:text-white transition-colors"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Facebook
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="relative py-32 overflow-hidden bg-gradient-to-br from-white via-gray-50 to-teal-50">
+        {/* Animated background elements */}
+        <div className="absolute inset-0">
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute"
+              style={{
+                left: `${10 + i * 12}%`,
+                top: `${20 + (i % 3) * 30}%`,
+              }}
+              animate={{
+                y: [0, -30, 0],
+                rotate: [0, 180, 360],
+              }}
+              transition={{
+                duration: 8 + i * 2,
+                repeat: Infinity,
+                delay: i * 1.5,
+              }}
+            >
+              <FaTooth
+                className="text-4xl opacity-5"
+                style={{ color: colors.brand.primary }}
+              />
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-6xl mx-auto text-center"
+          >
+            {/* Main CTA */}
+            <div className="mb-16">
+              <motion.div
+                initial={{ scale: 0, rotate: -180 }}
+                whileInView={{ scale: 1, rotate: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, type: 'spring' }}
+                className="inline-flex items-center justify-center w-40 h-40 rounded-full mb-8 shadow-2xl"
+                style={{
+                  background: colors.gradients.primary,
+                  boxShadow: `0 0 100px ${colors.brand.primary}30`,
+                }}
+              >
+                <FaTooth className="text-6xl text-white" />
+              </motion.div>
+
+              <motion.h2
+                className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-gray-900 via-teal-800 to-gray-900 bg-clip-text text-transparent"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+              >
+                Zadbaj o swój{' '}
+                <span className="bg-gradient-to-r from-teal-500 to-emerald-500 bg-clip-text text-transparent">
+                  uśmiech
+                </span>{' '}
+                już dziś!
+              </motion.h2>
+
+              <motion.p
+                className="text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+              >
+                Umów się na wizytę i poznaj nasze{' '}
+                <span className="font-bold text-gray-900">
+                  nowoczesne podejście do stomatologii
+                </span>
+                . Nasz zespół zapewni Ci{' '}
+                <span
+                  className="font-bold"
+                  style={{ color: colors.brand.primary }}
+                >
+                  profesjonalną opiekę w przyjaznej atmosferze
+                </span>
+                .
+              </motion.p>
+            </div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-20"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.7 }}
+            >
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link
+                  href="/umow-wizyte"
+                  className="group inline-flex items-center px-12 py-6 rounded-full text-white font-bold text-xl shadow-2xl relative overflow-hidden"
+                  style={{
+                    background: colors.gradients.primary,
+                    boxShadow: `0 10px 40px -10px ${colors.brand.primary}50`,
+                  }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <HiOutlineCalendar className="mr-4 text-2xl relative z-10" />
+                  <span className="relative z-10">Umów wizytę online</span>
+                </Link>
+              </motion.div>
+
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <a
+                  href={`tel:${businessConstants.contact.phone}`}
+                  className="group inline-flex items-center px-12 py-6 rounded-full border-4 font-bold text-xl transition-all duration-300 relative overflow-hidden"
+                  style={{
+                    borderColor: colors.brand.primary,
+                    color: colors.brand.primary,
+                    background: 'rgba(255, 255, 255, 0.9)',
+                    backdropFilter: 'blur(10px)',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = colors.brand.primary;
+                    e.currentTarget.style.color = 'white';
+                    e.currentTarget.style.boxShadow = `0 10px 40px -10px ${colors.brand.primary}60`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background =
+                      'rgba(255, 255, 255, 0.9)';
+                    e.currentTarget.style.color = colors.brand.primary;
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
+                >
+                  <FaPhoneAlt className="mr-4 text-xl" />
+                  {businessConstants.contact.phone}
+                </a>
+              </motion.div>
+            </motion.div>
+
+            {/* Features Grid */}
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-3 gap-12"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              {[
+                {
+                  icon: <HiOutlineClock className="text-5xl" />,
+                  title: 'Szybkie terminy',
+                  description:
+                    'Dostępność już w najbliższych dniach - nie czekaj miesiącami',
+                  gradient: 'from-blue-500 to-blue-700',
+                },
+                {
+                  icon: <HiOutlineStar className="text-5xl" />,
+                  title: 'Profesjonalizm',
+                  description:
+                    'Doświadczeni lekarze i najnowocześniejszy sprzęt medyczny',
+                  gradient: 'from-yellow-500 to-orange-600',
+                },
+                {
+                  icon: <HiOutlineHeart className="text-5xl" />,
+                  title: 'Komfort',
+                  description:
+                    'Przyjazna atmosfera i całkowicie bezbolesne leczenie',
+                  gradient: 'from-pink-500 to-red-600',
+                },
+              ].map((feature, index) => (
+                <motion.div
+                  key={index}
+                  variants={fadeInUp}
+                  className="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200/50"
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  style={{
+                    background:
+                      'linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.8))',
+                  }}
+                >
+                  <div
+                    className={`inline-flex p-6 rounded-2xl bg-gradient-to-r ${feature.gradient} mb-6 shadow-lg text-white group-hover:scale-110 transition-transform duration-300`}
+                  >
+                    {feature.icon}
+                  </div>
+                  <h4 className="text-2xl font-bold mb-4 text-gray-900">
+                    {feature.title}
+                  </h4>
+                  <p className="text-lg text-gray-600 leading-relaxed">
+                    {feature.description}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </section>

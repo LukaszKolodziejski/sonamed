@@ -2,9 +2,6 @@ Ten cały projekt i wszystkie pliki to strona dla szkoły jazdy. Natomiast teraz
 
 W folderze /apps/sonamed/src/constants masz w plikach: [colors.ts, constants.ts, page1.ts] masz wszystkie dane i inforamcje odnośnie tej kliniki stomatologicznej i medycyny estetycznej.
 
-
-W folderze /apps/sonamed/public/icons  masz dostępne icony zębów z którch możesz kożystać oraz również możesz kożystać z paczek "react-icons/hi" i "react-icons/fa" do ikon.
-
 Twoje aktuanle zadanie przeanalizowanie danych wejściowych: [
     "STARA STRONA szkoły jazdy": /apps/sonamed/src/app/page.tsx
     "NOWE DANE ODNOŚNIE KLINIKI": /apps/sonamed/src/constants/page1.ts
@@ -15,9 +12,18 @@ Twoje aktuanle zadanie przeanalizowanie danych wejściowych: [
 
 Na samym początku przeanalizuj wszystkie materiały które Ci przesłałem, a później dami Ci zadanie do wykonania.
 
+Inne dodatkowe materiały.
+W folderze /apps/sonamed/public/icons  masz dostępne icony zębów z którch możesz kożystać oraz również możesz kożystać z paczek "react-icons/hi" i "react-icons/fa" do ikon.
 
 
+-------------
 
+Przekształcić całą stronę o-nas/page.tsx oraz Dostosować kolory i zawartość
 
+------------
 
-Na podstawie wszystkich danych które posiadasz możesz edytować /apps/sonamed/src/app/page.tsx  na potrzeby nowej strony (centrum stomatologiczne) stosując wiedzę którą Ci dostarczyłem.
+Napraw to:
+Tekst zlewa się z tłem, bo wszystko jest jasne
+tam, nie widać w ogóle borderów dla komponentów, wszystko się zlewa
+
+Pod kątem UX chciałbym mieć taki efekt WOW!!! żebym klient wiedział za co ma płaci 30 tys zł.  Po prostu chcę mieć efekt WOW na stronie, możesz stosować animacje, te ikony zębów, przy scroll też jakieś efekty 
