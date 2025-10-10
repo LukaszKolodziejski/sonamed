@@ -33,20 +33,20 @@ export default function AnimeSection({ className = '' }: AnimeSectionProps) {
     <div
       className={`absolute inset-0 w-full h-full z-0 overflow-hidden ${className}`}
       style={{
-        background: `linear-gradient(135deg, ${colors.brand.secondary} 0%, ${colors.brand.secondary} 50%, ${colors.brand.secondary} 100%)`,
+        background: `linear-gradient(135deg, ${colors.brand.dark} 0%, ${colors.brand.primary} 60%, ${colors.secondary.seaGreen} 100%)`,
       }}
     >
       {/* Delikatne gradientowe warstwy dla głębi */}
       <div
         className="absolute inset-0 z-10"
         style={{
-          background: `radial-gradient(circle at 20% 20%, ${colors.brand.accent}25 0%, transparent 60%), radial-gradient(circle at 80% 80%, ${colors.neutral.white}20 0%, transparent 50%)`,
+          background: `radial-gradient(circle at 20% 20%, ${colors.brand.primary}40 0%, transparent 60%), radial-gradient(circle at 80% 80%, ${colors.secondary.tealMedium}20 0%, transparent 50%)`,
         }}
       />
       <div
         className="absolute inset-0 z-10"
         style={{
-          background: `radial-gradient(circle at 60% 10%, ${colors.neutral.white}15 0%, transparent 40%), radial-gradient(circle at 40% 90%, ${colors.brand.primary}10 0%, transparent 50%)`,
+          background: `radial-gradient(circle at 60% 10%, ${colors.secondary.tealMedium}20 0%, transparent 40%), radial-gradient(circle at 40% 90%, ${colors.brand.primary}30 0%, transparent 50%)`,
         }}
       />
 
@@ -100,13 +100,10 @@ export default function AnimeSection({ className = '' }: AnimeSectionProps) {
                   alt=""
                   width={parseInt(position.size)}
                   height={parseInt(position.size)}
-                  //   className="opacity-20 hover:opacity-30 transition-opacity duration-1000"
-                  className=" transition-opacity duration-1000"
-                  //   style={{
-                  //     filter: `brightness(0.4) sepia(0.8) hue-rotate(${
-                  //       150 + index * 15
-                  //     }deg) saturate(1.2) contrast(1.1)`,
-                  //   }}
+                  className="opacity-40 hover:opacity-60 transition-opacity duration-1000"
+                  style={{
+                    filter: `brightness(1.2) sepia(0.4) hue-rotate(180deg) saturate(1.3) contrast(1.2) drop-shadow(0 0 10px ${colors.secondary.tealMedium}80)`,
+                  }}
                 />
               </div>
             </div>
@@ -118,7 +115,7 @@ export default function AnimeSection({ className = '' }: AnimeSectionProps) {
       <div
         className="absolute inset-0 z-30 pointer-events-none"
         style={{
-          background: `linear-gradient(45deg, transparent 80%, ${colors.brand.primary}10 100%)`,
+          background: `linear-gradient(45deg, transparent 80%, ${colors.secondary.tealIntense}1a 100%)`,
         }}
       />
 

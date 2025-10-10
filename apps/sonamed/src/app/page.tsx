@@ -85,18 +85,17 @@ export default function HomePage() {
                 <motion.div
                   className="inline-block px-5 py-2.5 md:px-7 md:py-3 rounded-full text-xs md:text-sm font-bold tracking-wide shadow-2xl border border-white/30"
                   style={{
-                    background: `linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85))`,
+                    background: `linear-gradient(135deg, ${colors.neutral.white}f2, ${colors.neutral.white}d9)`,
                     color: `${colors.brand.dark}`,
                     backdropFilter: 'blur(10px)',
-                    boxShadow:
-                      '0 8px 32px rgba(0,0,0,0.1), 0 0 0 1px rgba(255,255,255,0.2)',
+                    boxShadow: `0 8px 32px ${colors.brand.dark}1a, 0 0 0 1px ${colors.neutral.white}33`,
                   }}
                   animate={{
                     y: [0, -2, 0],
                     boxShadow: [
-                      '0 8px 32px rgba(0,0,0,0.1), 0 0 0 1px rgba(255,255,255,0.2)',
-                      '0 12px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.3)',
-                      '0 8px 32px rgba(0,0,0,0.1), 0 0 0 1px rgba(255,255,255,0.2)',
+                      `0 8px 32px ${colors.brand.dark}1a, 0 0 0 1px ${colors.neutral.white}33`,
+                      `0 12px 40px ${colors.brand.dark}26, 0 0 0 1px ${colors.neutral.white}4d`,
+                      `0 8px 32px ${colors.brand.dark}1a, 0 0 0 1px ${colors.neutral.white}33`,
                     ],
                   }}
                   transition={{
@@ -114,9 +113,9 @@ export default function HomePage() {
                 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-4 md:mb-6 break-words"
               >
                 <span
-                  className="bg-clip-text bg-gradient-to-r from-white to-gray-200"
+                  className="bg-clip-text bg-gradient-to-r from-white to-white"
                   style={{
-                    color: `${colors.primary.lightSea}`,
+                    color: `${colors.primary.lightTeal}`,
                   }}
                 >
                   {sonamedClinicData.hero.brandName}
@@ -154,22 +153,24 @@ export default function HomePage() {
                   href="/kontakt"
                   className="w-full sm:w-auto group relative overflow-hidden rounded-2xl px-8 md:px-10 py-4 md:py-5 text-base md:text-lg font-bold text-white shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-2 border border-white/10"
                   style={{
-                    background: `linear-gradient(135deg, ${colors.brand.dark}, rgba(17,24,39,0.95))`,
-                    boxShadow:
-                      '0 20px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1)',
+                    background: `linear-gradient(135deg, ${colors.brand.dark}, ${colors.brand.dark}f2)`,
+                    boxShadow: `0 20px 40px ${colors.brand.dark}4d, 0 0 0 1px ${colors.neutral.white}1a`,
                   }}
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     <span className="text-lg md:text-xl">💎</span>
                     {sonamedClinicData.hero.ctaButtons[0]}
                   </span>
-                  <span className="block text-xs md:text-sm mt-1 opacity-90 relative z-10 text-gray-300">
+                  <span
+                    className="block text-xs md:text-sm mt-1 opacity-90 relative z-10"
+                    style={{ color: colors.neutral.almostWhiteGreenish }}
+                  >
                     Skontaktuj się z nami już dziś
                   </span>
                   <motion.span
                     className="absolute inset-0 z-0 rounded-2xl"
                     style={{
-                      background: `linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))`,
+                      background: `linear-gradient(135deg, ${colors.neutral.white}1a, ${colors.neutral.white}0d)`,
                     }}
                     initial={{ scale: 0, opacity: 0 }}
                     whileHover={{ scale: 1, opacity: 1 }}
@@ -179,7 +180,7 @@ export default function HomePage() {
                   <motion.div
                     className="absolute inset-0 rounded-2xl"
                     style={{
-                      background: `linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%)`,
+                      background: `linear-gradient(45deg, transparent 30%, ${colors.neutral.white}1a 50%, transparent 70%)`,
                     }}
                     animate={{
                       x: ['-100%', '100%'],
@@ -197,10 +198,9 @@ export default function HomePage() {
                   href="/cennik"
                   className="w-full sm:w-auto group relative overflow-hidden rounded-2xl backdrop-blur-xl px-8 md:px-10 py-4 md:py-5 text-base md:text-lg font-semibold text-white shadow-xl hover:shadow-2xl transition-all duration-400 hover:-translate-y-1 border-2 border-white/30"
                   style={{
-                    background: `linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05))`,
+                    background: `linear-gradient(135deg, ${colors.neutral.white}26, ${colors.neutral.white}0d)`,
                     backdropFilter: 'blur(20px)',
-                    boxShadow:
-                      '0 15px 35px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.3)',
+                    boxShadow: `0 15px 35px ${colors.brand.dark}1a, inset 0 1px 0 ${colors.neutral.white}4d`,
                   }}
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
@@ -213,7 +213,7 @@ export default function HomePage() {
                   <motion.span
                     className="absolute inset-0 z-0 rounded-2xl"
                     style={{
-                      background: `linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1))`,
+                      background: `linear-gradient(135deg, ${colors.neutral.white}33, ${colors.neutral.white}1a)`,
                     }}
                     initial={{ scale: 0, opacity: 0 }}
                     whileHover={{ scale: 1, opacity: 1 }}
@@ -254,7 +254,12 @@ export default function HomePage() {
         }}
       >
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(62,131,146,0.2),transparent_60%)]"></div>
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `radial-gradient(circle at center, ${colors.brand.primary}33, transparent 60%)`,
+            }}
+          ></div>
         </div>
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div
@@ -269,7 +274,10 @@ export default function HomePage() {
                 Nowoczesne technologie medyczne
               </span>
             </h2>
-            <p className="text-gray-200 max-w-2xl mx-auto">
+            <p
+              className="max-w-2xl mx-auto"
+              style={{ color: colors.neutral.almostWhiteGreenish }}
+            >
               Wykorzystujemy najnowocześniejsze urządzenia i technologie
               zapewniające najwyższą jakość leczenia
             </p>
@@ -292,7 +300,12 @@ export default function HomePage() {
                 sizes="(max-width: 1280px) 100vw, 1280px"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/50 to-transparent rounded-2xl"></div>
+              <div
+                className="absolute inset-0 bg-gradient-to-r from-slate-900/50 to-transparent rounded-2xl"
+                style={{
+                  background: `linear-gradient(to right, ${colors.brand.primary}80, transparent)`,
+                }}
+              ></div>
             </motion.div>
 
             <motion.div
@@ -335,7 +348,7 @@ export default function HomePage() {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     whileHover={{
                       scale: 1.02,
-                      backgroundColor: 'rgba(255,255,255,0.1)',
+                      backgroundColor: `${colors.neutral.white}1a`,
                     }}
                   >
                     <div className="text-2xl mr-4">{feature.icon}</div>
@@ -343,7 +356,9 @@ export default function HomePage() {
                       <h3 className="text-lg font-medium text-white">
                         {feature.title}
                       </h3>
-                      <p className="text-blue-200">{feature.description}</p>
+                      <p style={{ color: colors.brand.secondary }}>
+                        {feature.description}
+                      </p>
                     </div>
                   </motion.div>
                 ))}
@@ -398,7 +413,7 @@ export default function HomePage() {
                   cx="25"
                   cy="25"
                   r="1.5"
-                  fill="#fff"
+                  fill={colors.neutral.white}
                   animate={{ opacity: [0.4, 1, 0.4] }}
                   transition={{
                     duration: 3,
@@ -418,7 +433,7 @@ export default function HomePage() {
                   cx="50"
                   cy="50"
                   r="2"
-                  fill="#fff"
+                  fill={colors.neutral.white}
                   animate={{ opacity: [0.2, 0.8, 0.2] }}
                   transition={{
                     duration: 5,
@@ -441,7 +456,14 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl mb-6">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-200 to-white">
+              <span
+                className="bg-clip-text text-transparent"
+                style={{
+                  background: `linear-gradient(to right, ${colors.neutral.almostWhiteGreenish}, ${colors.neutral.white})`,
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}
+              >
                 Nasza klinika w liczbach
               </span>
             </h2>
@@ -521,7 +543,12 @@ export default function HomePage() {
                     >
                       {stat.value}
                     </motion.dt>
-                    <dd className="text-base text-gray-100">{stat.label}</dd>
+                    <dd
+                      className="text-base"
+                      style={{ color: colors.neutral.almostWhiteGreenish }}
+                    >
+                      {stat.label}
+                    </dd>
                   </div>
                 </motion.div>
               ))}
@@ -537,7 +564,12 @@ export default function HomePage() {
         }}
       >
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(122,165,157,0.15),transparent_70%)]"></div>
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `radial-gradient(ellipse at center, ${colors.brand.accent}26, transparent 70%)`,
+            }}
+          ></div>
         </div>
 
         <div className="container mx-auto px-6">
@@ -553,7 +585,10 @@ export default function HomePage() {
                 Jak przebiega leczenie w SONAMED
               </span>
             </h2>
-            <p className="text-gray-200 max-w-2xl mx-auto">
+            <p
+              className="max-w-2xl mx-auto"
+              style={{ color: colors.neutral.almostWhiteGreenish }}
+            >
               Przeprowadzimy Cię przez cały proces - od pierwszej konsultacji po
               osiągnięcie wymarzonego uśmiechu
             </p>
@@ -634,7 +669,9 @@ export default function HomePage() {
                     <h3 className="text-xl font-bold text-white mb-2">
                       {step.title}
                     </h3>
-                    <p className="text-gray-200">{step.description}</p>
+                    <p style={{ color: colors.neutral.almostWhiteGreenish }}>
+                      {step.description}
+                    </p>
                   </div>
                 </motion.div>
               ))}
@@ -655,7 +692,12 @@ export default function HomePage() {
                 className="w-full h-auto rounded-2xl"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-900/50 to-transparent rounded-2xl"></div>
+              <div
+                className="absolute inset-0 rounded-2xl"
+                style={{
+                  background: `linear-gradient(to right, ${colors.brand.primary}80, transparent)`,
+                }}
+              ></div>
 
               <div className="absolute bottom-6 right-6 z-10">
                 <motion.div
@@ -746,7 +788,10 @@ export default function HomePage() {
                 </span>
               </Link>
             </h2>
-            <p className="text-gray-200 max-w-2xl mx-auto">
+            <p
+              className="max-w-2xl mx-auto"
+              style={{ color: colors.neutral.almostWhiteGreenish }}
+            >
               Kompleksowe usługi stomatologiczne wykonywane z najwyższą precyzją
               i wykorzystaniem nowoczesnych technologii
             </p>
@@ -805,7 +850,12 @@ export default function HomePage() {
                 <h3 className="text-xl font-bold text-white mb-4">
                   {feature.title}
                 </h3>
-                <p className="text-gray-200 mb-6">{feature.description}</p>
+                <p
+                  className="mb-6"
+                  style={{ color: colors.neutral.almostWhiteGreenish }}
+                >
+                  {feature.description}
+                </p>
 
                 <motion.div
                   className="h-1 w-16 rounded-full"
@@ -849,7 +899,12 @@ export default function HomePage() {
         }}
       >
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(122,165,157,0.1),transparent_70%)]"></div>
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `radial-gradient(ellipse at top right, ${colors.brand.accent}1a, transparent 70%)`,
+            }}
+          ></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -865,7 +920,10 @@ export default function HomePage() {
                 Co mówią nasi pacjenci
               </span>
             </h2>
-            <p className="text-gray-200 max-w-2xl mx-auto">
+            <p
+              className="max-w-2xl mx-auto"
+              style={{ color: colors.neutral.almostWhiteGreenish }}
+            >
               Opinie osób, które powierzyły nam troskę o swój uśmiech
             </p>
           </motion.div>
@@ -937,7 +995,10 @@ export default function HomePage() {
                   </div>
 
                   <div className="pt-8 pb-4">
-                    <p className="text-gray-100 mb-6 hover:text-white transition-colors">
+                    <p
+                      className="mb-6 hover:text-white transition-colors"
+                      style={{ color: colors.neutral.almostWhiteGreenish }}
+                    >
                       {testimonial.quote}
                     </p>
                   </div>
@@ -947,7 +1008,10 @@ export default function HomePage() {
                       <h4 className="text-white font-medium">
                         {testimonial.name}
                       </h4>
-                      <p className="text-gray-300 text-sm">
+                      <p
+                        className="text-sm"
+                        style={{ color: colors.secondary.tealMedium }}
+                      >
                         {testimonial.role}
                       </p>
                     </div>
@@ -960,7 +1024,7 @@ export default function HomePage() {
                             color:
                               i < testimonial.stars
                                 ? colors.brand.accent
-                                : '#9ca3af',
+                                : colors.secondary.tealMedium,
                           }}
                           fill="currentColor"
                           viewBox="0 0 20 20"
@@ -985,7 +1049,12 @@ export default function HomePage() {
         }}
       >
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(122,165,157,0.1),transparent_70%)]"></div>
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `radial-gradient(ellipse at top, ${colors.brand.accent}1a, transparent 70%)`,
+            }}
+          ></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -1001,7 +1070,10 @@ export default function HomePage() {
                 Często zadawane pytania
               </span>
             </h2>
-            <p className="text-gray-200 max-w-2xl mx-auto">
+            <p
+              className="max-w-2xl mx-auto"
+              style={{ color: colors.neutral.almostWhiteGreenish }}
+            >
               Odpowiedzi na najczęściej zadawane pytania dotyczące naszych usług
               stomatologicznych
             </p>
@@ -1066,7 +1138,9 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="mt-4">
-                  <p className="text-gray-100">{faq.answer}</p>
+                  <p style={{ color: colors.neutral.almostWhiteGreenish }}>
+                    {faq.answer}
+                  </p>
                 </div>
               </motion.div>
             ))}
@@ -1081,7 +1155,12 @@ export default function HomePage() {
         }}
       >
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(122,165,157,0.15),transparent_70%)]"></div>
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `radial-gradient(ellipse at center, ${colors.brand.accent}26, transparent 70%)`,
+            }}
+          ></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -1107,7 +1186,10 @@ export default function HomePage() {
                   <h2 className="text-4xl font-bold text-white mb-4">
                     Zacznij swoją przygodę z pięknym uśmiechem już dziś
                   </h2>
-                  <p className="text-gray-100 text-lg mb-8">
+                  <p
+                    className="text-lg mb-8"
+                    style={{ color: colors.neutral.almostWhiteGreenish }}
+                  >
                     {sonamedClinicData.appointmentForm.description}
                   </p>
                   <ul className="space-y-4 mb-10">
@@ -1123,7 +1205,8 @@ export default function HomePage() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className="flex items-center text-gray-100"
+                        className="flex items-center"
+                        style={{ color: colors.neutral.almostWhiteGreenish }}
                       >
                         <svg
                           className="w-5 h-5 mr-3"
@@ -1205,7 +1288,12 @@ export default function HomePage() {
                       <h4 className="text-white font-medium">
                         Precyzja wykonania
                       </h4>
-                      <p className="text-gray-200 text-sm">Najwyższa jakość</p>
+                      <p
+                        className="text-sm"
+                        style={{ color: colors.neutral.almostWhiteGreenish }}
+                      >
+                        Najwyższa jakość
+                      </p>
                     </div>
                   </div>
                   <div
@@ -1214,7 +1302,10 @@ export default function HomePage() {
                       background: `linear-gradient(90deg, ${colors.brand.primary}, ${colors.brand.secondary})`,
                     }}
                   ></div>
-                  <p className="text-gray-100 text-sm">
+                  <p
+                    className="text-sm"
+                    style={{ color: colors.neutral.almostWhiteGreenish }}
+                  >
                     Każdy zabieg wykonujemy z najwyższą precyzją, wykorzystując
                     nowoczesne technologie i wieloletnie doświadczenie.
                   </p>
