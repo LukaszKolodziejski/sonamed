@@ -35,65 +35,239 @@ export default function OfertaPage() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
+      {/* Hero Section - Premium Style from O nas */}
       <section
-        className="relative py-24 overflow-hidden"
+        className="relative min-h-[70vh] flex items-center"
         style={{
-          background: colors.gradients.primary,
+          background: `linear-gradient(135deg, ${colors.primary.darkTeal} 0%, ${colors.secondary.seaGreen} 30%, ${colors.secondary.tealMedium} 70%, ${colors.secondary.mintLight} 100%)`,
+          overflow: 'visible',
         }}
       >
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(60,140,125,0.15),transparent_70%)]"></div>
-        </div>
+        {/* Premium Animated Background */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2 }}
+          className="absolute inset-0"
+        >
+          {/* Floating Dental Icons */}
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-16 h-16 opacity-10"
+              style={{
+                left: `${10 + i * 12}%`,
+                top: `${20 + (i % 3) * 20}%`,
+              }}
+              animate={{
+                y: [0, -30, 0],
+                rotate: [0, 10, -10, 0],
+                scale: [1, 1.1, 0.9, 1],
+              }}
+              transition={{
+                duration: 4 + i * 0.5,
+                repeat: Infinity,
+                ease: 'easeInOut',
+                delay: i * 0.3,
+              }}
+            >
+              <Image
+                src={`/icons/Offer-icons-${9 + (i % 10)}.png`}
+                alt="Dental Icon"
+                width={64}
+                height={64}
+                className="w-full h-full filter invert"
+              />
+            </motion.div>
+          ))}
 
-        <div className="container mx-auto px-6 relative z-10">
+          {/* Premium Gradient Overlays */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            animate={{
+              background: [
+                `radial-gradient(circle at 0% 0%, ${colors.primary.darkTeal}60, transparent 50%)`,
+                `radial-gradient(circle at 50% 50%, ${colors.primary.darkTeal}60, transparent 50%)`,
+                `radial-gradient(circle at 100% 100%, ${colors.primary.darkTeal}60, transparent 50%)`,
+                `radial-gradient(circle at 0% 100%, ${colors.primary.darkTeal}60, transparent 50%)`,
+                `radial-gradient(circle at 0% 0%, ${colors.primary.darkTeal}60, transparent 50%)`,
+              ],
+            }}
+            transition={{
+              duration: 20,
+              ease: 'linear',
+              repeat: Infinity,
+              repeatType: 'loop',
+            }}
+            className="absolute inset-0 z-10"
+          />
+        </motion.div>
+
+        {/* Premium Main Content with Glass Effect */}
+        <div className="relative z-30 container mx-auto px-6 py-16">
+          <motion.div
+            className="absolute inset-0 rounded-3xl"
+            style={{
+              background: `linear-gradient(135deg, ${colors.primary.darkTeal}15, ${colors.secondary.tealMedium}10)`,
+              backdropFilter: 'blur(20px)',
+              border: `2px solid ${colors.secondary.tealMedium}30`,
+            }}
+            animate={{
+              boxShadow: [
+                `0 0 50px ${colors.secondary.tealMedium}30`,
+                `0 0 80px ${colors.secondary.tealMedium}50`,
+                `0 0 50px ${colors.secondary.tealMedium}30`,
+              ],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+          />
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="max-w-4xl relative z-20 overflow-visible"
           >
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-100">
-                {PAGE_OFFERT_DATA.mainHeading}
-              </span>
-            </h1>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              {PAGE_OFFERT_DATA.mainDescription}
-            </p>
-          </motion.div>
+            {/* Premium Badge */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mb-6"
+            >
+              <motion.span
+                className="text-sm font-bold uppercase tracking-wider px-4 py-2 rounded-full border backdrop-blur-sm"
+                style={{
+                  color: 'white',
+                  background: `linear-gradient(135deg, ${colors.primary.darkTeal}80, ${colors.secondary.tealMedium}60)`,
+                  borderColor: `${colors.secondary.tealMedium}50`,
+                  boxShadow: `0 8px 32px ${colors.primary.darkTeal}40`,
+                }}
+                animate={{
+                  boxShadow: [
+                    `0 8px 32px ${colors.primary.darkTeal}40`,
+                    `0 12px 40px ${colors.secondary.tealMedium}60`,
+                    `0 8px 32px ${colors.primary.darkTeal}40`,
+                  ],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+              >
+                ⭐ POZNAJ NASZĄ OFERTĘ ⭐
+              </motion.span>
+            </motion.div>
 
-          {/* Wyróżniona informacja o zespole */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="max-w-4xl mx-auto bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20"
-          >
-            <div className="flex items-center justify-center space-x-4 text-white mb-6">
-              <FaUserMd className="text-3xl" />
-              <h2 className="text-2xl font-semibold">Profesjonalny zespół</h2>
-            </div>
-            <div className="text-center">
-              <p className="text-2xl font-bold text-white mb-2">
-                {PAGE_OFFERT_DATA.additionalSections.team.owner}
-              </p>
-              <p className="text-lg text-white/80 mb-4">
-                {PAGE_OFFERT_DATA.additionalSections.team.management}
-              </p>
-              <p className="text-white/70 mb-6">
-                {PAGE_OFFERT_DATA.additionalSections.team.description}
-              </p>
-            </div>
-            <div className="mt-6 text-center">
+            {/* SPEKTAKULARNY TYTUŁ */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                duration: 1,
+                delay: 0.3,
+                type: 'spring',
+                bounce: 0.4,
+              }}
+              className="text-6xl md:text-8xl font-black tracking-tight relative overflow-visible mb-8 pb-4"
+              style={{
+                textShadow: `0 4px 20px ${colors.primary.darkTeal}60, 0 0 40px ${colors.secondary.tealMedium}40`,
+                zIndex: 30,
+                lineHeight: '1.1',
+                minHeight: 'auto',
+              }}
+            >
+              <motion.span
+                className="bg-clip-text text-transparent block relative z-30"
+                style={{
+                  backgroundImage: `linear-gradient(145deg, #ffffff 0%, ${colors.secondary.mintLight} 50%, white 100%)`,
+                  filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))',
+                  lineHeight: '1.15',
+                  paddingBottom: '8px',
+                  display: 'inline-block',
+                  width: '100%',
+                }}
+                animate={{
+                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+              >
+                {PAGE_OFFERT_DATA.mainHeading}
+              </motion.span>
+
+              {/* Sparkle Effects */}
+              {[...Array(6)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-2 h-2 bg-white rounded-full z-40"
+                  style={{
+                    left: `${20 + i * 15}%`,
+                    top: `${10 + (i % 2) * 20}%`,
+                  }}
+                  animate={{
+                    scale: [0, 1, 0],
+                    opacity: [0, 1, 0],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    delay: i * 0.3,
+                  }}
+                />
+              ))}
+            </motion.h1>
+
+            {/* Premium Description Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="mt-8 p-6 rounded-2xl backdrop-blur-sm border max-w-3xl"
+              style={{
+                background: `linear-gradient(135deg, ${colors.primary.darkTeal}20, rgba(0,0,0,0.3))`,
+                borderColor: `${colors.secondary.tealMedium}30`,
+                boxShadow: `0 8px 32px rgba(0,0,0,0.3)`,
+              }}
+            >
+              <motion.p
+                className="text-xl leading-8 font-medium"
+                style={{
+                  color: 'white',
+                  textShadow: '0 2px 4px rgba(0,0,0,0.5)',
+                }}
+              >
+                {PAGE_OFFERT_DATA.mainDescription}
+              </motion.p>
+            </motion.div>
+
+            {/* Premium CTA Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="mt-10"
+            >
               <Link
                 href="/umow-wizyte"
-                className="inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-white to-gray-100 text-gray-800 font-medium text-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
+                className="group inline-flex items-center px-8 py-4 rounded-full text-white font-bold text-lg shadow-2xl relative overflow-hidden"
+                style={{
+                  background: `linear-gradient(135deg, ${colors.primary.darkTeal}, ${colors.secondary.tealMedium})`,
+                  boxShadow: `0 10px 40px -10px ${colors.primary.darkTeal}50`,
+                }}
               >
-                Umów wizytę
-                <HiOutlineCalendar className="ml-2" />
+                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <HiOutlineCalendar className="mr-3 text-xl relative z-10" />
+                <span className="relative z-10">Umów wizytę już dziś</span>
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
