@@ -1,0 +1,52 @@
+=== SONAMED BRANDBOOK - KOLORY I CZCIONKI ===
+
+GŁÓWNE KOLORY MARKI:
+---------------------
+
+Kolor główny (ciemny turkusowy/zielony):
+- HEX: #3C8C7D
+- RGB: 60, 140, 125
+- HSB: 169, 57%, 55%
+- CMYK: 77, 26, 56, 6
+
+Kolor pomocniczy (jasny turkusowy):
+- HEX: #B1E4E3
+- RGB: 177, 228, 227
+- HSB: 179, 22%, 89%
+- CMYK: 29, 0, 12, 0
+
+Kolory neutralne:
+- Biały: #FFFFFF
+- Czarny: #000000
+
+GRADIENTY:
+----------
+- Gradient podstawowy: od #3C8C7D do #B1E4E3 (pionowy/ukośny)
+- Gradient tła: turkusowy z jaśniejszymi odcieniami
+- Efekty okrągłe/organiczne w tle
+
+CZCIONKA GŁÓWNA:
+----------------
+- Nazwa: Chennai Medium
+- Zastosowanie: logo, nagłówki, teksty główne
+- Charakter: nowoczesny, czytelny, przyjemny w odbiorze
+
+LOGO SONAMED:
+-------------
+- Składniki: Stylizowane "S" w okręgu + napis "SONAMED"
+- Warianty kolorystyczne:
+  * Pełny kolor (turkusowy gradient)
+  * Czarny (na jasnym tle)
+  * Biały (na ciemnym tle)
+  * Jednokolorowy turkusowy
+- Proporcje: logo zachowuje czytelność w różnych rozmiarach
+- Minimalna szerokość: zaleca się nie mniej niż 60px szerokości
+
+ZASADY UŻYCIA:
+--------------
+1. Logo zaleca się używać tylko w podanej kolorystyce
+2. Zachować odpowiednie odstępy wokół logo
+3. Nie deformować proporcji logo
+4. Używać gradientu zgodnie z wytycznymi
+5. Chennai Medium jako czcionka wiodąca dla materiałów brandowych
+

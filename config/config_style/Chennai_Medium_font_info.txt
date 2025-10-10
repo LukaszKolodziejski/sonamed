@@ -1,0 +1,94 @@
+=== CZCIONKA CHENNAI MEDIUM - INFORMACJE ===
+
+NAZWA CZCIONKI: Chennai Medium
+ZASTOSOWANIE: Logo SONAMED, nagłówki, materiały brandowe
+
+CHARAKTERYSTYKA:
+- Rodzaj: Bezszeryfowa (sans-serif)
+- Waga: Medium (średnia grubość)
+- Styl: Nowoczesny, czytelny, przyjazny
+- Zalecenia: Idealna do zastosowań brandowych i cyfrowych
+
+POZYSKANIE CZCIONKI:
+--------------------
+
+1. OFICJALNE ŹRÓDŁA:
+   - Sprawdź u twórcy brandbook źródło czcionki
+   - Możliwy zakup licencji komercyjnej
+   - Skontaktuj się z projektantem brandbook
+
+2. ALTERNATYWNE ŹRÓDŁA:
+   - Google Fonts (poszukaj podobnych)
+   - Adobe Fonts (jeśli masz subskrypcję Creative Cloud)
+   - MyFonts.com
+   - Font Squirrel (darmowe czcionki komercyjne)
+
+3. PODOBNE CZCIONKI (alternatywy):
+   - Montserrat Medium (Google Fonts - darmowa)
+   - Open Sans Medium (Google Fonts - darmowa)  
+   - Lato Medium (Google Fonts - darmowa)
+   - Nunito Medium (Google Fonts - darmowa)
+   - Source Sans Pro Medium (Adobe/Google - darmowa)
+
+INSTALACJA (po pozyskaniu):
+---------------------------
+
+Windows:
+1. Pobierz pliki .ttf lub .otf
+2. Kliknij prawym na plik → "Zainstaluj"
+3. Czcionka będzie dostępna w programach
+
+Mac:
+1. Pobierz pliki .ttf lub .otf
+2. Otwórz Font Book
+3. Przeciągnij pliki do Font Book
+
+Linux:
+ZALECANE FORMATY (w kolejności priorytetów):
+
+1. **TTF (TrueType Font)** - NAJLEPSZY dla Linux Desktop
+   - Uniwersalny, szeroko wspierany
+   - Dobra jakość w różnych rozmiarach
+   - Kompatybilny ze wszystkimi aplikacjami Linux
+
+2. **OTF (OpenType Font)** - BARDZO DOBRY
+   - Nowszy standard, więcej funkcji
+   - Lepsza obsługa znaków specjalnych
+   - Wspierany przez nowoczesne dystrybucje
+
+3. **WOFF2/WOFF** - dla aplikacji webowych
+   - Skompresowane, szybsze ładowanie
+   - Głównie do użytku w przeglądarkach
+
+INSTALACJA:
+Osobiste czcionki:
+mkdir -p ~/.fonts
+cp *.ttf ~/.fonts/
+fc-cache -f -v
+
+Systemowe czcionki (wymaga sudo):
+sudo cp *.ttf /usr/share/fonts/truetype/
+sudo fc-cache -f -v
+
+SPRAWDZANIE:
+fc-list | grep -i chennai
+
+WEB (CSS):
+----------
+@font-face {
+    font-family: 'Chennai Medium';
+    src: url('path/to/chennai-medium.woff2') format('woff2'),
+         url('path/to/chennai-medium.woff') format('woff');
+    font-weight: 500;
+    font-display: swap;
+}
+
+LICENCJA:
+---------
+⚠️ UWAGA: Sprawdź licencję przed użyciem komercyjnym!
+- Czcionki komercyjne wymagają zakupu licencji
+- Sprawdź czy czcionka jest dostępna za darmo do celów komercyjnych
+- W przypadku wątpliwości - użyj alternatyw z Google Fonts
+
+REKOMENDACJA:
+Jeśli Chennai Medium jest niedostępna, zalecam Montserrat Medium z Google Fonts jako najlepszą bezpłatną alternatywę o podobnym charakterze.

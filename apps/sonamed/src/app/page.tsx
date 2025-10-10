@@ -135,7 +135,7 @@ export default function HomePage() {
               <motion.p
                 variants={fadeInUp}
                 className="mt-4 md:mt-6 text-lg sm:text-xl md:text-2xl leading-8 max-w-2xl mx-auto break-words"
-                style={{ color: `${colors.background.primary}f0` }}
+                style={{ color: `${colors.neutral.almostWhiteGreenish}f0` }}
               >
                 {sonamedClinicData.whatMakesUsDifferent.description.slice(
                   0,

@@ -1,0 +1,64 @@
+=== INSTRUKCJE TWORZENIA FAVICON SONAMED ===
+
+PLIK ŹRÓDŁOWY:
+--------------
+favicon_sonamed.svg - wersja wektorowa logo dla favicon
+
+KONWERSJA DO ICO:
+-----------------
+
+1. ONLINE CONVERTER (zalecane):
+   - https://www.favicon-generator.org/
+   - https://favicon.io/
+   - https://realfavicongenerator.net/ (najbardziej kompletny)
+   
+   Kroki:
+   1. Wgraj favicon_sonamed.svg
+   2. Wybierz rozmiary: 16x16, 32x32, 48x48
+   3. Pobierz wygenerowany favicon.ico
+
+2. OPROGRAMOWANIE:
+   
+   GIMP (darmowy):
+   1. Importuj SVG jako 32x32px
+   2. Eksportuj jako .ico
+   3. Wybierz rozmiary: 16x16, 32x32
+   
+   Photoshop:
+   1. Otwórz SVG, ustaw 32x32px
+   2. Zainstaluj plugin ICO format
+   3. Save As → ICO
+
+ROZMIARY FAVICON:
+-----------------
+- 16x16px - podstawowy rozmiar
+- 32x32px - standardowy rozmiar  
+- 48x48px - większy rozmiar
+- 64x64px - wysokiej rozdzielczości
+
+IMPLEMENTACJA WEB:
+------------------
+
+HTML (w sekcji <head>):
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+DODATKOWE IKONY (opcjonalnie):
+-----------------------------
+- Apple Touch Icon: 180x180px
+- Android Chrome: 192x192px, 512x512px
+- Microsoft Tile: 144x144px
+
+TESTOWANIE:
+-----------
+1. Umieść favicon.ico w katalogu głównym strony
+2. Sprawdź w przeglądarce (może wymagać odświeżenia cache)
+3. Przetestuj na różnych urządzeniach
+
+UWAGI:
+------
+- Favicon powinien być prosty i czytelny w małych rozmiarach
+- Użyj kontrastowych kolorów
+- Sprawdź widoczność na jasnych i ciemnych paskach przeglądarki
+

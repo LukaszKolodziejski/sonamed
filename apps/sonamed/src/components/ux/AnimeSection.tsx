@@ -40,13 +40,13 @@ export default function AnimeSection({ className = '' }: AnimeSectionProps) {
       <div
         className="absolute inset-0 z-10"
         style={{
-          background: `radial-gradient(circle at 20% 20%, ${colors.brand.accent}25 0%, transparent 60%), radial-gradient(circle at 80% 80%, ${colors.background.white}20 0%, transparent 50%)`,
+          background: `radial-gradient(circle at 20% 20%, ${colors.brand.accent}25 0%, transparent 60%), radial-gradient(circle at 80% 80%, ${colors.neutral.white}20 0%, transparent 50%)`,
         }}
       />
       <div
         className="absolute inset-0 z-10"
         style={{
-          background: `radial-gradient(circle at 60% 10%, ${colors.background.white}15 0%, transparent 40%), radial-gradient(circle at 40% 90%, ${colors.brand.primary}10 0%, transparent 50%)`,
+          background: `radial-gradient(circle at 60% 10%, ${colors.neutral.white}15 0%, transparent 40%), radial-gradient(circle at 40% 90%, ${colors.brand.primary}10 0%, transparent 50%)`,
         }}
       />
 

@@ -1,0 +1,65 @@
+=== SONAMED BRANDBOOK - DODATKOWE INFORMACJE ===
+
+FILOSOFIA MARKI:
+----------------
+SONAMED reprezentuje nowoczesność, przyjazność i profesjonalizm w branży medycznej.
+Turkusowa kolorystyka kojarzy się z czystością, spokojem i zaufaniem - kluczowymi wartościami w opiece medycznej.
+
+LOGO - SZCZEGÓŁOWE WYTYCZNE:
+----------------------------
+
+Konstrukcja logo:
+- Główny element: Stylizowane "S" wpisane w okrąg
+- Linia przecinająca okrąg dodaje dynamizmu
+- Napis "SONAMED" w czcionce Chennai Medium
+- Proporcje: zachować oryginalne stosunki szerokości do wysokości
+
+Warianty kolorystyczne (z brandbook):
+1. Logo podstawowe - turkusowy gradient (#3C8C7D → #B1E4E3)
+2. Logo czarne - pełna czerń (#000000) na jasnym tle
+3. Logo białe - pełna biel (#FFFFFF) na ciemnym tle  
+4. Logo jednokolorowe turkusowe - #3C8C7D
+
+Minimalne rozmiary:
+- Online: minimum 60px szerokości
+- Druk: minimum 15mm szerokości
+- Zachować czytelność napisu "SONAMED"
+
+Strefa ochronna logo:
+- Minimalna odległość wokół logo równa wysokości litery "S"
+- Nie umieszczać innych elementów w strefie ochronnej
+
+ZASTOSOWANIA:
+-------------
+
+Tła zalecane:
+- Białe lub bardzo jasne
+- Gradientowe w kolorach marki
+- Turkusowe z efektami organicznymi/okrągłymi
+
+Tła niezalecane:  
+- Mocno wzorzyste
+- Kontrastujące kolory (czerwony, pomarańczowy)
+- Ciemne tła dla wersji kolorowej
+
+MATERIAŁY BRANDOWE:
+-------------------
+- Wizytówki: logo + kontakt w kolorach marki
+- Papier firmowy: subtelny gradient w tle
+- Strona internetowa: dominujący turkus z białymi akcentami
+- Banery: logo na gradientowym tle z efektami okrągłymi
+
+CZCIONKA CHENNAI MEDIUM:
+------------------------
+- Użycie: materiały firmowe, nagłówki, logo
+- Charakter: przyjazny, nowoczesny, profesjonalny
+- Alternatywy: w przypadku braku Chennai - użyć podobnej bezszeryfowej
+- Wielkości: dostosować do medium (web/druk)
+
+UWAGI TECHNICZNE:
+-----------------
+- Pliki logo w wysokiej rozdzielczości (min. 300dpi dla druku)
+- Format PNG z przezroczystym tłem dla uniwersalności
+- Wersje wektorowe (SVG) dla skalowalności
+- Favicon bazujący na elemencie "S" z logo
+
