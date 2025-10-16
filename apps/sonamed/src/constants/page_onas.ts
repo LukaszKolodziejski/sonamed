@@ -114,8 +114,7 @@ export const PAGE_ONAS_DATA = {
       address: 'ul. Kalinowa 28',
       city: 'Kościerzyna',
       hours: {
-        weekdays: 'Pn–Pt: 8:00 – 18:00',
-        saturday: 'Sb: 9:00 – 14:00',
+        weekdays: 'Pn–Pt: 8:00 – 16:00',
       },
     },
   ] as ContactLocation[],

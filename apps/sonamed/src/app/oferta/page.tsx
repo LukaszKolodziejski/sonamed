@@ -454,7 +454,7 @@ export default function OfertaPage() {
                     whileHover={{ y: -2 }}
                   >
                     <Link
-                      href="/umow-wizyte"
+                      href="/pytania"
                       className="inline-flex items-center font-semibold text-sm group-hover:translate-x-2 transition-all duration-300"
                       style={{ color: colors.brand.primary }}
                     >
