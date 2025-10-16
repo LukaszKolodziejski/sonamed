@@ -47,6 +47,7 @@ export const businessConstants = {
     coordinates: {
       lat: 54.1164407,
       lng: 17.9549671,
+      zoom: 15,
     },
   },
 } as const;
