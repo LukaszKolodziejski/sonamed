@@ -27,3 +27,9 @@ Tekst zlewa się z tłem, bo wszystko jest jasne
 tam, nie widać w ogóle borderów dla komponentów, wszystko się zlewa
 
 Pod kątem UX chciałbym mieć taki efekt WOW!!! żebym klient wiedział za co ma płaci 30 tys zł.  Po prostu chcę mieć efekt WOW na stronie, możesz stosować animacje, te ikony zębów, przy scroll też jakieś efekty 
+
+---------------
+Przekształcić całą stronę kontakt/page.tsx oraz Dostosować kolory i zawartość
+
+Bardzo stylistycznie podabała mi się strona /oferta/page więc możesz się też nią inspirować odnośnie styli
+

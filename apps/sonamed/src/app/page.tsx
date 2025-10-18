@@ -292,8 +292,8 @@ export default function HomePage() {
               transition={{ duration: 0.8 }}
             >
               <Image
-                src="/images/cars/photo-77.jpg"
-                alt="Nowoczesna flota"
+                src="/images/office/photo-1.jpeg"
+                alt="Nowoczesna klinika"
                 width={1280}
                 height={720}
                 className="w-full h-auto rounded-2xl"
@@ -685,8 +685,8 @@ export default function HomePage() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <Image
-                src="/images/cars/photo-78.jpg"
-                alt="Prawo jazdy"
+                src="/images/office/photo-2.jpeg"
+                alt="Wnętrze kliniki SONAMED"
                 width={800}
                 height={600}
                 className="w-full h-auto rounded-2xl"
