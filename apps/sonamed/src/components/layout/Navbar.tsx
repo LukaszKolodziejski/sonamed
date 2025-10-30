@@ -97,7 +97,7 @@ export default function Navbar() {
                   href={item.href}
                   className={`px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                     isActivePath(item.href)
-                      ? 'text-white bg-gradient-to-r from-blue-600 to-blue-700'
+                      ? 'text-white bg-gradient-to-r from-[#3C8C7D] to-[#72C7C2]'
                       : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
                   }`}
                 >
@@ -168,7 +168,7 @@ export default function Navbar() {
                       href={item.href}
                       className={`block px-4 py-3 rounded-xl text-base font-medium ${
                         isActivePath(item.href)
-                          ? 'text-white bg-gradient-to-r from-blue-600 to-blue-700'
+                          ? 'text-white bg-gradient-to-r from-[#3C8C7D] to-[#72C7C2]'
                           : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
                       }`}
                       onClick={() => setIsMenuOpen(false)}
