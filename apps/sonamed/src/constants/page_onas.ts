@@ -131,7 +131,7 @@ export const PAGE_ONAS_DATA = {
   // Informacje kontaktowe
   contact: {
     phone: '+48501054824',
-    email: 'sonamed.biuro@gmail.com',
+    email: 'sonamed.centrum@gmail.com',
     website: 'Sonamed.pl',
   },
 

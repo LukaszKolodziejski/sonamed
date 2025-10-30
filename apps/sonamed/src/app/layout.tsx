@@ -110,7 +110,7 @@ export default function RootLayout({ children }: Props) {
               '@id': 'https://www.sonamed.pl',
               url: 'https://www.sonamed.pl',
               telephone: '+48501054824',
-              email: 'sonamed.biuro@gmail.com',
+              email: 'sonamed.centrum@gmail.com',
               address: {
                 '@type': 'PostalAddress',
                 streetAddress: 'Kalinowa 28',

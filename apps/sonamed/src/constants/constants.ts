@@ -2,7 +2,7 @@ export const businessConstants = {
   // Dane kontaktowe
   contact: {
     phone: '+48501054824',
-    email: 'sonamed.biuro@gmail.com',
+    email: 'sonamed.centrum@gmail.com',
     address: {
       full: 'Kalinowa 28, 83-400 Kościerzyna',
       street: 'Kalinowa 28',

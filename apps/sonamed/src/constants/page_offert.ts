@@ -161,7 +161,7 @@ export const PAGE_OFFERT_DATA = {
   // Informacje kontaktowe
   contact: {
     phone: '+48501054824',
-    email: 'sonamed.biuro@gmail.com',
+    email: 'sonamed.centrum@gmail.com',
     website: 'Sonamed.pl',
   },
 

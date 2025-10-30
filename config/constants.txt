@@ -10,7 +10,7 @@ REGON = 542733830
 
 INSTAGRAM = https://www.instagram.com/stomatolog.kaszuby/
 FACEBOOK = https://www.facebook.com/sonia.gabinet
-EMAIL = sonamed.biuro@gmail.com
+EMAIL = sonamed.centrum@gmail.com
 
 OWNER = lek. dent. Sonia Sugier-Karpińska
 MANAGEMENT = lek. Nina Karpińska

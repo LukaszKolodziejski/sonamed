@@ -1,7 +1,7 @@
 export const sonamedClinicData = {
   contact: {
     phone: '+48501054824',
-    email: 'sonamed.biuro@gmail.com',
+    email: 'sonamed.centrum@gmail.com',
     address: {
       street: 'Kalinowa 28',
       postalCode: '83-400',

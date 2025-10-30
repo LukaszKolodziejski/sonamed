@@ -160,7 +160,7 @@ export default function HeroSection({
               </Link>
 
               <Link
-                href="/cennik"
+                href="/oferta"
                 className="w-full sm:w-auto group relative overflow-hidden rounded-2xl backdrop-blur-xl px-8 md:px-10 py-4 md:py-5 text-base md:text-lg font-semibold text-white shadow-xl hover:shadow-2xl transition-all duration-400 hover:-translate-y-1 border-2 border-white/30"
                 style={{
                   background: `linear-gradient(135deg, ${colors.neutral.white}26, ${colors.neutral.white}0d)`,
@@ -173,7 +173,7 @@ export default function HeroSection({
                   {sonamedClinicData.hero.ctaButtons[1]}
                 </span>
                 <span className="block text-xs md:text-sm mt-1 opacity-90 relative z-10">
-                  Zobacz nasze usługi i ceny
+                  Zobacz naszą pełną ofertę
                 </span>
                 <motion.span
                   className="absolute inset-0 z-0 rounded-2xl"
