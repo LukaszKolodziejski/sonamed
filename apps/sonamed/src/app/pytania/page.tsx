@@ -6,27 +6,15 @@ import Image from 'next/image';
 import {
   HiOutlineCurrencyDollar,
   HiOutlineChevronDown,
-  HiOutlineLightBulb,
   HiOutlineClipboardCheck,
   HiOutlinePhone,
   HiOutlineHeart,
   HiOutlineShieldCheck,
-  HiOutlineUserGroup,
   HiOutlineStar,
 } from 'react-icons/hi';
-import {
-  FaTooth,
-  FaStethoscope,
-  FaUserMd,
-  FaHeartbeat,
-  FaMicroscope,
-} from 'react-icons/fa';
+import { FaTooth, FaStethoscope, FaUserMd } from 'react-icons/fa';
 import Link from 'next/link';
-import {
-  FAQ_DATA,
-  FAQ_CATEGORIES,
-  getQuestionsByCategory,
-} from '@/constants/questions';
+import { FAQ_CATEGORIES, getQuestionsByCategory } from '@/constants/questions';
 import { colors } from '@/constants/colors';
 import { businessConstants } from '@/constants/constants';
 
@@ -481,7 +469,7 @@ export default function PytaniaPage() {
                               borderColor: `${section.color}40`,
                             }}
                             whileHover={{
-                              shadow: `0 10px 30px -5px ${section.color}20`,
+                              boxShadow: `0 10px 30px -5px ${section.color}20`,
                             }}
                           >
                             <button

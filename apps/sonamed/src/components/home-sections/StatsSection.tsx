@@ -9,16 +9,18 @@ import { useEffect, useRef, useState } from 'react';
 
 interface StatsSectionProps {
   isMobile: boolean;
-  fadeInUp: any;
-  staggerContainer: any;
+  fadeInUp: {
+    hidden: { opacity: number; y: number };
+    visible: { opacity: number; y: number };
+  };
+  staggerContainer: {
+    hidden: { opacity: number };
+    visible: { opacity: number; transition: { staggerChildren: number } };
+  };
 }
 
 // Custom hook for animated counter
-function useCounter(
-  end: number,
-  duration: number = 2000,
-  startCounting: boolean = false
-) {
+function useCounter(end: number, duration = 2000, startCounting = false) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {

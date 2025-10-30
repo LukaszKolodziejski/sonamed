@@ -11,7 +11,6 @@ import {
   HiOutlineShieldCheck,
 } from 'react-icons/hi';
 import { FaTooth, FaUserMd, FaPhoneAlt, FaStethoscope } from 'react-icons/fa';
-import { BsPinMap } from 'react-icons/bs';
 import { PAGE_OFFERT_DATA } from '@/constants/page_offert';
 import { colors } from '@/constants/colors';
 import { businessConstants } from '@/constants/constants';

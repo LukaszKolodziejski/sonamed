@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import {
   FaTooth,
   FaAward,
@@ -156,17 +155,6 @@ export default function AboutFeaturesSection() {
                 <FaShieldAlt key="shield" className="text-3xl" />,
                 <FaHeartbeat key="heartbeat" className="text-3xl" />,
                 <FaUserMd key="usermd" className="text-3xl" />,
-              ];
-
-              const cardColors = [
-                colors.secondary.tealMedium,
-                colors.secondary.aquaMedium,
-                colors.secondary.tealSoft,
-                colors.secondary.mintLight,
-                colors.primary.darkTeal,
-                colors.secondary.tealIntense,
-                colors.secondary.seaGreen,
-                colors.secondary.tealMedium,
               ];
 
               return (

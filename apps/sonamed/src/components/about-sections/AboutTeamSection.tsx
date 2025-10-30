@@ -31,8 +31,14 @@ const zespolStomatologiczny = [
 ];
 
 interface AboutTeamSectionProps {
-  fadeInUp: any;
-  staggerContainer: any;
+  fadeInUp: {
+    hidden: { opacity: number; y: number };
+    visible: { opacity: number; y: number };
+  };
+  staggerContainer: {
+    hidden: { opacity: number };
+    visible: { opacity: number; transition: { staggerChildren: number } };
+  };
 }
 
 export default function AboutTeamSection({

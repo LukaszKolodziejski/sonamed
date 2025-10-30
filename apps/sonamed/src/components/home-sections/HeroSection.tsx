@@ -9,8 +9,14 @@ import AnimeSection from '@/components/ux/AnimeSection';
 
 interface HeroSectionProps {
   isMobile: boolean;
-  fadeInUp: any;
-  staggerContainer: any;
+  fadeInUp: {
+    hidden: { opacity: number; y: number };
+    visible: { opacity: number; y: number };
+  };
+  staggerContainer: {
+    hidden: { opacity: number };
+    visible: { opacity: number; transition: { staggerChildren: number } };
+  };
 }
 
 export default function HeroSection({
