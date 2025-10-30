@@ -244,7 +244,7 @@ export default function GaleriaPage() {
                 type: 'spring',
                 bounce: 0.3,
               }}
-              className="text-7xl md:text-9xl font-black tracking-tight relative mb-8"
+              className="text-5xl md:text-7xl font-black tracking-tight relative mb-8"
               style={{
                 textShadow: `0 6px 30px ${colors.primary.darkTeal}80, 0 0 60px ${colors.secondary.tealMedium}60`,
                 lineHeight: '1.1',
@@ -840,7 +840,7 @@ export default function GaleriaPage() {
 
             {/* Spectacular CTA Title */}
             <motion.h2
-              className="text-6xl md:text-8xl font-black mb-10 bg-clip-text text-transparent leading-tight"
+              className="text-4xl md:text-6xl font-black mb-10 bg-clip-text text-transparent leading-tight"
               style={{
                 backgroundImage: `linear-gradient(145deg, #ffffff 0%, ${colors.secondary.mintLight} 30%, white 70%, ${colors.secondary.tealSoft} 100%)`,
                 textShadow: `0 8px 40px ${colors.primary.darkTeal}80`,

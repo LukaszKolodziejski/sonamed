@@ -1,9 +1,9 @@
 export type ImageCategory =
-  | 'boss'
-  | 'instructors'
+  | 'sonia'
+  | 'nina'
+  | 'team'
   | 'office'
-  | 'cars'
-  | 'course'
+  | 'wizualizacja'
   | 'all';
 
 export interface GalleryImage {
