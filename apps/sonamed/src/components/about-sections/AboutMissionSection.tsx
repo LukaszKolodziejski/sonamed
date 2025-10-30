@@ -269,7 +269,7 @@ export default function AboutMissionSection() {
 
               <div className="relative z-10 p-2 md:p-8">
                 <Image
-                  src="/images/office/photo-2.jpeg"
+                  src="/images/team/photo-2.jpeg"
                   alt="Centrum Stomatologiczne Sonamed"
                   width={800}
                   height={800}

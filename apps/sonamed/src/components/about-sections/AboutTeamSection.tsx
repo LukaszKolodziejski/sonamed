@@ -12,14 +12,14 @@ const zespolStomatologiczny = [
     role: 'Właścicielka / Główny Lekarz Dentysta',
     experience: '15+ lat doświadczenia',
     specialization: 'Stomatologia Ogólna, Medycyna Estetyczna',
-    image: '/images/office/photo-10.jpeg',
+    image: '/images/sonia/photo-10.jpeg',
   },
   {
     name: PAGE_ONAS_DATA.additionalSections.team.management,
     role: 'Lekarz / Menadżer / Medycyna estetyczna',
     experience: 'Menadżer gabinetu',
     specialization: 'Medycyna estetyczna',
-    image: '/images/office/photo-7.jpeg',
+    image: '/images/nina/photo-7.jpeg',
   },
   {
     name: 'Centrum Sonamed',

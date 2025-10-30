@@ -252,7 +252,7 @@ export default function TreatmentProcessSection() {
             {/* Image container with premium effects */}
             <div className="relative overflow-hidden rounded-3xl shadow-2xl">
               <Image
-                src="/images/office/photo-2.jpeg"
+                src="/images/team/photo-2.jpeg"
                 alt="Wnętrze kliniki SONAMED"
                 width={800}
                 height={600}

@@ -42,35 +42,9 @@ export default function GaleriaPage() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
 
-  // Enhanced gallery images with better descriptions
+  // Use gallery images directly from generated data (already have descriptions)
   const enhancedGalleryImages = useMemo(() => {
-    return galleryImages.map((img, index) => ({
-      ...img,
-      alt:
-        index < 2
-          ? 'lek. dent. Sonia Sugier-Karpińska - Właścicielka kliniki'
-          : index < 4
-          ? 'Nowoczesny gabinet stomatologiczny SONAMED'
-          : index < 6
-          ? 'Profesjonalny sprzęt medyczny najwyższej klasy'
-          : 'Komfortowa przestrzeń dla pacjentów',
-      description:
-        index < 2
-          ? 'Doświadczony lekarz dentysta z wieloletnią praktyką. Specjalizuje się w kompleksowym leczeniu stomatologicznym, łącząc najnowoczesne metody z indywidualnym podejściem do każdego pacjenta.'
-          : index < 4
-          ? 'Nasza klinika została wyposażona w najnowocześniejszy sprzęt diagnostyczny i terapeutyczny, zapewniający najwyższą jakość leczenia w komfortowych warunkach.'
-          : index < 6
-          ? 'Wykorzystujemy najnowsze technologie w stomatologii, w tym mikroskopy operacyjne, tomografy 3D i systemy CAD/CAM dla precyzyjnych odbudów protetycznych.'
-          : 'Dbamy o komfort naszych pacjentów - każdy gabinet został zaprojektowany z myślą o relaksie i spokoju podczas wizyty.',
-      category:
-        index < 2
-          ? 'team'
-          : index < 4
-          ? 'office'
-          : index < 6
-          ? 'equipment'
-          : 'comfort',
-    }));
+    return galleryImages;
   }, []);
 
   // All gallery images for display

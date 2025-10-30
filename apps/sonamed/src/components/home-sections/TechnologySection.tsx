@@ -91,7 +91,7 @@ export default function TechnologySection() {
           >
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
               <Image
-                src="/images/office/photo-1.jpeg"
+                src="/images/sonia/photo-1.jpeg"
                 alt="Nowoczesna klinika"
                 width={1280}
                 height={720}

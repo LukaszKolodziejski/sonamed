@@ -113,8 +113,8 @@ export default function CTASection() {
             </div>
             <div className="relative hidden lg:block">
               <Image
-                src="/images/course/photo-20.jpg"
-                alt="Szkolenie na prawo jazdy"
+                src="/images/wizualizacja/photo-3.jpg"
+                alt="Klinika Stomatologiczna SONAMED"
                 width={1280}
                 height={720}
                 className="object-cover"
