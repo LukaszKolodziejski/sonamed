@@ -3,6 +3,7 @@
 
 export interface DistinguishingFeature {
   id: string;
+  title: string;
   description: string;
 }
 
@@ -41,41 +42,49 @@ export const PAGE_ONAS_DATA = {
     features: [
       {
         id: 'individual-approach',
+        title: 'Indywidualne podejście',
         description:
           'Wsłuchujemy się w indywidualne potrzeby naszych pacjentów i polecamy najlepsze rozwiązanie dla Pacjenta - wszystko w oparciu o Plan Leczenia, dzięki któremu poznasz pełen koszt wszystkich zabiegów',
       },
       {
         id: 'empathetic-atmosphere',
+        title: 'Empatyczna atmosfera',
         description:
           'Cechuje nas indywidualne podejście do każdego pacjenta - dbamy o miłą, spokojną, empatyczną atmosferę pozwalającą zapomnieć o nerwach towarzyszących wizycie u dentysty',
       },
       {
         id: 'punctuality',
+        title: 'Punktualność',
         description:
           'Szanując czas Naszych Pacjentów wizytę umawiamy na konkretną godzinę i dokładamy wszelkich starań, aby nie było opóźnień w jej realizacji',
       },
       {
         id: 'modern-equipment',
+        title: 'Nowoczesny sprzęt',
         description:
           'Dzięki dostępowi do najnowszej aparatury oraz materiałów, potrafimy stworzyć piękny uśmiech w każdym przypadku.',
       },
       {
         id: 'one-visit-treatment',
+        title: 'Leczenie na jednej wizycie',
         description:
           'Leczenie kanałowe przeprowadzamy na jednej wizycie przy użyciu nowoczesnego sprzętu.',
       },
       {
         id: 'comprehensive-care',
+        title: 'Kompleksowa opieka',
         description:
           'Specjalizujemy się w kompleksowym i bezbolesnym leczeniu zarówno dzieci jak i dorosłych.',
       },
       {
         id: 'quick-metamorphosis',
+        title: 'Szybkie metamorfozy',
         description:
           'Przeprowadzamy metamorfozy w możliwie najkrótszym terminie realizacji.',
       },
       {
         id: 'transparent-billing',
+        title: 'Przejrzyste rozliczenia',
         description:
           'Przed zakończeniem wizyty nasi stomatolodzy sami dokonują rozliczeń, co jest okazją do rozmowy, zaplanowania dalszych kroków, pozwala to zrozumieć za co pacjent płaci...',
       },
