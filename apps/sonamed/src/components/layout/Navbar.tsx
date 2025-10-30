@@ -15,11 +15,10 @@ export default function Navbar() {
   const navigation = [
     { name: 'Strona główna', href: '/' },
     { name: 'O nas', href: '/o-nas' },
-    { name: 'Kursy', href: '/kursy' },
+    { name: 'Oferta', href: '/oferta' },
     { name: 'Galeria', href: '/galeria' },
-    { name: 'Cennik', href: '/cennik' },
     { name: 'Pytania', href: '/pytania' },
-    { name: 'Rezerwacja', href: '/rezerwacja' },
+    { name: 'Umów wizytę', href: '/umow-wizyte' },
     { name: 'Kontakt', href: '/kontakt' },
   ];
 
@@ -76,8 +75,8 @@ export default function Navbar() {
               <Image
                 src="/logo/logo.png"
                 alt="sonamed Logo"
-                width={scrolled ? 100 : 120}
-                height={scrolled ? 33 : 40}
+                width={scrolled ? 55 : 70}
+                height={scrolled ? 55 : 70}
                 className="transition-all duration-300"
                 priority
               />
@@ -98,7 +97,7 @@ export default function Navbar() {
                   href={item.href}
                   className={`px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                     isActivePath(item.href)
-                      ? 'text-white bg-gradient-to-r from-blue-600 to-blue-700'
+                      ? 'text-white bg-gradient-to-r from-[#3C8C7D] to-[#72C7C2]'
                       : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
                   }`}
                 >
@@ -169,7 +168,7 @@ export default function Navbar() {
                       href={item.href}
                       className={`block px-4 py-3 rounded-xl text-base font-medium ${
                         isActivePath(item.href)
-                          ? 'text-white bg-gradient-to-r from-blue-600 to-blue-700'
+                          ? 'text-white bg-gradient-to-r from-[#3C8C7D] to-[#72C7C2]'
                           : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
                       }`}
                       onClick={() => setIsMenuOpen(false)}

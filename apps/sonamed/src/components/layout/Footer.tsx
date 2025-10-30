@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { HiOutlineMail, HiOutlinePhone } from 'react-icons/hi';
+import { businessConstants } from '@/constants/constants';
 
 export default function Footer() {
   const pathname = usePathname();
@@ -13,9 +14,8 @@ export default function Footer() {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'O nas', href: '/o-nas' },
-    { name: 'Kursy', href: '/kursy' },
-    { name: 'Cennik', href: '/cennik' },
-    { name: 'Rezerwacja', href: '/rezerwacja' },
+    { name: 'Oferta', href: '/oferta' },
+    { name: 'Umów wizytę', href: '/umow-wizyte' },
     { name: 'Pytania', href: '/pytania' },
     { name: 'Kontakt', href: '/kontakt' },
   ];
@@ -48,11 +48,12 @@ export default function Footer() {
               />
             </Link>
             <p className="text-gray-500 dark:text-gray-400 text-base text-center sm:text-left">
-              sonamed
+              {businessConstants.company.name}
               <br />
-              ul. Ujejskiego 46a – pawilon
+              {businessConstants.contact.address.street}
               <br />
-              85-168 Bydgoszcz, Wzgórze Wolności
+              {businessConstants.contact.address.postalCode}{' '}
+              {businessConstants.contact.address.city}
             </p>
           </div>
 
@@ -85,37 +86,30 @@ export default function Footer() {
               <ul role="list" className="mt-3 space-y-4">
                 <li className="flex justify-center sm:justify-start">
                   <a
-                    href="tel:600354556"
+                    href={`tel:${businessConstants.contact.phone.replace(
+                      /\s/g,
+                      ''
+                    )}`}
                     className="text-base text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white flex items-center"
                     aria-label="callUs"
                   >
                     <HiOutlinePhone className="h-5 w-5 mr-2" />
-                    +48 600 354 556
+                    {businessConstants.contact.phone}
                   </a>
                 </li>
                 <li className="flex justify-center sm:justify-start">
                   <a
-                    href="tel:668302352"
-                    className="text-base text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white flex items-center"
-                    aria-label="callUs2"
-                  >
-                    <HiOutlinePhone className="h-5 w-5 mr-2" />
-                    +48 668 302 352
-                  </a>
-                </li>
-                <li className="flex justify-center sm:justify-start">
-                  <a
-                    href="mailto:langer.biuro@poczta.fm"
+                    href={`mailto:${businessConstants.contact.email}`}
                     className="text-base text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white flex items-center"
                     aria-label="emailUs"
                   >
                     <HiOutlineMail className="h-5 w-5 mr-2" />
-                    langer.biuro@poczta.fm
+                    {businessConstants.contact.email}
                   </a>
                 </li>
                 <li className="flex justify-center sm:justify-start">
                   <a
-                    href="https://www.facebook.com/sonamed/"
+                    href={businessConstants.socialMedia.facebook.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-base text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white flex items-center"
@@ -137,7 +131,7 @@ export default function Footer() {
                 </li>
                 <li className="flex justify-center sm:justify-start">
                   <a
-                    href="https://www.instagram.com/sonamedlangerrobert/"
+                    href={businessConstants.socialMedia.instagram.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-base text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white flex items-center"
@@ -165,8 +159,8 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-8">
           <p className="text-base text-gray-400 text-center">
-            © {currentYear} sonamed. Wszelkie prawa zastrzeżone. Strona
-            stworzona przez{' '}
+            © {currentYear} {businessConstants.company.name}. Wszelkie prawa
+            zastrzeżone. Strona stworzona przez{' '}
             <a
               href="https://www.linkedin.com/in/lukasz-kolodziejski/"
               target="_blank"

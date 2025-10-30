@@ -1,0 +1,181 @@
+=== CZCIONKI DLA LINUX - KOMPLETNY PRZEWODNIK ===
+
+NAJLEPSZE FORMATY DLA LINUX (ranking):
+======================================
+
+🥇 1. **TTF (TrueType Font)** 
+   ✅ NAJBARDZIEJ ZALECANY
+   - Plik: chennai-medium.ttf
+   - Uniwersalny standard
+   - Obsługiwany przez wszystkie aplikacje Linux
+   - Dobra jakość skalowania
+   - Kompatybilny z GIMP, LibreOffice, Firefox, Chrome itp.
+
+🥈 2. **OTF (OpenType Font)**
+   ✅ BARDZO DOBRY
+   - Plik: chennai-medium.otf
+   - Nowszy standard (rozszerzenie TTF)
+   - Lepsza obsługa znaków Unicode
+   - Więcej funkcji typograficznych
+   - Wspierany przez Ubuntu 18.04+, Fedora, openSUSE
+
+🥉 3. **WOFF2 / WOFF**
+   ⚠️ TYLKO DO STRON WWW
+   - Pliki: chennai-medium.woff2, chennai-medium.woff
+   - Skompresowane wersje
+   - Szybsze ładowanie w przeglądarce
+   - NIE dla aplikacji desktopowych
+
+❌ **UNIKAJ:**
+- .eot (Internet Explorer)
+- .pfb/.pfa (PostScript - przestarzałe)
+- .bdf/.pcf (bitmap - niskiej jakości)
+
+INSTALACJA NA LINUX:
+====================
+
+METODA 1 - Osobiste czcionki (zalecane):
+```bash
+# Utwórz folder (jeśli nie istnieje)
+mkdir -p ~/.fonts
+
+# Skopiuj czcionki TTF/OTF
+cp chennai-medium.ttf ~/.fonts/
+# lub
+cp chennai-medium.otf ~/.fonts/
+
+# Odśwież cache czcionek
+fc-cache -f -v
+
+# Sprawdź czy zainstalowana
+fc-list | grep -i chennai
+```
+
+METODA 2 - Systemowe czcionki (dla wszystkich użytkowników):
+```bash
+# Skopiuj do katalogu systemowego
+sudo cp chennai-medium.ttf /usr/share/fonts/truetype/
+
+# lub utwórz dedykowany folder
+sudo mkdir -p /usr/share/fonts/truetype/chennai/
+sudo cp chennai-medium.ttf /usr/share/fonts/truetype/chennai/
+
+# Odśwież cache
+sudo fc-cache -f -v
+```
+
+METODA 3 - Menedżer pakietów (jeśli dostępna):
+```bash
+# Ubuntu/Debian
+apt search chennai
+sudo apt install fonts-chennai*
+
+# Fedora
+dnf search chennai
+sudo dnf install fonts-chennai*
+
+# Arch
+pacman -Ss chennai
+sudo pacman -S ttf-chennai*
+```
+
+TESTOWANIE INSTALACJI:
+======================
+
+1. **Lista zainstalowanych czcionek:**
+```bash
+fc-list | grep -i chennai
+fc-list : family | grep -i chennai
+```
+
+2. **Informacje o czcionce:**
+```bash
+fc-query ~/.fonts/chennai-medium.ttf
+```
+
+3. **Test w aplikacjach:**
+- LibreOffice Writer → Format → Czcionka
+- GIMP → Narzędzie tekstu → lista czcionek
+- Thunderbird → Preferencje → Czcionki
+
+ROZWIĄZYWANIE PROBLEMÓW:
+========================
+
+Problem: Czcionka nie pojawia się w aplikacjach
+Rozwiązanie:
+```bash
+fc-cache -f -v
+sudo fc-cache -f -v
+# Restart aplikacji
+```
+
+Problem: Błędy uprawnień
+Rozwiązanie:
+```bash
+chmod 644 ~/.fonts/chennai-medium.ttf
+chmod 755 ~/.fonts/
+```
+
+Problem: Cache się nie odświeża
+Rozwiązanie:
+```bash
+rm -rf ~/.cache/fontconfig/
+fc-cache -f -v
+```
+
+DYSTRYBUCJE - SPECIFICZNE UWAGI:
+================================
+
+**Ubuntu/Debian:**
+- Preferuj TTF
+- Używaj ~/.fonts/ dla użytkownika
+- /usr/share/fonts/truetype/ dla systemu
+
+**Fedora/RHEL:**
+- TTF i OTF równie dobre
+- /usr/share/fonts/ standardowy katalog
+- SELinux może blokować - użyj restorecon
+
+**Arch Linux:**
+- OTF preferowany
+- /usr/share/fonts/ lub ~/.local/share/fonts/
+- Użyj fc-cache po instalacji
+
+**openSUSE:**
+- TTF/OTF wspierane
+- YaST może zarządzać czcionkami graficznie
+
+ALTERNATYWY JEŚLI CHENNAI NIEDOSTĘPNA:
+======================================
+
+1. **Montserrat Medium** (Google Fonts)
+```bash
+# Pobierz z Google Fonts
+wget https://fonts.google.com/download?family=Montserrat
+# lub zainstaluj z pakietu
+sudo apt install fonts-google-montserrat
+```
+
+2. **Source Sans Pro Medium**
+```bash
+sudo apt install fonts-adobe-source-sans-pro
+```
+
+3. **Open Sans Medium**
+```bash
+sudo apt install fonts-open-sans
+```
+
+WERYFIKACJA KOŃCOWA:
+===================
+```bash
+# Sprawdź czy czcionka jest aktywna
+fc-match "Chennai Medium"
+
+# Lista wszystkich wariantów Chennai
+fc-list | grep -i chennai | sort
+
+# Test w terminalu (jeśli wspiera)
+echo "Test Chennai Medium font" | pango-view --font="Chennai Medium" --text=-
+```
+

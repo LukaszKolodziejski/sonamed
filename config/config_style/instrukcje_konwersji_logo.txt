@@ -1,0 +1,71 @@
+=== INSTRUKCJE KONWERSJI LOGO SVG → PNG ===
+
+DOSTĘPNE WARIANTY LOGO (SVG):
+-----------------------------
+1. logo_sonamed_color.svg - wersja z gradientem turkusowym
+2. logo_sonamed_black.svg - wersja czarna
+3. logo_sonamed_white.svg - wersja biała (na ciemnym tle)
+4. logo_sonamed_turquoise.svg - jednokolorowa turkusowa
+
+METODY KONWERSJI DO PNG:
+------------------------
+
+1. ONLINE (zalecane dla szybkiej konwersji):
+   - https://convertio.co/svg-png/
+   - https://cloudconvert.com/svg-to-png
+   - https://www.freeconvert.com/svg-to-png
+   
+   Ustawienia:
+   - Rozdzielczość: 300 DPI (dla druku) lub 72 DPI (dla web)
+   - Rozmiary: 300x100px (podstawowy), 600x200px (2x), 1200x400px (4x)
+   - Tło: przezroczyste
+
+2. OPROGRAMOWANIE GRAFICZNE:
+   
+   Adobe Illustrator:
+   - Otwórz plik SVG
+   - Eksportuj jako PNG
+   - Ustawienia: przezroczyste tło, wysoką rozdzielczość
+   
+   Inkscape (darmowy):
+   - Otwórz SVG
+   - Plik → Eksportuj obraz PNG
+   - Wybierz obszar do eksportu
+   - Ustaw DPI: 300 (druk) lub 72 (web)
+   
+   GIMP (darmowy):
+   - Importuj SVG
+   - Ustaw rozmiar importu
+   - Eksportuj jako PNG
+
+3. LINIA POLECEŃ (dla zaawansowanych):
+   
+   ImageMagick:
+   convert logo_sonamed_color.svg -density 300 logo_sonamed_color.png
+   
+   Inkscape CLI:
+   inkscape --export-type=png --export-dpi=300 logo_sonamed_color.svg
+
+ZALECANE ROZMIARY PNG:
+----------------------
+- Favicon: 32x32px, 64x64px
+- Web małe: 150x50px
+- Web średnie: 300x100px  
+- Web duże: 600x200px
+- Druk: 1200x400px (300 DPI)
+- Banery: 800x200px, 1200x300px
+
+NAZEWNICTWO PLIKÓW:
+-------------------
+- logo_sonamed_color_300x100.png
+- logo_sonamed_black_300x100.png  
+- logo_sonamed_white_300x100.png
+- logo_sonamed_turquoise_300x100.png
+
+UWAGI:
+------
+- Zachowaj przezroczyste tło dla uniwersalności
+- Dla wersji białej usuń szare tło z SVG przed konwersją
+- Sprawdź ostrość logo po konwersji
+- Stwórz wersje w różnych rozmiarach dla różnych zastosowań
+

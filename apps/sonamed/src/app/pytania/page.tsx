@@ -2,17 +2,21 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
+import Image from 'next/image';
 import {
   HiOutlineCurrencyDollar,
   HiOutlineChevronDown,
-  HiOutlineLightBulb,
   HiOutlineClipboardCheck,
   HiOutlinePhone,
+  HiOutlineHeart,
+  HiOutlineShieldCheck,
+  HiOutlineStar,
 } from 'react-icons/hi';
-import { FaCar, FaGraduationCap } from 'react-icons/fa';
+import { FaTooth, FaStethoscope, FaUserMd } from 'react-icons/fa';
 import Link from 'next/link';
-import { CONTACT } from '@/constants/contact';
-import { PRICES } from '@/constants/prices';
+import { FAQ_CATEGORIES, getQuestionsByCategory } from '@/constants/questions';
+import { colors } from '@/constants/colors';
+import { businessConstants } from '@/constants/constants';
 
 export default function PytaniaPage() {
   const [openSection, setOpenSection] = useState<string | null>(null);
@@ -26,180 +30,60 @@ export default function PytaniaPage() {
     setOpenQuestion(openQuestion === id ? null : id);
   };
 
-  const sections = [
-    {
-      id: 'podstawowe',
-      title: 'Podstawowe informacje',
-      icon: <HiOutlineLightBulb className="text-blue-400" />,
-      questions: [
-        {
-          id: 'czas-kursu',
-          question: 'Jak długo trwa kurs na prawo jazdy kat. B?',
-          answer:
-            'Kurs składa się z 30 godzin teorii i 30 godzin praktyki. Całość można ukończyć w 1-3 miesiące w trybie standardowym lub 2-4 tygodnie w trybie ekspresowym. Teoria może być realizowana stacjonarnie lub poprzez e-learning.',
-        },
-        {
-          id: 'wymagania',
-          question: 'Jakie są wymagania, aby rozpocząć kurs?',
-          answer:
-            'Aby rozpocząć kurs, musisz: mieć ukończone 17 lat i 9 miesięcy, posiadać numer PKK (Profil Kandydata na Kierowcę), przejść badania lekarskie oraz dostarczyć zdjęcie do dokumentów. Pomagamy w załatwieniu wszystkich formalności.',
-        },
-        {
-          id: 'egzaminy',
-          question: 'Jak wyglądają egzaminy?',
-          answer:
-            'Egzamin państwowy składa się z części teoretycznej (test na komputerze, 32 pytania) i praktycznej (plac manewrowy + jazda w ruchu miejskim). Przed egzaminem państwowym przeprowadzamy egzaminy wewnętrzne, które są wliczone w cenę kursu.',
-        },
-        {
-          id: 'pkk',
-          question: 'Co to jest PKK i jak go uzyskać?',
-          answer:
-            'PKK (Profil Kandydata na Kierowcę) to elektroniczny dokument niezbędny do rozpoczęcia kursu. Aby go uzyskać, należy złożyć wniosek w wydziale komunikacji wraz z orzeczeniem lekarskim, zdjęciem i opłatą. Pomagamy w całym procesie uzyskania PKK - możemy przygotować wszystkie dokumenty i pokierować całą procedurą.',
-        },
-        {
-          id: 'wiek',
-          question: 'W jakim wieku mogę zacząć kurs?',
-          answer:
-            'Kurs można rozpocząć już w wieku 17 lat i 9 miesięcy. Egzamin teoretyczny można zdawać 3 miesiące przed 18. urodzinami, natomiast egzamin praktyczny można zdać najwcześniej w dniu 18. urodzin. Warto rozpocząć kurs wcześniej, aby być gotowym do egzaminu praktycznego zaraz po osiągnięciu pełnoletności.',
-        },
-      ],
+  // Mapowanie kategorii na ikony i kolory
+  const categoryIcons = {
+    usługi: {
+      icon: <FaTooth style={{ color: colors.secondary.tealMedium }} />,
+      color: colors.secondary.tealMedium,
     },
-    {
-      id: 'organizacja',
-      title: 'Organizacja kursu',
-      icon: <HiOutlineClipboardCheck className="text-purple-400" />,
-      questions: [
-        {
-          id: 'harmonogram',
-          question: 'Jaki jest harmonogram zajęć?',
-          answer:
-            'Oferujemy elastyczny harmonogram dostosowany do Twoich potrzeb. Zajęcia teoretyczne odbywają się w trybie stacjonarnym lub online. Jazdy praktyczne umawiamy indywidualnie - możesz wybrać godziny poranne, popołudniowe lub weekendowe.',
-        },
-        {
-          id: 'miejsce',
-          question: 'Gdzie odbywają się zajęcia?',
-          answer:
-            'Zajęcia teoretyczne odbywają się w naszej siedzibie przy ul. K. Ujejskiego 46a w Bydgoszczy. Jazdy rozpoczynamy spod szkoły lub, dla osób zamiejscowych, możemy zaczynać od PKS-u przy ul. Jagiellońskiej.',
-        },
-        {
-          id: 'samochody',
-          question: 'Jakimi samochodami prowadzone są jazdy?',
-          answer:
-            'Szkolimy na nowych Oplach Corsach z 2024 roku. Samochody są w pełni wyposażone w systemy bezpieczeństwa, klimatyzację oraz podwójne sterowanie. Wszystkie auta są regularnie serwisowane i utrzymane w idealnym stanie.',
-        },
-        {
-          id: 'teoria-online',
-          question: 'Jak wygląda kurs teoretyczny online?',
-          answer:
-            'Kurs teoretyczny online realizowany jest przez naszą platformę e-learningową. Otrzymujesz dostęp do materiałów 24/7, profesjonalnych wykładów wideo, testów i pytań egzaminacyjnych. Możesz uczyć się w swoim tempie, a w razie pytań masz stały kontakt z instruktorem poprzez czat lub telefon.',
-        },
-        {
-          id: 'ilosc-jazd',
-          question: 'Ile jazd mogę odbyć w tygodniu?',
-          answer:
-            'W trybie standardowym realizujemy 2-3 jazdy tygodniowo, co pozwala na lepsze przyswojenie wiedzy. W trybie ekspresowym możemy zorganizować 5-7 jazd tygodniowo. Harmonogram zawsze ustalamy indywidualnie, biorąc pod uwagę Twoje możliwości czasowe i tempo nauki.',
-        },
-      ],
+    leczenie: {
+      icon: <FaStethoscope style={{ color: colors.secondary.seaGreen }} />,
+      color: colors.secondary.seaGreen,
     },
-    {
-      id: 'egzamin',
-      title: 'Egzamin państwowy',
-      icon: <FaGraduationCap className="text-yellow-400" />,
-      questions: [
-        {
-          id: 'przebieg-teorii',
-          question: 'Jak wygląda egzamin teoretyczny?',
-          answer:
-            'Egzamin teoretyczny składa się z 32 pytań (20 z części podstawowej i 12 specjalistycznych). Na rozwiązanie masz 25 minut. Aby zdać, trzeba udzielić minimum 68 punktów na 74 możliwe. Pytania wyświetlane są na ekranie komputera, a część z nich zawiera filmy lub animacje.',
-        },
-        {
-          id: 'przebieg-praktyki',
-          question: 'Co zawiera egzamin praktyczny?',
-          answer:
-            'Egzamin praktyczny trwa 40 minut i składa się z: sprawdzenia przygotowania technicznego (losowane zadanie), manewrów na placu (parkowanie prostopadłe, równoległe lub zawracanie) oraz jazdy w ruchu miejskim. Oceniane są: przygotowanie do jazdy, wykonywanie manewrów, zachowanie na drodze i technika kierowania pojazdem.',
-        },
-        {
-          id: 'przygotowanie',
-          question: 'Jak najlepiej przygotować się do egzaminu?',
-          answer:
-            'Oferujemy kompleksowe przygotowanie: dostęp do aktualnej bazy pytań, egzaminy próbne na naszej platformie, jazdy na trasach egzaminacyjnych, egzaminy wewnętrzne w warunkach zbliżonych do państwowych. Dodatkowo, nasi instruktorzy dzielą się praktycznymi wskazówkami i uczą technik radzenia sobie ze stresem.',
-        },
-        {
-          id: 'zdawalnosc',
-          question: 'Jaka jest zdawalność w Waszej szkole?',
-          answer:
-            'Nasza szkoła może pochwalić się zdawalnością na poziomie 60% za pierwszym podejściem. To wynik znacznie wyższy niż średnia krajowa. Osiągamy to dzięki indywidualnemu podejściu do kursanta, doświadczonej kadrze i kompleksowemu programowi szkolenia.',
-        },
-        {
-          id: 'stres',
-          question: 'Jak radzić sobie ze stresem podczas egzaminu?',
-          answer:
-            'Nasi instruktorzy uczą technik radzenia sobie ze stresem. Przeprowadzamy egzaminy wewnętrzne w warunkach zbliżonych do państwowych, co pomaga oswoić się z sytuacją egzaminacyjną. Dodatkowo, oferujemy indywidualne konsultacje i wsparcie psychologiczne dla osób szczególnie zestresowanych.',
-        },
-      ],
+    organizacja: {
+      icon: (
+        <HiOutlineClipboardCheck
+          style={{ color: colors.secondary.aquaMedium }}
+        />
+      ),
+      color: colors.secondary.aquaMedium,
     },
-    {
-      id: 'platnosci',
-      title: 'Płatności i formalności',
-      icon: <HiOutlineCurrencyDollar className="text-green-400" />,
-      questions: [
-        {
-          id: 'cena',
-          question: 'Ile kosztuje kurs i co zawiera cena?',
-          answer: `Kurs podstawowy kosztuje ${PRICES.COURSE.BASIC} zł, ekspresowy ${PRICES.COURSE.EXPRESS} zł. Cena zawiera: komplet materiałów dydaktycznych, 30h teorii, 30h praktyki, egzaminy wewnętrzne. Oferujemy możliwość płatności w 5 wygodnych ratach.`,
-        },
-        {
-          id: 'dokumenty',
-          question: 'Jakie dokumenty są potrzebne?',
-          answer: `Potrzebujesz: dowód osobisty, PKK (pomagamy w uzyskaniu), orzeczenie lekarskie (możliwość wykonania u nas za ${PRICES.ADDITIONAL.MEDICAL_EXAM} zł), zdjęcie do dokumentów. Wszystkie formalności możemy załatwić podczas jednej wizyty w naszej szkole.`,
-        },
-        {
-          id: 'dodatkowe',
-          question: 'Czy są jakieś dodatkowe opłaty?',
-          answer: `Poza kursem należy uwzględnić: badanie lekarskie (${PRICES.ADDITIONAL.MEDICAL_EXAM} zł), opłatę za egzamin państwowy (teoria 50 zł, praktyka 200 zł). Ewentualne jazdy doszkalające to koszt ${PRICES.ADDITIONAL.TRAINING_OWN_STUDENT} zł/h dla naszych kursantów.`,
-        },
-        {
-          id: 'raty',
-          question: 'Jak wygląda system ratalny?',
-          answer: `Oferujemy dogodny system ratalny: ${PRICES.INSTALLMENTS.map(
-            (rate, index) => `${rate.step} (${rate.amount} zł) - ${rate.desc}`
-          ).join(
-            ', '
-          )}. Nie pobieramy żadnych dodatkowych opłat za rozłożenie płatności na raty.`,
-        },
-      ],
+    profilaktyka: {
+      icon: (
+        <HiOutlineShieldCheck style={{ color: colors.secondary.tealSoft }} />
+      ),
+      color: colors.secondary.tealSoft,
     },
-    {
-      id: 'praktyczne',
-      title: 'Praktyczne aspekty',
-      icon: <FaCar className="text-red-400" />,
-      questions: [
-        {
-          id: 'pierwsze-jazdy',
-          question: 'Jak wyglądają pierwsze jazdy?',
-          answer:
-            'Pierwsze jazdy odbywają się w spokojnych lokalizacjach, z dala od dużego ruchu. Instruktor cierpliwie wprowadza w podstawy: ruszanie, zmiana biegów, zatrzymywanie. Stopniowo przechodzimy do bardziej zaawansowanych manewrów i jazdy w ruchu miejskim. Tempo nauki dostosowujemy do indywidualnych predyspozycji.',
-        },
-        {
-          id: 'niepowodzenie',
-          question: 'Co w przypadku niepowodzenia na egzaminie?',
-          answer: `W przypadku niepowodzenia oferujemy jazdy doszkalające w promocyjnej cenie ${PRICES.ADDITIONAL.TRAINING_OWN_STUDENT} zł/h dla naszych kursantów. Analizujemy błędy z egzaminu i skupiamy się na elementach wymagających poprawy. Pomagamy również w organizacji kolejnego terminu egzaminu.`,
-        },
-        {
-          id: 'przerwa',
-          question: 'Czy mogę zrobić przerwę w kursie?',
-          answer:
-            'Tak, rozumiemy, że mogą pojawić się różne sytuacje życiowe. Kurs można przerwać i wznowić w dogodnym momencie. Elastycznie podchodzimy do takich sytuacji, a wszystkie zrealizowane godziny zostają zachowane.',
-        },
-        {
-          id: 'instruktor',
-          question: 'Czy mogę zmienić instruktora?',
-          answer:
-            'Tak, jeśli czujesz, że potrzebujesz zmiany instruktora, wystarczy zgłosić to w biurze. Nie wiąże się to z żadnymi dodatkowymi opłatami. Zależy nam, abyś czuł się komfortowo podczas nauki i osiągał jak najlepsze efekty.',
-        },
-      ],
+    finanse: {
+      icon: (
+        <HiOutlineCurrencyDollar
+          style={{ color: colors.secondary.tealIntense }}
+        />
+      ),
+      color: colors.secondary.tealIntense,
     },
-  ];
+  } as const;
+
+  // Tworzenie sekcji na podstawie danych z questions.ts
+  const sections = Object.entries(FAQ_CATEGORIES).map(
+    ([categoryKey, categoryTitle]) => {
+      const category = categoryKey as keyof typeof FAQ_CATEGORIES;
+      const questions = getQuestionsByCategory(category);
+      const iconConfig = categoryIcons[category];
+
+      return {
+        id: category,
+        title: categoryTitle,
+        icon: iconConfig.icon,
+        color: iconConfig.color,
+        questions: questions.map((q) => ({
+          id: q.id,
+          question: q.question,
+          answer: q.answer,
+        })),
+      };
+    }
+  );
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
@@ -208,59 +92,357 @@ export default function PytaniaPage() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-blue-950 via-indigo-950 to-purple-950">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.15),transparent_70%)]"></div>
+      {/* Premium Hero Section - Inspirowana stroną oferty */}
+      <section
+        className="relative min-h-[70vh] flex items-center overflow-hidden"
+        style={{
+          background: `linear-gradient(135deg, ${colors.primary.darkTeal} 0%, ${colors.secondary.seaGreen} 30%, ${colors.secondary.tealMedium} 70%, ${colors.secondary.mintLight} 100%)`,
+        }}
+      >
+        {/* Premium Animated Background */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2 }}
+          className="absolute inset-0"
+        >
+          {/* Floating Dental Icons */}
+          {[...Array(12)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-16 h-16 opacity-8"
+              style={{
+                left: `${5 + i * 8}%`,
+                top: `${15 + (i % 4) * 20}%`,
+              }}
+              animate={{
+                y: [0, -40, 0],
+                rotate: [0, 15, -15, 0],
+                scale: [1, 1.2, 0.8, 1],
+              }}
+              transition={{
+                duration: 5 + i * 0.8,
+                repeat: Infinity,
+                ease: 'easeInOut',
+                delay: i * 0.4,
+              }}
+            >
+              <Image
+                src={`/icons/Offer-icons-${9 + (i % 10)}.png`}
+                alt="Dental Icon"
+                width={64}
+                height={64}
+                className="w-full h-full filter invert opacity-20"
+              />
+            </motion.div>
+          ))}
+
+          {/* Premium Gradient Overlays */}
+          <motion.div
+            animate={{
+              background: [
+                `radial-gradient(circle at 0% 0%, ${colors.primary.darkTeal}60, transparent 50%)`,
+                `radial-gradient(circle at 50% 50%, ${colors.primary.darkTeal}60, transparent 50%)`,
+                `radial-gradient(circle at 100% 100%, ${colors.primary.darkTeal}60, transparent 50%)`,
+                `radial-gradient(circle at 0% 100%, ${colors.primary.darkTeal}60, transparent 50%)`,
+                `radial-gradient(circle at 0% 0%, ${colors.primary.darkTeal}60, transparent 50%)`,
+              ],
+            }}
+            transition={{
+              duration: 15,
+              ease: 'linear',
+              repeat: Infinity,
+              repeatType: 'loop',
+            }}
+            className="absolute inset-0 z-10"
+          />
+        </motion.div>
+
+        {/* Premium Main Content with Glass Effect */}
+        <div className="relative z-30 container mx-auto px-6 py-16">
+          <motion.div
+            className="absolute inset-0 rounded-3xl"
+            style={{
+              background: `linear-gradient(135deg, ${colors.primary.darkTeal}15, ${colors.secondary.tealMedium}10)`,
+              backdropFilter: 'blur(20px)',
+              border: `2px solid ${colors.secondary.tealMedium}30`,
+            }}
+            animate={{
+              boxShadow: [
+                `0 0 50px ${colors.secondary.tealMedium}30`,
+                `0 0 80px ${colors.secondary.tealMedium}50`,
+                `0 0 50px ${colors.secondary.tealMedium}30`,
+              ],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+          />
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-5xl relative z-20 text-center"
+          >
+            {/* Premium Badge */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mb-8"
+            >
+              <motion.span
+                className="text-sm font-bold uppercase tracking-wider px-6 py-3 rounded-full border backdrop-blur-sm"
+                style={{
+                  color: 'white',
+                  background: `linear-gradient(135deg, ${colors.primary.darkTeal}80, ${colors.secondary.tealMedium}60)`,
+                  borderColor: `${colors.secondary.tealMedium}50`,
+                  boxShadow: `0 8px 32px ${colors.primary.darkTeal}40`,
+                }}
+                animate={{
+                  boxShadow: [
+                    `0 8px 32px ${colors.primary.darkTeal}40`,
+                    `0 12px 40px ${colors.secondary.tealMedium}60`,
+                    `0 8px 32px ${colors.primary.darkTeal}40`,
+                  ],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+              >
+                🦷 FAQ STOMATOLOGICZNE 🦷
+              </motion.span>
+            </motion.div>
+
+            {/* Spektakularny Tytuł */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                duration: 1,
+                delay: 0.3,
+                type: 'spring',
+                bounce: 0.4,
+              }}
+              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight relative mb-8"
+              style={{
+                textShadow: `0 4px 20px ${colors.primary.darkTeal}60, 0 0 40px ${colors.secondary.tealMedium}40`,
+                lineHeight: '1.1',
+              }}
+            >
+              <motion.span
+                className="bg-clip-text text-transparent block relative"
+                style={{
+                  backgroundImage: `linear-gradient(145deg, #ffffff 0%, ${colors.secondary.mintLight} 50%, white 100%)`,
+                  filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))',
+                }}
+                animate={{
+                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+              >
+                Często zadawane pytania
+              </motion.span>
+
+              {/* Sparkle Effects */}
+              {[...Array(8)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-3 h-3 bg-white rounded-full"
+                  style={{
+                    left: `${10 + i * 12}%`,
+                    top: `${8 + (i % 3) * 15}%`,
+                  }}
+                  animate={{
+                    scale: [0, 1.5, 0],
+                    opacity: [0, 1, 0],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: i * 0.4,
+                  }}
+                />
+              ))}
+            </motion.h1>
+
+            {/* Premium Description Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="mt-8 p-8 rounded-2xl backdrop-blur-sm border max-w-4xl mx-auto"
+              style={{
+                background: `linear-gradient(135deg, ${colors.primary.darkTeal}20, rgba(0,0,0,0.3))`,
+                borderColor: `${colors.secondary.tealMedium}30`,
+                boxShadow: `0 8px 32px rgba(0,0,0,0.3)`,
+              }}
+            >
+              <motion.p
+                className="text-xl md:text-2xl leading-8 font-medium"
+                style={{
+                  color: 'white',
+                  textShadow: '0 2px 4px rgba(0,0,0,0.5)',
+                }}
+              >
+                Znajdź odpowiedzi na najczęściej zadawane pytania dotyczące
+                leczenia stomatologicznego, usług medycyny estetycznej oraz
+                organizacji wizyt w naszej klinice{' '}
+                <span className="font-bold">SONAMED</span>
+              </motion.p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Premium FAQ Section */}
+      <section
+        className="relative py-32 overflow-hidden"
+        style={{
+          // background: `linear-gradient(135deg, ${colors.secondary.mintLight} 0%, ${colors.neutral.almostWhiteGreenish} 30%, ${colors.secondary.tealSoft}20 70%, ${colors.secondary.mintLight} 100%)`,
+          background: '#fff',
+        }}
+      >
+        {/* Floating dental icons background */}
+        <div className="absolute inset-0 opacity-6">
+          {[...Array(15)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -30, 0],
+                rotate: [0, 10, -10, 0],
+              }}
+              transition={{
+                duration: 6 + Math.random() * 4,
+                repeat: Infinity,
+                delay: Math.random() * 6,
+              }}
+            >
+              <FaTooth
+                className="text-6xl"
+                style={{ color: colors.brand.primary }}
+              />
+            </motion.div>
+          ))}
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-300">
-                Często zadawane pytania
-              </span>
-            </h1>
-            <p className="text-xl text-blue-200 max-w-2xl mx-auto">
-              Znajdź odpowiedzi na najczęściej zadawane pytania dotyczące kursu
-              na prawo jazdy
-            </p>
-          </motion.div>
-
           {/* Sekcje pytań */}
-          <div className="max-w-4xl mx-auto space-y-8">
+          <div className="max-w-5xl mx-auto space-y-8">
             {sections.map((section) => (
               <motion.div
                 key={section.id}
                 initial="hidden"
                 animate="visible"
                 variants={fadeInUp}
-                className="bg-white/5 backdrop-blur-sm rounded-2xl border border-blue-500/20 overflow-hidden"
+                className="group relative rounded-3xl shadow-2xl border overflow-hidden"
+                style={{
+                  background: `linear-gradient(145deg, ${colors.secondary.tealSoft}15 0%, ${colors.secondary.aquaMedium}10 50%, ${colors.secondary.mintLight}20 100%)`,
+                  borderColor: `${section.color}30`,
+                  boxShadow: `0 20px 60px -10px ${section.color}25`,
+                  backdropFilter: 'blur(10px)',
+                }}
+                whileHover={{
+                  y: -5,
+                  boxShadow: `0 25px 70px -10px ${section.color}35`,
+                }}
               >
-                <button
-                  onClick={() => toggleSection(section.id)}
-                  className="w-full px-8 py-6 flex items-center justify-between text-left"
+                {/* Enhanced Gradient accent line */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-2"
+                  style={{
+                    background: `linear-gradient(90deg, ${section.color}00, ${section.color}80, ${section.color}ff, ${section.color}80, ${section.color}00)`,
+                  }}
+                />
+
+                {/* Fixed Header - nie przesunie się po kliknięciu */}
+                <div
+                  className="sticky top-0 z-20"
+                  style={{
+                    background: `linear-gradient(135deg, ${colors.secondary.tealSoft}25, ${colors.secondary.aquaMedium}15)`,
+                    backdropFilter: 'blur(15px)',
+                  }}
                 >
-                  <div className="flex items-center">
-                    <div className="p-3 bg-white/5 rounded-lg mr-4">
-                      {section.icon}
-                    </div>
-                    <h2 className="text-2xl font-semibold text-white">
-                      {section.title}
-                    </h2>
-                  </div>
-                  <motion.div
-                    animate={{ rotate: openSection === section.id ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
+                  <button
+                    onClick={() => toggleSection(section.id)}
+                    className="w-full px-10 py-8 flex items-center justify-between text-left transition-all duration-300"
+                    style={{
+                      background:
+                        openSection === section.id
+                          ? `linear-gradient(135deg, ${section.color}25, ${section.color}15)`
+                          : 'transparent',
+                    }}
                   >
-                    <HiOutlineChevronDown className="text-2xl text-blue-300" />
-                  </motion.div>
-                </button>
+                    <div className="flex items-center">
+                      <motion.div
+                        className="p-4 rounded-2xl mr-6 shadow-lg"
+                        style={{
+                          background: `linear-gradient(135deg, ${section.color}40, ${section.color}25)`,
+                          border: `2px solid ${section.color}50`,
+                          boxShadow: `0 8px 25px -5px ${section.color}40`,
+                        }}
+                        whileHover={{
+                          scale: 1.15,
+                          rotate: 10,
+                        }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <div className="text-3xl filter drop-shadow-sm">
+                          {section.icon}
+                        </div>
+                      </motion.div>
+                      <h2
+                        className="text-2xl md:text-3xl font-bold group-hover:scale-105 transition-transform duration-300"
+                        style={{
+                          color: colors.primary.darkTeal,
+                          textShadow: `0 2px 4px ${section.color}20`,
+                        }}
+                      >
+                        {section.title}
+                      </h2>
+                    </div>
+                    <motion.div
+                      animate={{ rotate: openSection === section.id ? 180 : 0 }}
+                      transition={{ duration: 0.4, type: 'spring' }}
+                      className="p-3 rounded-full shadow-lg"
+                      style={{
+                        background:
+                          openSection === section.id
+                            ? `linear-gradient(135deg, ${section.color}50, ${section.color}30)`
+                            : `linear-gradient(135deg, ${colors.secondary.tealSoft}40, ${colors.secondary.aquaMedium}20)`,
+                        border: `2px solid ${
+                          openSection === section.id
+                            ? section.color
+                            : colors.brand.primary
+                        }40`,
+                      }}
+                    >
+                      <HiOutlineChevronDown
+                        className="text-3xl filter drop-shadow-sm"
+                        style={{
+                          color:
+                            openSection === section.id
+                              ? section.color
+                              : colors.brand.primary,
+                        }}
+                      />
+                    </motion.div>
+                  </button>
+                </div>
 
                 <AnimatePresence>
                   {openSection === section.id && (
@@ -268,20 +450,45 @@ export default function PytaniaPage() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="px-8 pb-6"
+                      transition={{ duration: 0.5, ease: 'easeInOut' }}
+                      className="px-10 pb-8"
+                      style={{
+                        background: `linear-gradient(135deg, ${section.color}05, transparent)`,
+                      }}
                     >
-                      <div className="space-y-4">
+                      <div className="space-y-6">
                         {section.questions.map((q) => (
-                          <div
+                          <motion.div
                             key={q.id}
-                            className="border-t border-blue-500/10 pt-4"
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="rounded-2xl shadow-lg border overflow-hidden"
+                            style={{
+                              background: `linear-gradient(135deg, ${colors.secondary.tealSoft}25 0%, ${colors.secondary.aquaMedium}15 50%, ${colors.secondary.mintLight}30 100%)`,
+                              borderColor: `${section.color}40`,
+                            }}
+                            whileHover={{
+                              boxShadow: `0 10px 30px -5px ${section.color}20`,
+                            }}
                           >
                             <button
                               onClick={() => toggleQuestion(q.id)}
-                              className="w-full flex items-center justify-between text-left"
+                              className="w-full px-8 py-6 flex items-center justify-between text-left transition-all duration-300"
+                              style={{
+                                background:
+                                  openQuestion === q.id
+                                    ? `linear-gradient(135deg, ${section.color}30, ${section.color}20)`
+                                    : 'transparent',
+                              }}
                             >
-                              <h3 className="text-lg font-medium text-blue-200">
+                              <h3
+                                className="text-lg md:text-xl font-semibold pr-4 leading-relaxed"
+                                style={{
+                                  color: colors.primary.darkTeal,
+                                  textShadow: `0 1px 2px ${section.color}20`,
+                                }}
+                              >
                                 {q.question}
                               </h3>
                               <motion.div
@@ -289,8 +496,28 @@ export default function PytaniaPage() {
                                   rotate: openQuestion === q.id ? 180 : 0,
                                 }}
                                 transition={{ duration: 0.3 }}
+                                className="flex-shrink-0 p-2 rounded-full shadow-md"
+                                style={{
+                                  background:
+                                    openQuestion === q.id
+                                      ? `linear-gradient(135deg, ${section.color}50, ${section.color}30)`
+                                      : `linear-gradient(135deg, ${colors.secondary.tealSoft}30, ${colors.secondary.aquaMedium}20)`,
+                                  border: `2px solid ${
+                                    openQuestion === q.id
+                                      ? section.color
+                                      : colors.brand.primary
+                                  }30`,
+                                }}
                               >
-                                <HiOutlineChevronDown className="text-xl text-blue-300" />
+                                <HiOutlineChevronDown
+                                  className="text-2xl filter drop-shadow-sm"
+                                  style={{
+                                    color:
+                                      openQuestion === q.id
+                                        ? section.color
+                                        : colors.brand.primary,
+                                  }}
+                                />
                               </motion.div>
                             </button>
 
@@ -300,63 +527,250 @@ export default function PytaniaPage() {
                                   initial={{ height: 0, opacity: 0 }}
                                   animate={{ height: 'auto', opacity: 1 }}
                                   exit={{ height: 0, opacity: 0 }}
-                                  transition={{ duration: 0.3 }}
-                                  className="mt-4"
+                                  transition={{ duration: 0.4 }}
+                                  className="px-8 pb-6"
+                                  style={{
+                                    background: `linear-gradient(135deg, ${section.color}05, transparent)`,
+                                    borderTop: `2px solid ${section.color}20`,
+                                  }}
                                 >
-                                  <p className="text-blue-200">{q.answer}</p>
+                                  <p
+                                    className="text-lg leading-8 pt-4 font-medium"
+                                    style={{
+                                      color: colors.primary.darkTeal,
+                                      textShadow: `0 1px 2px ${colors.secondary.tealSoft}30`,
+                                    }}
+                                  >
+                                    {q.answer}
+                                  </p>
                                 </motion.div>
                               )}
                             </AnimatePresence>
-                          </div>
+                          </motion.div>
                         ))}
                       </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
+
+                {/* Premium glow effect */}
+                <div
+                  className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    boxShadow: `inset 0 1px 0 0 rgba(255, 255, 255, 0.4), 
+                               0 0 60px -10px ${section.color}30`,
+                  }}
+                />
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Sekcja kontaktowa */}
-      <section className="relative py-16 bg-gradient-to-b from-indigo-950 to-blue-950">
-        <div className="container mx-auto px-6">
+      {/* Premium Contact Section */}
+      <section
+        className="relative py-32 overflow-hidden"
+        style={{
+          background: `linear-gradient(135deg, ${colors.primary.darkTeal} 0%, ${colors.secondary.seaGreen} 50%, ${colors.secondary.tealMedium} 100%)`,
+        }}
+      >
+        {/* Animated particles background */}
+        <div className="absolute inset-0">
+          {[...Array(25)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-3 h-3 rounded-full"
+              style={{
+                backgroundColor: colors.secondary.mintLight,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -100, 0],
+                opacity: [0, 0.6, 0],
+                scale: [0, 1.5, 0],
+              }}
+              transition={{
+                duration: 4 + Math.random() * 4,
+                repeat: Infinity,
+                delay: Math.random() * 6,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Floating dental icons */}
+        <div className="absolute inset-0 opacity-10">
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute"
+              style={{
+                left: `${10 + i * 12}%`,
+                top: `${20 + (i % 3) * 30}%`,
+              }}
+              animate={{
+                y: [0, -40, 0],
+                rotate: [0, 180, 360],
+              }}
+              transition={{
+                duration: 8 + i * 2,
+                repeat: Infinity,
+                delay: i * 1.5,
+              }}
+            >
+              <FaTooth className="text-6xl text-white" />
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-center"
+            className="max-w-5xl mx-auto"
           >
-            <h2 className="text-3xl font-bold text-white mb-6">
-              Nie znalazłeś odpowiedzi na swoje pytanie?
-            </h2>
-            <p className="text-blue-200 mb-8">
-              Skontaktuj się z nami - chętnie odpowiemy na wszystkie Twoje
-              pytania
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/kontakt"
-                className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium hover:shadow-lg transition-all duration-300 hover:scale-105"
-              >
-                Napisz do nas
-                <HiOutlinePhone className="ml-2" />
-              </Link>
-              <a
-                href={`tel:${CONTACT.PHONE_RAW}`}
-                className="inline-flex items-center px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium hover:bg-white/20 transition-all duration-300"
-              >
-                Zadzwoń: {CONTACT.PHONE}
-                <HiOutlinePhone className="ml-2" />
-              </a>
-              <a
-                href={`tel:${CONTACT.PHONE_2_RAW}`}
-                className="inline-flex items-center px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium hover:bg-white/20 transition-all duration-300"
-              >
-                Lub: {CONTACT.PHONE_2}
-                <HiOutlinePhone className="ml-2" />
-              </a>
+            {/* Premium Glass Card */}
+            <div
+              className="relative rounded-3xl p-12 backdrop-blur-sm border"
+              style={{
+                background: `linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05))`,
+                borderColor: `${colors.secondary.tealMedium}40`,
+                boxShadow: `0 20px 60px -10px rgba(0,0,0,0.3)`,
+              }}
+            >
+              <div className="text-center">
+                {/* Icon */}
+                <motion.div
+                  initial={{ scale: 0, rotate: -180 }}
+                  whileInView={{ scale: 1, rotate: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, type: 'spring' }}
+                  className="inline-flex items-center justify-center w-24 h-24 rounded-full mb-8 shadow-2xl"
+                  style={{
+                    background: `linear-gradient(135deg, ${colors.secondary.tealMedium}, ${colors.secondary.aquaMedium})`,
+                    boxShadow: `0 0 50px ${colors.secondary.tealMedium}40`,
+                  }}
+                >
+                  <FaTooth className="text-4xl text-white" />
+                </motion.div>
+
+                {/* Title */}
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  Nie znalazłeś odpowiedzi na swoje pytanie?
+                </h2>
+
+                {/* Subtitle */}
+                <p
+                  className="text-2xl mb-12 leading-relaxed"
+                  style={{ color: colors.secondary.mintLight }}
+                >
+                  Skontaktuj się z nami - chętnie odpowiemy na wszystkie Twoje
+                  pytania i pomożemy w wyborze najlepszego planu leczenia
+                </p>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-col lg:flex-row items-center justify-center gap-8 mb-12">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Link
+                      href="/umow-wizyte"
+                      className="group inline-flex items-center px-10 py-5 rounded-full text-white font-bold text-xl shadow-2xl relative overflow-hidden"
+                      style={{
+                        background: `linear-gradient(135deg, ${colors.secondary.tealMedium}, ${colors.secondary.aquaMedium})`,
+                        boxShadow: `0 10px 40px -10px ${colors.secondary.tealMedium}60`,
+                      }}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <HiOutlinePhone className="mr-4 text-2xl relative z-10" />
+                      <span className="relative z-10">Umów wizytę online</span>
+                    </Link>
+                  </motion.div>
+
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <a
+                      href={`tel:${businessConstants.contact.phone}`}
+                      className="group inline-flex items-center px-10 py-5 rounded-full border-4 font-bold text-xl transition-all duration-300 relative overflow-hidden text-white"
+                      style={{
+                        borderColor: 'white',
+                        background: 'rgba(255, 255, 255, 0.1)',
+                        backdropFilter: 'blur(10px)',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = 'white';
+                        e.currentTarget.style.color = colors.brand.primary;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background =
+                          'rgba(255, 255, 255, 0.1)';
+                        e.currentTarget.style.color = 'white';
+                      }}
+                    >
+                      <HiOutlinePhone className="mr-4 text-2xl" />
+                      Zadzwoń: {businessConstants.contact.phone}
+                    </a>
+                  </motion.div>
+                </div>
+
+                {/* Additional Info */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                  {[
+                    {
+                      icon: <FaUserMd className="text-3xl" />,
+                      title: 'Doświadczony zespół',
+                      description: 'Lekarze z wieloletnią praktyką',
+                    },
+                    {
+                      icon: <HiOutlineHeart className="text-3xl" />,
+                      title: 'Indywidualne podejście',
+                      description: 'Każdy pacjent to priorytet',
+                    },
+                    {
+                      icon: <HiOutlineStar className="text-3xl" />,
+                      title: 'Najwyższa jakość',
+                      description: 'Nowoczesne technologie',
+                    },
+                  ].map((feature, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.2 + index * 0.1 }}
+                      className="group"
+                    >
+                      <motion.div
+                        className="inline-flex p-4 rounded-2xl mb-4 text-white"
+                        style={{
+                          background: `linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1))`,
+                        }}
+                        whileHover={{
+                          scale: 1.1,
+                          rotate: 5,
+                        }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {feature.icon}
+                      </motion.div>
+                      <h4 className="text-xl font-bold text-white mb-2 group-hover:text-gray-100">
+                        {feature.title}
+                      </h4>
+                      <p
+                        className="leading-relaxed"
+                        style={{ color: colors.secondary.mintLight }}
+                      >
+                        {feature.description}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>

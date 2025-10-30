@@ -3,8 +3,8 @@ import { Resend } from 'resend';
 import {
   getReservationEmailTemplate,
   getAdminEmailTemplate,
-} from '@/constants/emailTemplates';
-import { CONTACT } from '@/constants/contact';
+} from '@/constants_old/emailTemplates';
+import { CONTACT } from '@/constants_old/contact';
 
 export async function POST(request: Request) {
   try {

@@ -1,13 +1,18 @@
 import './globals.css';
 import { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
-const inter = Inter({ subsets: ['latin', 'latin-ext'] });
+const poppins = Poppins({
+  subsets: ['latin', 'latin-ext'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  display: 'swap',
+  variable: '--font-poppins',
+});
 
 export const viewport: Viewport = {
-  themeColor: '#3b82f6',
+  themeColor: '#7aa59d',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -16,13 +21,14 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.sonamed.pl'),
   title: {
-    template: '%s | Szkoła Jazdy sonamed Bydgoszcz',
-    default: 'Szkoła Jazdy sonamed Bydgoszcz - Prawo Jazdy Kategorii B',
+    template: '%s | SONAMED - Centrum Stomatologiczne Kościerzyna',
+    default:
+      'SONAMED - Profesjonalna Stomatologia w Kościerzynie | Dentysta Kaszuby',
   },
   description:
-    'Profesjonalna szkoła jazdy w Bydgoszczy ➤ Doświadczeni instruktorzy ➤ Nowoczesne samochody ✓ Zapisz się na kurs prawa jazdy już dziś! Elastyczne terminy, konkurencyjne ceny.',
+    'Profesjonalne centrum stomatologiczne SONAMED w Kościerzynie ➤ Doświadczeni stomatolodzy ➤ Nowoczesne technologie ✓ Licówki, implanty, ortodoncja ✓ Umów wizytę już dziś!',
   keywords:
-    'szkoła jazdy, szkoła jazdy bydgoszcz, prawo jazdy, prawo jazdy bydgoszcz, kurs prawa jazdy, kurs prawa jazdy bydgoszcz,nauka jazdy, nauka jazdy bydgoszcz, kurs na prawo jazdy, instruktor bydgoszcz, egzamin prawo jazdy bydgoszcz, kategoria b bydgoszcz, ośrodek szkolenia kierowców bydgoszcz, osk bydgoszcz',
+    'stomatolog kościerzyna, dentysta kościerzyna, centrum stomatologiczne kościerzyna, licówki kościerzyna, implanty kościerzyna, ortodoncja kościerzyna, wybielanie zębów kościerzyna, stomatolog kaszuby, dentysta kaszuby, sonamed, gabinet stomatologiczny kościerzyna, leczenie zębów kościerzyna, protetyka kościerzyna',
   alternates: {
     canonical: 'https://www.sonamed.pl',
     languages: {
@@ -34,22 +40,23 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'Szkoła Jazdy sonamed',
+    title: 'SONAMED Stomatologia',
   },
   openGraph: {
     type: 'website',
     locale: 'pl_PL',
     url: 'https://www.sonamed.pl',
-    siteName: 'Szkoła Jazdy sonamed Bydgoszcz',
-    title: 'Szkoła Jazdy sonamed Bydgoszcz - Prawo Jazdy Kategorii B',
+    siteName: 'SONAMED - Centrum Stomatologiczne Kościerzyna',
+    title:
+      'SONAMED - Profesjonalna Stomatologia w Kościerzynie | Dentysta Kaszuby',
     description:
-      'Profesjonalna szkoła jazdy w Bydgoszczy ➤ 95% zdawalność ➤ Doświadczeni instruktorzy ➤ Nowoczesne samochody ✓ Zapisz się na kurs prawa jazdy już dziś!',
+      'Profesjonalne centrum stomatologiczne SONAMED w Kościerzynie ➤ Doświadczeni stomatolodzy ➤ Licówki, implanty, ortodoncja ➤ Nowoczesne technologie ✓ Umów wizytę już dziś!',
     images: [
       {
-        url: 'https://www.sonamed.pl/images/instructors/photo-1.jpg',
+        url: 'https://www.sonamed.pl/logo/logo.png',
         width: 1200,
         height: 630,
-        alt: 'Szkoła Jazdy sonamed Bydgoszcz',
+        alt: 'SONAMED - Centrum Stomatologiczne Kościerzyna',
       },
     ],
   },
@@ -75,12 +82,12 @@ export const metadata: Metadata = {
     address: true,
     email: true,
   },
-  category: 'driving school',
+  category: 'dental clinic',
   other: {
-    'geo.position': '53.1133239;18.0069507',
-    'geo.placename': 'Bydgoszcz',
-    'geo.region': 'PL-KP',
-    ICBM: '53.1133239, 18.0069507',
+    'geo.position': '54.1164407;17.9549671',
+    'geo.placename': 'Kościerzyna',
+    'geo.region': 'PL-PM',
+    ICBM: '54.1164407, 17.9549671',
   },
 };
 
@@ -97,30 +104,31 @@ export default function RootLayout({ children }: Props) {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'DrivingSchool',
-              name: 'Szkoła Jazdy sonamed',
-              image: 'https://www.sonamed.pl/logo/logo-white.png',
+              '@type': 'Dentist',
+              name: 'SONAMED - Centrum Stomatologiczne',
+              image: 'https://www.sonamed.pl/logo/logo.png',
               '@id': 'https://www.sonamed.pl',
               url: 'https://www.sonamed.pl',
-              telephone: '+48600354556',
+              telephone: '+48501054824',
+              email: 'sonamed.biuro@gmail.com',
               address: {
                 '@type': 'PostalAddress',
-                streetAddress: 'ul. Ujejskiego 46a',
-                addressLocality: 'Bydgoszcz',
-                postalCode: '85-168',
+                streetAddress: 'Kalinowa 28',
+                addressLocality: 'Kościerzyna',
+                postalCode: '83-400',
                 addressCountry: 'PL',
               },
               geo: {
                 '@type': 'GeoCoordinates',
-                latitude: 53.1133239,
-                longitude: 18.0069507,
+                latitude: 54.1164407,
+                longitude: 17.9549671,
               },
               aggregateRating: {
                 '@type': 'AggregateRating',
                 ratingValue: '4.9',
                 bestRating: '5',
                 worstRating: '1',
-                ratingCount: '156',
+                ratingCount: '85',
               },
               openingHoursSpecification: [
                 {
@@ -132,14 +140,16 @@ export default function RootLayout({ children }: Props) {
                     'Thursday',
                     'Friday',
                   ],
-                  opens: '09:00',
-                  closes: '17:00',
+                  opens: '08:00',
+                  closes: '16:00',
                 },
               ],
+              medicalSpecialty: 'Dentistry',
+              priceRange: '$$$',
               sameAs: [
-                'https://www.facebook.com/sonamed/',
-                'https://www.instagram.com/sonamedlangerrobert/',
-                'https://www.google.pl/maps/place/Szkoła+Jazdy+sonamed/@53.1133239,18.0069507,15z',
+                'https://www.facebook.com/sonia.gabinet',
+                'https://www.instagram.com/stomatolog.kaszuby/',
+                'https://www.google.pl/maps/place/PRYWATNY+GABINET+STOMATOLOGICZNY+Sonia+Sugier-Karpi%C5%84ska/@54.116372,17.9544402,19z',
               ],
             }),
           }}
@@ -150,7 +160,7 @@ export default function RootLayout({ children }: Props) {
         />
       </head>
       <body
-        className={`${inter.className} bg-white dark:bg-gray-900 flex flex-col min-h-screen`}
+        className={`${poppins.className} ${poppins.variable} bg-white dark:bg-gray-900 flex flex-col min-h-screen`}
       >
         <Navbar />
         <main

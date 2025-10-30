@@ -1,13 +1,35 @@
-Problematyczne elementy:
-Używa placeholderów dla zdjęć (/api/placeholder/)
-Niektóre komponenty 3D mogą być zbyt obciążające
-Brak optymalizacji dla obrazów (brakuje parametru sizes w niektórych miejscach)
-Potencjalne usprawnienia:
-Dodanie prawdziwych zdjęć zamiast placeholderów
-Optymalizacja ładowania wideo
-Dodanie lazy loadingu dla sekcji poniżej pierwszego ekranu
-Optymalizacja animacji dla urządzeń mobilnych
-SEO i dostępność:
-Brak meta tagów
-Brak alternatywnych tekstów dla niektórych obrazów
-Brak odpowiednich nagłówków w hierarchii
+Ten cały projekt i wszystkie pliki to strona dla szkoły jazdy. Natomiast teraz tworzę kompletnie nową stronę dla centrum stomatologicznego. Pod kątem programistycznym możesz kożystać z tego projektu w celu edycji i dostosowaia dla centrum stomatologicznego. 
+
+W folderze /apps/sonamed/src/constants masz w plikach: [colors.ts, constants.ts, page1.ts] masz wszystkie dane i inforamcje odnośnie tej kliniki stomatologicznej i medycyny estetycznej.
+
+Twoje aktuanle zadanie przeanalizowanie danych wejściowych: [
+    "STARA STRONA szkoły jazdy": /apps/sonamed/src/app/page.tsx
+    "NOWE DANE ODNOŚNIE KLINIKI": /apps/sonamed/src/constants/page1.ts
+    "NOWE KOLORY": /apps/sonamed/src/constants/colors.ts
+    "NOWE IKONY": /apps/sonamed/public/icons
+
+] 
+
+Na samym początku przeanalizuj wszystkie materiały które Ci przesłałem, a później dami Ci zadanie do wykonania.
+
+Inne dodatkowe materiały.
+W folderze /apps/sonamed/public/icons  masz dostępne icony zębów z którch możesz kożystać oraz również możesz kożystać z paczek "react-icons/hi" i "react-icons/fa" do ikon.
+
+
+-------------
+
+Przekształcić całą stronę o-nas/page.tsx oraz Dostosować kolory i zawartość
+
+------------
+
+Napraw to:
+Tekst zlewa się z tłem, bo wszystko jest jasne
+tam, nie widać w ogóle borderów dla komponentów, wszystko się zlewa
+
+Pod kątem UX chciałbym mieć taki efekt WOW!!! żebym klient wiedział za co ma płaci 30 tys zł.  Po prostu chcę mieć efekt WOW na stronie, możesz stosować animacje, te ikony zębów, przy scroll też jakieś efekty 
+
+---------------
+Przekształcić całą stronę kontakt/page.tsx oraz Dostosować kolory i zawartość
+
+Bardzo stylistycznie podabała mi się strona /oferta/page więc możesz się też nią inspirować odnośnie styli
+
