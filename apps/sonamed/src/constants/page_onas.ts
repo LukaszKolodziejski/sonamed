@@ -33,7 +33,7 @@ export const PAGE_ONAS_DATA = {
   doctorsSection: {
     title: 'Dowiedz się więcej o lekarzach którzy dbają o Twój uśmiech',
     content:
-      'Dobrze wiemy, że piękny uśmiech to klucz do sukcesu, zarówno w życiu zawodowym, jak i osobistym. Dodaje nam pewności siebie i ułatwia nawiązywanie relacji, ale także oznacza zdrowie. Chcemy pomóc Ci odzyskać radość uśmiechu, ponieważ doskonale rozumiemy, że zły stan uzębienia jest częstym powodem zakłopotania i wielu kompleksów.',
+      'Dobrze wiemy, że piękny uśmiech to klucz do sukcesu, zarówno w życiu zawodowym, jak i osobistym. Dodaje nam pewności siebie i ułatwia nawiązywanie relacji, ale także oznacza zdrowie. Chcemy pomóc Ci odzyskać radość uśmiechu.',
   },
 
   // Co nas wyróżnia
@@ -105,14 +105,14 @@ export const PAGE_ONAS_DATA = {
     membership: {
       title: 'Profesjonalizm',
       description:
-        'Nasz zespół składa się z doświadczonych lekarzy stomatologów, którzy stale podnoszą swoje kwalifikacje i uczestniczą w szkoleniach',
+        'Nasz zespół składa się z doświadczonych lekarzy i stomatologów, którzy stale podnoszą swoje kwalifikacje i uczestniczą w szkoleniach',
     },
     team: {
       title: 'Nasz zespół',
       owner: 'lek. dent. Sonia Sugier-Karpińska',
       management: 'lek. Nina Karpińska',
       description:
-        'Doświadczony zespół lekarzy stomatologów zapewnia najwyższą jakość świadczonych usług',
+        'Doświadczony zespół lekarzy i stomatologów zapewnia najwyższą jakość świadczonych usług',
     },
   },
 
@@ -131,19 +131,21 @@ export const PAGE_ONAS_DATA = {
   // Informacje kontaktowe
   contact: {
     phone: '+48501054824',
-    email: 'sonamed.centrum@gmail.com',
+    emailPrimary: 'sonia_sugier_karpinska@wp.pl', // Główny email do rejestracji wizyt
+    emailSecondary: 'sonamed.centrum@gmail.com', // Dodatkowy email
+    email: 'sonia_sugier_karpinska@wp.pl', // Domyślny (dla kompatybilności)
     website: 'Sonamed.pl',
   },
 
   // Media społecznościowe
   socialMedia: {
     instagram: {
-      url: 'https://www.instagram.com/stomatolog.kaszuby/',
-      handle: '@stomatolog.kaszuby',
+      url: 'https://www.instagram.com/stomatolog.sonamed/',
+      handle: '@stomatolog.sonamed',
     },
     facebook: {
-      url: 'https://www.facebook.com/sonia.gabinet',
-      name: 'sonia.gabinet',
+      url: 'https://www.facebook.com/share/17cSdRM6FN/',
+      name: 'share/17cSdRM6FN',
     },
   },
 

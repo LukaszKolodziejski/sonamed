@@ -110,7 +110,7 @@ export default function RootLayout({ children }: Props) {
               '@id': 'https://www.sonamed.pl',
               url: 'https://www.sonamed.pl',
               telephone: '+48501054824',
-              email: 'sonamed.centrum@gmail.com',
+              email: 'sonia_sugier_karpinska@wp.pl',
               address: {
                 '@type': 'PostalAddress',
                 streetAddress: 'Kalinowa 28',
@@ -147,8 +147,8 @@ export default function RootLayout({ children }: Props) {
               medicalSpecialty: 'Dentistry',
               priceRange: '$$$',
               sameAs: [
-                'https://www.facebook.com/sonia.gabinet',
-                'https://www.instagram.com/stomatolog.kaszuby/',
+                'https://www.facebook.com/share/17cSdRM6FN/',
+                'https://www.instagram.com/stomatolog.sonamed/',
                 'https://www.google.pl/maps/place/PRYWATNY+GABINET+STOMATOLOGICZNY+Sonia+Sugier-Karpi%C5%84ska/@54.116372,17.9544402,19z',
               ],
             }),

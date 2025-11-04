@@ -87,7 +87,7 @@ export default function CTASection() {
                   ))}
                 </ul>
                 <Link
-                  href="/kontakt"
+                  href="/umow-wizyte"
                   className="inline-flex items-center px-8 py-4 rounded-full text-white font-medium text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105"
                   style={{
                     background: `linear-gradient(90deg, ${colors.brand.accent}, ${colors.brand.primary})`,

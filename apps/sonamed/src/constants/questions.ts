@@ -33,23 +33,23 @@ export const FAQ_DATA: Question[] = [
   },
   {
     id: 'implantologia',
-    question: 'Co to jest implantologia stomatologiczna?',
+    question: 'Czy wykonujecie zabiegi implantologiczne?',
     answer:
-      'Implantologia to nowoczesna dziedzina stomatologii zajmująca się wszczepianiem implantów zębowych. Implanty to tytanowe śruby wszczepiane w kość szczęki lub żuchwy, które zastępują korzeń utraconego zęba. Na implancie mocowana jest korona protetyczna, most lub proteza. Implanty zapewniają trwałe, stabilne i estetyczne rozwiązanie dla osób z brakującymi zębami, pozwalając na normalny żucie i mówienie.',
+      'W naszym gabinecie nie wykonujemy zabiegów implantologicznych. W przypadkach wymagających wszczepienia implantów zębowych kierujemy pacjentów do zaufanych specjalistów implantologów, z którymi współpracujemy. Implantologia to wysoce specjalistyczna dziedzina zajmująca się wszczepianiem implantów zębowych, które zastępują korzeń utraconego zęba. Chętnie pomożemy w wyborze odpowiedniego specjalisty i koordynacji leczenia.',
     category: 'usługi',
   },
   {
     id: 'chirurgia-stomatologiczna',
-    question: 'Na czym polega chirurgia stomatologiczna?',
+    question: 'Jakie zabiegi chirurgiczne wykonujecie?',
     answer:
-      'Chirurgia stomatologiczna obejmuje wszystkie zabiegi operacyjne w obrębie jamy ustnej. Należą do nich: usuwanie zębów (ekstrakcje), usuwanie zębów zatrzymanych (np. zębów mądrości), resekcje wierzchołków korzeni, usuwanie torbieli i guzków, zabiegi implantologiczne, plastyka wędzidełek oraz zabiegi regeneracyjne kości i dziąseł. Większość zabiegów wykonuje się w znieczuleniu miejscowym.',
+      'W naszym gabinecie wykonujemy podstawowe zabiegi chirurgii stomatologicznej, takie jak usuwanie zębów (ekstrakcje). W przypadkach wymagających bardziej zaawansowanych zabiegów chirurgicznych, takich jak usuwanie zębów zatrzymanych (zębów mądrości), resekcje wierzchołków korzeni, usuwanie torbieli, plastyka wędzidełek czy zabiegi regeneracyjne, kierujemy pacjentów do zaufanych specjalistów chirurgów stomatologicznych, z którymi współpracujemy.',
     category: 'usługi',
   },
   {
     id: 'ortodoncja',
-    question: 'Czym jest ortodoncja i wady zgryzu?',
+    question: 'Czy oferujecie leczenie ortodontyczne?',
     answer:
-      'Ortodoncja zajmuje się diagnozowaniem, zapobieganiem i leczeniem nieprawidłowości w ustawieniu zębów oraz wad zgryzu. Leczenie ortodontyczne przeprowadza się za pomocą różnych aparatów: stałych (zamocowanych na zębach), ruchomych, przezroczystych nakładek czy aparatów lingwalnych. Celem jest poprawa funkcji żucia, estetyki uśmiechu oraz profilaktyka problemów ze stawem skroniowo-żuchwowym. Leczenie ortodontyczne jest możliwe w każdym wieku.',
+      'W naszym gabinecie nie prowadzimy leczenia ortodontycznego. W przypadkach wymagających korekcji wad zgryzu lub nieprawidłowości w ustawieniu zębów kierujemy pacjentów do zaufanych ortodontów, z którymi współpracujemy. Ortodoncja to specjalistyczna dziedzina stomatologii zajmująca się leczeniem za pomocą różnych aparatów (stałych, ruchomych, przezroczystych nakładek). Chętnie pomożemy w wyborze odpowiedniego specjalisty i koordynacji leczenia.',
     category: 'usługi',
   },
   {
@@ -81,10 +81,10 @@ export const FAQ_DATA: Question[] = [
     category: 'usługi',
   },
   {
-    id: 'diagnostyka-obrazowa',
-    question: 'Na czym polega diagnostyka obrazowa w stomatologii?',
+    id: 'diagnostyka-rtg',
+    question: 'Jaką diagnostykę obrazową oferujecie?',
     answer:
-      'Diagnostyka obrazowa w stomatologii wykorzystuje różne techniki obrazowania do oceny stanu zębów, kości szczęk i tkanek jamy ustnej. Obejmuje zdjęcia pantomograficzne (panoramiczne), zdjęcia wewnątrzustne, tomografię komputerową (CBCT) oraz cyfrową radiografię. Te badania są niezbędne do dokładnej diagnozy, planowania leczenia, monitorowania postępów terapii oraz wykrywania patologii niedostrzegalnych podczas standardowego badania klinicznego.',
+      'W naszym gabinecie oferujemy diagnostykę RTG, w tym zdjęcia pantomograficzne (panoramiczne) oraz zdjęcia wewnątrzustne. Te badania są niezbędne do dokładnej diagnozy, planowania leczenia i monitorowania postępów terapii. Dzięki diagnostyce RTG możemy wykryć problemy niedostrzegalne podczas standardowego badania klinicznego, takie jak ukryta próchnica, stany zapalne czy zmiany w kości.',
     category: 'usługi',
   },
   {
@@ -129,13 +129,6 @@ export const FAQ_DATA: Question[] = [
     question: 'Czy wybielanie zębów jest bezpieczne?',
     answer:
       'Profesjonalne wybielanie zębów przeprowadzane pod nadzorem dentysty jest bezpieczne i skuteczne. Przed zabiegiem przeprowadzamy dokładne badanie i dobieramy odpowiednią metodę wybielania. Stosujemy sprawdzone preparaty i techniki, które minimalizują ryzyko nadwrażliwości. Nie zalecamy samodzielnego wybielania bez konsultacji ze specjalistą, ponieważ może to prowadzić do uszkodzenia szkliwa zębowego.',
-    category: 'leczenie',
-  },
-  {
-    id: 'jak-dbać-o-implanty',
-    question: 'Jak dbać o implanty zębowe?',
-    answer:
-      'Implanty wymagają takiej samej higieny jak naturalne zęby, a nawet bardziej starannej. Należy szczotkować je specjalnymi szczoteczkami co najmniej dwa razy dziennie, używać nici dentystycznej lub irygatorów, unikać twardych pokarmów mogących uszkodzić koronę. Bardzo ważne są regularne wizyty kontrolne co 6 miesięcy. Przy odpowiedniej pielęgnacji implanty mogą służyć przez całe życie.',
     category: 'leczenie',
   },
   {

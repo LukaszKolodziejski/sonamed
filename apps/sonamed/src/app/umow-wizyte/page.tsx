@@ -1006,7 +1006,7 @@ export default function UmowWizytePage() {
               </motion.a>
 
               <motion.a
-                href={`mailto:${businessConstants.contact.email}`}
+                href={`mailto:${businessConstants.contact.emailPrimary}`}
                 className="group inline-flex items-center px-8 py-4 rounded-full border-4 font-bold text-lg transition-all duration-300 relative overflow-hidden"
                 style={{
                   borderColor: colors.brand.primary,

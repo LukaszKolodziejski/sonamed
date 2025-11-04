@@ -6,7 +6,7 @@ export const privacyPolicyData = {
       id: 1,
       title: 'Postanowienia ogólne',
       content:
-        'Niniejsza Polityka Prywatności określa zasady przetwarzania danych osobowych przez **SONAMED SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ**, z siedzibą przy Kalinowa 28, 83-400 Kościerzyna (dalej jako **SONAMED**). Administratorem danych osobowych jest **SONAMED**. Kontakt: E-mail: sonamed.centrum@gmail.com , telefon: +48501054824. Adres korespondencyjny: Kalinowa 28, 83-400 Kościerzyna.',
+        'Niniejsza Polityka Prywatności określa zasady przetwarzania danych osobowych przez **SONAMED SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ**, z siedzibą przy Kalinowa 28, 83-400 Kościerzyna (dalej jako **SONAMED**). Administratorem danych osobowych jest **SONAMED**. Kontakt: E-mail: sonia_sugier_karpinska@wp.pl (rejestracja wizyt) lub sonamed.centrum@gmail.com, telefon: +48501054824. Adres korespondencyjny: Kalinowa 28, 83-400 Kościerzyna.',
     },
     {
       id: 2,
@@ -43,7 +43,7 @@ export const privacyPolicyData = {
             'wyznaczona przez Administratora osoba, z którą można się kontaktować we wszystkich sprawach dotyczących przetwarzania danych osobowych oraz korzystania z praw związanych z przetwarzaniem danych.',
           contact: [
             'listownie na adres Administratora z dopiskiem IOD',
-            'przez e-mail: sonamed.centrum@gmail.com',
+            'przez e-mail: sonia_sugier_karpinska@wp.pl (rejestracja wizyt) lub sonamed.centrum@gmail.com',
           ],
         },
       ],
@@ -135,7 +135,7 @@ export const privacyPolicyData = {
       id: 10,
       title: 'Przetwarzanie danych w celach',
       content:
-        'Dane Pacjentów mogą być wykorzystywane do wysyłania informacji handlowych i marketingowych (newsletter), wyłącznie na podstawie wyrażonej dobrowolnej zgody. Pacjent ma prawo w każdej chwili wycofać zgodę na przetwarzanie danych w celach marketingowych. W tym celu należy przesłać wiadomość e-mail na adres: sonamed.centrum@gmail.com wskazując zakres danych żądanych do usunięcia.',
+        'Dane Pacjentów mogą być wykorzystywane do wysyłania informacji handlowych i marketingowych (newsletter), wyłącznie na podstawie wyrażonej dobrowolnej zgody. Pacjent ma prawo w każdej chwili wycofać zgodę na przetwarzanie danych w celach marketingowych. W tym celu należy przesłać wiadomość e-mail na adres: sonia_sugier_karpinska@wp.pl lub sonamed.centrum@gmail.com wskazując zakres danych żądanych do usunięcia.',
     },
     {
       id: 11,
@@ -153,7 +153,7 @@ export const privacyPolicyData = {
       id: 13,
       title: 'Kontakt',
       content:
-        'W przypadku pytań lub wniosków dotyczących przetwarzania danych osobowych prosimy o kontakt: E-mail: sonamed.centrum@gmail.com , Adres korespondencyjny: Kalinowa 28, 83-400 Kościerzyna.',
+        'W przypadku pytań lub wniosków dotyczących przetwarzania danych osobowych prosimy o kontakt: E-mail: sonia_sugier_karpinska@wp.pl (rejestracja wizyt) lub sonamed.centrum@gmail.com, Adres korespondencyjny: Kalinowa 28, 83-400 Kościerzyna.',
     },
   ],
 
@@ -166,7 +166,9 @@ export const privacyPolicyData = {
       city: 'Kościerzyna',
     },
     contact: {
-      email: 'sonamed.centrum@gmail.com',
+      emailPrimary: 'sonia_sugier_karpinska@wp.pl', // Główny email do rejestracji wizyt
+      emailSecondary: 'sonamed.centrum@gmail.com', // Dodatkowy email
+      email: 'sonia_sugier_karpinska@wp.pl', // Domyślny (dla kompatybilności)
       phone: '+48501054824',
     },
     registrationData: {
@@ -184,7 +186,9 @@ export const privacyPolicyData = {
     policies: ['POLITYKA PRYWATNOŚCI', 'POLITYKA COOKIES'],
     contact: {
       phone: '+48501054824',
-      email: 'sonamed.centrum@gmail.com',
+      emailPrimary: 'sonia_sugier_karpinska@wp.pl', // Główny email do rejestracji wizyt
+      emailSecondary: 'sonamed.centrum@gmail.com', // Dodatkowy email
+      email: 'sonia_sugier_karpinska@wp.pl', // Domyślny (dla kompatybilności)
       address: {
         street: 'Kalinowa 28',
         postalCode: '83-400',

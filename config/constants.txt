@@ -8,9 +8,10 @@ KRS = 0001194341
 NIP = 5911727761
 REGON = 542733830
 
-INSTAGRAM = https://www.instagram.com/stomatolog.kaszuby/
-FACEBOOK = https://www.facebook.com/sonia.gabinet
-EMAIL = sonamed.centrum@gmail.com
+INSTAGRAM = https://www.instagram.com/stomatolog.sonamed/
+FACEBOOK = https://www.facebook.com/share/17cSdRM6FN/
+EMAIL_PRIMARY = sonia_sugier_karpinska@wp.pl (Główny email do rejestracji wizyt)
+EMAIL_SECONDARY = sonamed.centrum@gmail.com (Dodatkowy email)
 
 OWNER = lek. dent. Sonia Sugier-Karpińska
 MANAGEMENT = lek. Nina Karpińska

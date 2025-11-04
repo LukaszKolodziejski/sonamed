@@ -9,16 +9,16 @@ import { colors } from '@/constants/colors';
 const zespolStomatologiczny = [
   {
     name: PAGE_ONAS_DATA.additionalSections.team.owner,
-    role: 'Właścicielka / Główny Lekarz Dentysta',
+    role: 'Właścicielka / Lekarz Dentysta',
     experience: '15+ lat doświadczenia',
     specialization: 'Stomatologia Ogólna, Medycyna Estetyczna',
     image: '/images/sonia/photo-10.jpeg',
   },
   {
     name: PAGE_ONAS_DATA.additionalSections.team.management,
-    role: 'Lekarz / Menadżer / Medycyna estetyczna',
+    role: 'Lekarz / Menadżer',
     experience: 'Menadżer gabinetu',
-    specialization: 'Medycyna estetyczna',
+    specialization: 'Konsultacje lekarskie ogólne, Medycyna stylu życia',
     image: '/images/nina/photo-7.jpeg',
   },
   {

@@ -25,6 +25,7 @@ module.exports = {
         primary: 'var(--primary)',
         secondary: 'var(--secondary)',
         accent: 'var(--accent)',
+        beige: '#C2B280',
       },
       keyframes: {
         shine: {

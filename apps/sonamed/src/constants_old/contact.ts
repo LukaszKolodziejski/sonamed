@@ -1,13 +1,13 @@
 export const CONTACT = {
-  PHONE: '600 354 556',
-  PHONE_RAW: '600354556',
-  PHONE_2: '668 302 352',
-  PHONE_2_RAW: '668302352',
-  EMAIL: 'langer.biuro@poczta.fm',
-  ADDRESS: 'Bydgoszcz, ul. K. Ujejskiego 46a – Pawilon',
-  BANK_ACCOUNT: 'ING 84 1050 1139 1000 0090 8455 3669',
+  PHONE: '+48501054824',
+  PHONE_RAW: '+48501054824',
+  PHONE_2: '+48501054824',
+  PHONE_2_RAW: '+48501054824',
+  EMAIL: 'sonia_sugier_karpinska@wp.pl', // Główny email do rejestracji wizyt
+  EMAIL_SECONDARY: 'sonamed.centrum@gmail.com', // Dodatkowy email
+  ADDRESS: 'Kalinowa 28, 83-400 Kościerzyna',
   SOCIAL_MEDIA: {
-    FACEBOOK: 'https://facebook.com/sonamed',
-    INSTAGRAM: 'https://instagram.com/sonamed',
+    FACEBOOK: 'https://www.facebook.com/share/17cSdRM6FN/',
+    INSTAGRAM: 'https://www.instagram.com/stomatolog.sonamed/',
   },
 } as const;

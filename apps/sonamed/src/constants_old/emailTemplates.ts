@@ -134,7 +134,7 @@ a.buttonLukkoli {
       
       <div class="container">
       <p style="text-align: center; font-size: 14px;">
-        <b>Kontakt:</b> <a href="mailto:langer.biuro@poczta.fm">langer.biuro@poczta.fm</a>
+        <b>Kontakt:</b> <a href="mailto:sonia_sugier_karpinska@wp.pl">sonia_sugier_karpinska@wp.pl</a> (Rejestracja wizyt) | <a href="mailto:sonamed.centrum@gmail.com">sonamed.centrum@gmail.com</a>
       </p>
         <p class="expire" style="text-align: center;"><b><u>Rezerwacja: ${month}</u></b></p>
       </div>

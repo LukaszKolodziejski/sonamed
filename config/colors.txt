@@ -1,6 +1,7 @@
 #7aa59d – zielono-szary
 #3e8392 – morski niebiesko-zielony
 #a4c7c9 – jasny morski
+#c2b280 – beżowy (ciepły kolor akcentowy dla Header)
 #fdfffe – prawie biały (minimalnie zielonkawy)
 #fffffd – prawie biały (lekko kremowy)
 #ffffff – biały

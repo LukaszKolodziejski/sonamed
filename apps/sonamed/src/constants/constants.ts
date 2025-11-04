@@ -2,7 +2,9 @@ export const businessConstants = {
   // Dane kontaktowe
   contact: {
     phone: '+48501054824',
-    email: 'sonamed.centrum@gmail.com',
+    emailPrimary: 'sonia_sugier_karpinska@wp.pl', // Główny email do rejestracji wizyt
+    emailSecondary: 'sonamed.centrum@gmail.com', // Dodatkowy email
+    email: 'sonia_sugier_karpinska@wp.pl', // Domyślny (dla kompatybilności)
     address: {
       full: 'Kalinowa 28, 83-400 Kościerzyna',
       street: 'Kalinowa 28',
@@ -25,12 +27,12 @@ export const businessConstants = {
   // Media społecznościowe
   socialMedia: {
     instagram: {
-      url: 'https://www.instagram.com/stomatolog.kaszuby/',
-      handle: '@stomatolog.kaszuby',
+      url: 'https://www.instagram.com/stomatolog.sonamed/',
+      handle: '@stomatolog.sonamed',
     },
     facebook: {
-      url: 'https://www.facebook.com/sonia.gabinet',
-      name: 'sonia.gabinet',
+      url: 'https://www.facebook.com/share/17cSdRM6FN/',
+      name: 'share/17cSdRM6FN',
     },
   },
 

@@ -115,7 +115,7 @@ export default function HeroSection({
               transition={{ delay: 1, duration: 0.8 }}
             >
               <Link
-                href="/kontakt"
+                href="/umow-wizyte"
                 className="w-full sm:w-auto group relative overflow-hidden rounded-2xl px-8 md:px-10 py-4 md:py-5 text-base md:text-lg font-bold text-white shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-2 border border-white/10"
                 style={{
                   background: `linear-gradient(135deg, ${colors.brand.dark}, ${colors.brand.dark}f2)`,

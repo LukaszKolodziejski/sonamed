@@ -133,9 +133,9 @@ export default function TechnologySection() {
                   bgColor: 'rgba(59, 130, 246, 0.1)',
                 },
                 {
-                  title: 'Diagnostyka cyfrowa',
+                  title: 'Diagnostyka RTG',
                   description:
-                    'Zaawansowane skanowanie wewnątrzustne i projektowanie cyfrowe uśmiechu DSD',
+                    'Precyzyjne zdjęcia pantomograficzne RTG do dokładnej diagnostyki uzębienia',
                   icon: FaTooth,
                   gradient: 'from-emerald-500 to-emerald-700',
                   bgColor: 'rgba(16, 185, 129, 0.1)',

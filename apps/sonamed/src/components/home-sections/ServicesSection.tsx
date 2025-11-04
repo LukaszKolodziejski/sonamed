@@ -167,9 +167,9 @@ export default function ServicesSection() {
             },
             {
               icon: <HiOutlineHeart className="w-8 h-8" />,
-              title: 'Implantoprotetyka',
+              title: 'Protetyka stomatologiczna',
               description:
-                'Implanty i protezy - przywróć pełny uśmiech nawet w jeden dzień',
+                'Kompleksowe odbudowy i protezy - przywróć piękny i funkcjonalny uśmiech',
               color: colors.brand.accent,
             },
           ].map((feature, index) => (

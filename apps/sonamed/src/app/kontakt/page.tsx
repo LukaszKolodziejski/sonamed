@@ -634,7 +634,34 @@ export default function KontaktPage() {
                   </a>
 
                   <a
-                    href={`mailto:${businessConstants.contact.email}`}
+                    href={`mailto:${businessConstants.contact.emailPrimary}`}
+                    className="flex items-center text-gray-600 hover:text-gray-800 transition-colors group/email"
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 10 }}
+                      className="mr-3 p-2 rounded-lg"
+                      style={{ backgroundColor: `${colors.brand.primary}20` }}
+                    >
+                      <HiOutlineMail
+                        className="text-xl"
+                        style={{ color: colors.brand.primary }}
+                      />
+                    </motion.div>
+                    <div>
+                      <p className="text-sm text-gray-500">
+                        Email (Rejestracja wizyt)
+                      </p>
+                      <p
+                        className="font-bold text-lg"
+                        style={{ color: colors.brand.primary }}
+                      >
+                        {businessConstants.contact.emailPrimary}
+                      </p>
+                    </div>
+                  </a>
+
+                  <a
+                    href={`mailto:${businessConstants.contact.emailSecondary}`}
                     className="flex items-center text-gray-600 hover:text-gray-800 transition-colors group/email"
                   >
                     <motion.div
@@ -649,11 +676,8 @@ export default function KontaktPage() {
                     </motion.div>
                     <div>
                       <p className="text-sm text-gray-500">Email</p>
-                      <p
-                        className="font-bold text-lg"
-                        style={{ color: colors.brand.primary }}
-                      >
-                        {businessConstants.contact.email}
+                      <p className="font-medium text-base text-gray-600">
+                        {businessConstants.contact.emailSecondary}
                       </p>
                     </div>
                   </a>
@@ -924,7 +948,7 @@ export default function KontaktPage() {
                 whileTap={{ scale: 0.95 }}
               >
                 <a
-                  href={`mailto:${businessConstants.contact.email}`}
+                  href={`mailto:${businessConstants.contact.emailPrimary}`}
                   className="group inline-flex items-center px-12 py-6 rounded-full border-4 font-bold text-xl transition-all duration-300 relative overflow-hidden"
                   style={{
                     borderColor: colors.brand.primary,

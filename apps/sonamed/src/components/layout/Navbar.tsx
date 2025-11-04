@@ -57,7 +57,7 @@ export default function Navbar() {
         height: scrolled ? '5rem' : '6rem',
       }}
       transition={{ duration: 0.3 }}
-      className={`fixed w-full z-50 transition-all duration-300 pt-5 bg-gray-900 shadow-lg`}
+      className={`fixed w-full z-50 transition-all duration-300 pt-5 bg-beige shadow-lg`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-full">
@@ -73,7 +73,7 @@ export default function Navbar() {
               aria-label="Strona główna"
             >
               <Image
-                src="/logo/logo.png"
+                src="/logo/Logo1.png"
                 alt="sonamed Logo"
                 width={scrolled ? 55 : 70}
                 height={scrolled ? 55 : 70}
@@ -97,8 +97,8 @@ export default function Navbar() {
                   href={item.href}
                   className={`px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                     isActivePath(item.href)
-                      ? 'text-white bg-gradient-to-r from-[#3C8C7D] to-[#72C7C2]'
-                      : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
+                      ? 'text-white bg-gradient-to-r from-[#3C8C7D] to-[#72C7C2] shadow-md'
+                      : 'text-gray-800 hover:text-white hover:bg-[#3C8C7D]/80'
                   }`}
                 >
                   {item.name}
@@ -111,7 +111,7 @@ export default function Navbar() {
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 mr-4 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 z-50"
+            className="lg:hidden p-2 mr-4 rounded-lg text-gray-800 hover:text-white hover:bg-[#3C8C7D] z-50"
           >
             <span className="sr-only">Menu</span>
             <svg
@@ -154,7 +154,7 @@ export default function Navbar() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed top-0 right-0 w-[300px] h-full bg-gray-900 shadow-xl z-50"
+              className="fixed top-0 right-0 w-[300px] h-full bg-beige shadow-xl z-50"
             >
               <div className="px-4 pt-20 pb-6 space-y-1">
                 {navigation.map((item) => (
@@ -168,8 +168,8 @@ export default function Navbar() {
                       href={item.href}
                       className={`block px-4 py-3 rounded-xl text-base font-medium ${
                         isActivePath(item.href)
-                          ? 'text-white bg-gradient-to-r from-[#3C8C7D] to-[#72C7C2]'
-                          : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
+                          ? 'text-white bg-gradient-to-r from-[#3C8C7D] to-[#72C7C2] shadow-md'
+                          : 'text-gray-800 hover:text-white hover:bg-[#3C8C7D]/80'
                       }`}
                       onClick={() => setIsMenuOpen(false)}
                     >

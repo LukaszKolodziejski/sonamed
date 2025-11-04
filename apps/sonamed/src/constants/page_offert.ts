@@ -43,10 +43,10 @@ export const PAGE_OFFERT_DATA = {
       category: 'estetyka',
     },
     {
-      id: 'diagnostyka-obrazowa',
-      title: 'Diagnostyka obrazowa',
+      id: 'diagnostyka-rtg',
+      title: 'Diagnostyka RTG',
       description:
-        'W centrum stomatologicznym Sonamed oferujemy wykonanie zdjęć pantomograficznych oraz innych badań obrazowych',
+        'W centrum stomatologicznym Sonamed oferujemy wykonanie zdjęć pantomograficznych RTG',
       category: 'diagnostyka',
     },
     {
@@ -95,15 +95,8 @@ export const PAGE_OFFERT_DATA = {
       id: 'chirurgia-stomatologiczna',
       title: 'Chirurgia stomatologiczna',
       description:
-        'Nowoczesna i sprawdzona metoda wypełniania braków uzębienia - implantologia pozwala nam odbudowywać braki w uzębieniu.',
+        'Podstawowe zabiegi chirurgiczne. W przypadkach bardziej skomplikowanych kierujemy pacjentów do zaufanych specjalistów.',
       category: 'chirurgia',
-    },
-    {
-      id: 'ortodoncja',
-      title: 'Ortodoncja',
-      description:
-        'Jest dziedziną stomatologii, która zajmuje się leczeniem wad zgryzu.',
-      category: 'ortodoncja',
     },
     {
       id: 'stomatologia-estetyczna',
@@ -111,13 +104,6 @@ export const PAGE_OFFERT_DATA = {
       description:
         'Grupa zabiegów mających na celu polepszenie wyglądu uzębienia.',
       category: 'estetyka',
-    },
-    {
-      id: 'implantologia',
-      title: 'Implantologia',
-      description:
-        'Nowoczesna i sprawdzona metoda wypełniania braków uzębienia',
-      category: 'chirurgia',
     },
   ] as OfferService[],
 
@@ -135,14 +121,14 @@ export const PAGE_OFFERT_DATA = {
     membership: {
       title: 'Profesjonalizm',
       description:
-        'Nasz zespół składa się z doświadczonych lekarzy stomatologów, którzy stale podnoszą swoje kwalifikacje i uczestniczą w szkoleniach',
+        'Nasz zespół składa się z doświadczonych lekarzy i stomatologów, którzy stale podnoszą swoje kwalifikacje i uczestniczą w szkoleniach',
     },
     team: {
       title: 'Nasz zespół',
       owner: 'lek. dent. Sonia Sugier-Karpińska',
       management: 'lek. Nina Karpińska',
       description:
-        'Doświadczony zespół lekarzy stomatologów zapewnia najwyższą jakość świadczonych usług',
+        'Doświadczony zespół lekarzy i stomatologów zapewnia najwyższą jakość świadczonych usług',
     },
   },
 
@@ -161,19 +147,21 @@ export const PAGE_OFFERT_DATA = {
   // Informacje kontaktowe
   contact: {
     phone: '+48501054824',
-    email: 'sonamed.centrum@gmail.com',
+    emailPrimary: 'sonia_sugier_karpinska@wp.pl', // Główny email do rejestracji wizyt
+    emailSecondary: 'sonamed.centrum@gmail.com', // Dodatkowy email
+    email: 'sonia_sugier_karpinska@wp.pl', // Domyślny (dla kompatybilności)
     website: 'Sonamed.pl',
   },
 
   // Media społecznościowe
   socialMedia: {
     instagram: {
-      url: 'https://www.instagram.com/stomatolog.kaszuby/',
-      handle: '@stomatolog.kaszuby',
+      url: 'https://www.instagram.com/stomatolog.sonamed/',
+      handle: '@stomatolog.sonamed',
     },
     facebook: {
-      url: 'https://www.facebook.com/sonia.gabinet',
-      name: 'sonia.gabinet',
+      url: 'https://www.facebook.com/share/17cSdRM6FN/',
+      name: 'share/17cSdRM6FN',
     },
   },
 
@@ -213,7 +201,6 @@ export const PAGE_OFFERT_DATA = {
     estetyka: 'Estetyka',
     protetyka: 'Protetyka',
     chirurgia: 'Chirurgia',
-    ortodoncja: 'Ortodoncja',
     specjalistyczne: 'Specjalistyczne',
     diagnostyka: 'Diagnostyka',
   },

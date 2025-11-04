@@ -22,6 +22,7 @@ export const colors = {
     black: '#000000', // czarny
     almostWhiteGreenish: '#FDFFFE', // prawie biały (minimalnie zielonkawy)
     almostWhiteCreamy: '#FFFFFD', // prawie biały (lekko kremowy)
+    beige: '#C2B280', // beżowy - ciepły kolor akcentowy
   },
 
   // Jeden ciemny akcent

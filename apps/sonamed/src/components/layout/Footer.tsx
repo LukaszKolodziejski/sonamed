@@ -21,10 +21,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer
-      className="bg-white dark:bg-gray-900"
-      aria-labelledby="footer-heading"
-    >
+    <footer className="bg-beige" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         sonamed
       </h2>
@@ -39,7 +36,7 @@ export default function Footer() {
             >
               <span className="sr-only">logo</span>
               <Image
-                src="/logo/logo.png"
+                src="/logo/Logo1.png"
                 alt="logo"
                 width={120}
                 height={40}
@@ -47,7 +44,7 @@ export default function Footer() {
                 priority
               />
             </Link>
-            <p className="text-gray-500 dark:text-gray-400 text-base text-center sm:text-left">
+            <p className="text-gray-800 text-base text-center sm:text-left">
               {businessConstants.company.name}
               <br />
               {businessConstants.contact.address.street}
@@ -60,7 +57,7 @@ export default function Footer() {
           {/* Menu */}
           <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
             <div>
-              <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase text-center sm:text-left">
+              <h3 className="text-sm font-semibold text-gray-700 tracking-wider uppercase text-center sm:text-left">
                 Menu
               </h3>
               <ul role="list" className="mt-3 space-y-3 sm:mt-4">
@@ -68,7 +65,7 @@ export default function Footer() {
                   <li key={item.href} className="text-center sm:text-left">
                     <Link
                       href={item.href}
-                      className="text-base text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white inline-block"
+                      className="text-base text-gray-800 hover:text-[#3C8C7D] font-medium inline-block transition-colors"
                       aria-current={pathname === item.href ? 'page' : undefined}
                     >
                       {item.name}
@@ -80,7 +77,7 @@ export default function Footer() {
 
             {/* Kontakt */}
             <div className="mt-8 sm:mt-0">
-              <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase text-center sm:text-left">
+              <h3 className="text-sm font-semibold text-gray-700 tracking-wider uppercase text-center sm:text-left">
                 Kontakt
               </h3>
               <ul role="list" className="mt-3 space-y-4">
@@ -90,21 +87,36 @@ export default function Footer() {
                       /\s/g,
                       ''
                     )}`}
-                    className="text-base text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white flex items-center"
+                    className="text-base text-gray-800 hover:text-[#3C8C7D] font-medium flex items-center transition-colors"
                     aria-label="callUs"
                   >
                     <HiOutlinePhone className="h-5 w-5 mr-2" />
                     {businessConstants.contact.phone}
                   </a>
                 </li>
-                <li className="flex justify-center sm:justify-start">
+                <li className="flex flex-col justify-center sm:justify-start space-y-2">
                   <a
-                    href={`mailto:${businessConstants.contact.email}`}
-                    className="text-base text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white flex items-center"
-                    aria-label="emailUs"
+                    href={`mailto:${businessConstants.contact.emailPrimary}`}
+                    className="text-base text-gray-800 hover:text-[#3C8C7D] flex items-center transition-colors"
+                    aria-label="emailUsPrimary"
                   >
-                    <HiOutlineMail className="h-5 w-5 mr-2" />
-                    {businessConstants.contact.email}
+                    <HiOutlineMail className="h-5 w-5 mr-2 flex-shrink-0" />
+                    <div className="flex flex-col">
+                      <span className="font-semibold">
+                        {businessConstants.contact.emailPrimary}
+                      </span>
+                      <span className="text-xs text-gray-600">
+                        (Rejestracja wizyt)
+                      </span>
+                    </div>
+                  </a>
+                  <a
+                    href={`mailto:${businessConstants.contact.emailSecondary}`}
+                    className="text-sm text-gray-800 hover:text-[#3C8C7D] font-medium flex items-center ml-7 transition-colors"
+                    aria-label="emailUsSecondary"
+                  >
+                    <HiOutlineMail className="h-4 w-4 mr-2 flex-shrink-0" />
+                    {businessConstants.contact.emailSecondary}
                   </a>
                 </li>
                 <li className="flex justify-center sm:justify-start">
@@ -112,7 +124,7 @@ export default function Footer() {
                     href={businessConstants.socialMedia.facebook.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-base text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white flex items-center"
+                    className="text-base text-gray-800 hover:text-[#3C8C7D] font-medium flex items-center transition-colors"
                     aria-label="facebook"
                   >
                     <svg
@@ -134,7 +146,7 @@ export default function Footer() {
                     href={businessConstants.socialMedia.instagram.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-base text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white flex items-center"
+                    className="text-base text-gray-800 hover:text-[#3C8C7D] font-medium flex items-center transition-colors"
                     aria-label="instagram"
                   >
                     <svg
@@ -157,15 +169,15 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-8">
-          <p className="text-base text-gray-400 text-center">
+        <div className="mt-8 border-t border-gray-700/30 pt-8">
+          <p className="text-base text-gray-700 text-center">
             © {currentYear} {businessConstants.company.name}. Wszelkie prawa
             zastrzeżone. Strona stworzona przez{' '}
             <a
               href="https://www.linkedin.com/in/lukasz-kolodziejski/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-500 hover:text-blue-600 transition-colors"
+              className="text-[#3C8C7D] hover:text-[#72C7C2] font-semibold transition-colors"
             >
               Łukasz Kołodziejski
             </a>

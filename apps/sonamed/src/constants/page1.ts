@@ -1,7 +1,9 @@
 export const sonamedClinicData = {
   contact: {
     phone: '+48501054824',
-    email: 'sonamed.centrum@gmail.com',
+    emailPrimary: 'sonia_sugier_karpinska@wp.pl', // Główny email do rejestracji wizyt
+    emailSecondary: 'sonamed.centrum@gmail.com', // Dodatkowy email
+    email: 'sonia_sugier_karpinska@wp.pl', // Domyślny (dla kompatybilności)
     address: {
       street: 'Kalinowa 28',
       postalCode: '83-400',
@@ -29,7 +31,7 @@ export const sonamedClinicData = {
       {
         title: 'Kompleksowe podejście',
         description:
-          'Nasi pacjenci mają dostęp do zespołu specjalistów, w tym chirurgów, ortodontów, anestezjologa, laryngologa, fizjoterapeuty, osteopaty oraz hipnotyzera specjalizującego się w hipnozie medycznej dla leczenia bólu.',
+          'Oferujemy szeroki zakres usług stomatologicznych. W przypadkach wymagających specjalistycznego leczenia (implanty, chirurgia, ortodoncja) kierujemy naszych pacjentów do zaufanych specjalistów.',
       },
       {
         title: 'Komfort i dyskrecja',
@@ -64,14 +66,14 @@ export const sonamedClinicData = {
     servicesList: [
       'Licówki',
       'Bonding',
-      'Implanty',
-      'Ortodoncja',
-      'Invisalign',
-      'Uśmiech w jeden dzień',
+      'Protetyka',
       'Leczenie pod mikroskopem',
-      'Chirurgiczne usuwanie ósemek',
-      'Leczenie stawów skroniowo-żuchwowych',
-      'Fizjoterapia stomatologiczna',
+      'Stomatologia zachowawcza',
+      'Stomatologia estetyczna',
+      'Periodontologia',
+      'Endodoncja',
+      'Stomatologia dziecięca',
+      'Diagnostyka RTG',
     ],
   },
 
@@ -81,16 +83,15 @@ export const sonamedClinicData = {
       {
         category: 'Diagnostyka',
         description:
-          'Precyzyjne planowanie leczenia pozwala osiągnąć harmonijny i naturalny uśmiech. Wykorzystując fotografie twarzy, skany wewnątrzustne oraz specjalnie przygotowane modele, tworzymy wizualizację efektu końcowego. Dzięki temu pacjent może zobaczyć przybliżony rezultat jeszcze przed rozpoczęciem leczenia.',
+          'Precyzyjne planowanie leczenia pozwala osiągnąć harmonijny i naturalny uśmiech. Wykorzystując diagnostykę RTG oraz dokumentację fotograficzną, możemy dokładnie ocenić stan uzębienia i zaplanować odpowiednie leczenie.',
         services: [
           { name: 'Przegląd/Badanie', price: '200 zł' },
           { name: 'Konsultacja specjalistyczna', price: '350 zł' },
-          { name: 'Radiologia/Tomografia', price: 'od 200 zł' },
+          { name: 'Diagnostyka RTG (pantomogram)', price: 'od 200 zł' },
           {
-            name: 'Pakiet diagnostyczny (diagnostyka RTG +dokumentacja fotograficzna +skan uzębienia)',
-            price: '1 000 zł',
+            name: 'Pakiet diagnostyczny (diagnostyka RTG + dokumentacja fotograficzna)',
+            price: '600 zł',
           },
-          { name: 'DSD/cyfrowy projekt uśmiechu', price: 'od 1 000 zł' },
         ],
       },
       {
@@ -110,20 +111,6 @@ export const sonamedClinicData = {
           { name: 'Wypełnienie estetyczne', price: 'od 370 zł' },
           { name: 'Znieczulenie miejscowe', price: '0 zł' },
           { name: 'Wkład/Nakład kompozytowy', price: '1 500 zł' },
-        ],
-      },
-      {
-        category: 'Ortodoncja',
-        description:
-          'Nasze holistyczne podejście do leczenia wad zgryzu i szeroki wybór aparatów pozwalają na skuteczne i komfortowe leczenie ortodontyczne – niezależnie od wieku pacjenta. Dzięki innowacyjnym rozwiązaniom czas leczenia może być krótszy, a jego efekty bardziej przewidywalne. Współczesna ortodoncja to nie tylko poprawa estetyki uśmiechu, ale także zdrowia i funkcji zgryzu.',
-        services: [
-          { name: 'Aparat stały metalowy (1 łuk)', price: '3 200 zł' },
-          { name: 'Aparat samoligaturujący (1 łuk)', price: '3 600 zł' },
-          { name: 'Nakładki Invisalign', price: 'od 8 000 zł' },
-          {
-            name: 'Wizyta kontrolna w leczeniu ortodontycznym',
-            price: 'od 300 zł',
-          },
         ],
       },
       {
@@ -147,37 +134,10 @@ export const sonamedClinicData = {
         ],
       },
       {
-        category: 'Implantoprotetyka',
-        description:
-          'Dzięki nowoczesnym technologiom i doświadczeniu naszych specjalistów w SONAMED możemy przywrócić pełny uśmiech nawet w jeden dzień. Implantoprotetyka to kompleksowe rozwiązanie dla osób, które utraciły zęby – od pojedynczych uzupełnień po pełne rekonstrukcje. Korzystamy z najwyższej jakości implantów oraz precyzyjnych technik protetycznych, aby zapewnić estetykę, funkcjonalność i trwałość nowego uśmiechu.',
-        services: [
-          { name: 'Korona na implancie', price: 'od 5 000 zł' },
-          { name: 'Proteza na implantach', price: 'od 12 000 zł' },
-          {
-            name: 'Uśmiech w jeden dzień (implanty + most tymczasowy)',
-            price: 'od 35 000 zł',
-          },
-        ],
-      },
-      {
-        category: 'Implantologia',
-        description:
-          'Precyzja i najwyższej jakości implanty z grupy Straumann pozwalają nam na przywrócenie pełnej funkcjonalności i estetyki uśmiechu, zapewniając stabilne i długotrwałe efekty. Nasi chirurdzy specjalizują się w skomplikowanych przypadkach, podejmując się nawet najbardziej wymagających wyzwań.',
-        services: [
-          { name: 'Zabieg wszczepienia implantu', price: 'od 3 950 zł' },
-          { name: 'Przeszczep tkanek miękkich', price: 'od 2 500 zł' },
-          { name: 'Sinus lift', price: 'od 3 500 zł' },
-        ],
-      },
-      {
         category: 'Chirurgia stomatologiczna',
         description:
-          'Nowoczesne podejście do chirurgii stomatologicznej pozwala na precyzyjne i mało inwazyjne zabiegi. Wykonujemy ekstrakcje zębów, usuwanie zębów mądrości, resekcje korzeni oraz rekonstrukcję tkanek twardych i miękkich. Dzięki zaawansowanym technikom regeneracyjnym i sprawdzonym procedurom dbamy o szybkie gojenie i maksymalny komfort pacjenta.',
-        services: [
-          { name: 'Usunięcie zęba', price: 'od 400 zł' },
-          { name: 'Chirurgiczne usunięcie zęba mądrości', price: 'od 800 zł' },
-          { name: 'Resekcja wierzchołka korzenia zęba', price: 'od 2 000 zł' },
-        ],
+          'Podstawowe zabiegi chirurgiczne wykonujemy w naszym gabinecie. W przypadkach bardziej skomplikowanych zabiegów chirurgicznych kierujemy pacjentów do zaufanych specjalistów.',
+        services: [{ name: 'Usunięcie zęba', price: 'od 400 zł' }],
       },
       {
         category: 'Stomatologia dziecięca',
