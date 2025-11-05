@@ -13,6 +13,11 @@
 @layer base {
   body {
     @apply bg-background text-text antialiased;
+    overflow-x: hidden;
+  }
+  
+  html {
+    overflow-x: hidden;
   }
 
   /* Chennai tylko dla nagłówków */

@@ -33,13 +33,12 @@ export default function OfertaPage() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       {/* Hero Section - Premium Style from O nas */}
       <section
-        className="relative min-h-[70vh] flex items-center"
+        className="relative min-h-[70vh] flex items-center overflow-hidden"
         style={{
           background: `linear-gradient(135deg, ${colors.primary.darkTeal} 0%, ${colors.secondary.seaGreen} 30%, ${colors.secondary.tealMedium} 70%, ${colors.secondary.mintLight} 100%)`,
-          overflow: 'visible',
         }}
       >
         {/* Premium Animated Background */}

@@ -27,7 +27,10 @@ export default function FloatingDentalIcons({
   }, [count]);
 
   return (
-    <div className={className} style={{ opacity: opacity / 100 }}>
+    <div
+      className={`${className} hidden md:block`}
+      style={{ opacity: opacity / 100 }}
+    >
       {iconPositions.map((position, i) => (
         <motion.div
           key={i}
@@ -46,10 +49,7 @@ export default function FloatingDentalIcons({
             delay: position.animationDelay,
           }}
         >
-          <FaTooth
-            className="text-6xl"
-            style={{ color: colors.brand.primary }}
-          />
+          <FaTooth className="text-6xl" style={{ color: '#F9FAFB' }} />
         </motion.div>
       ))}
     </div>

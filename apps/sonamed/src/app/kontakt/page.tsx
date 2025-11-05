@@ -41,13 +41,12 @@ export default function KontaktPage() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       {/* Hero Section - Premium Style */}
       <section
-        className="relative min-h-[70vh] flex items-center"
+        className="relative min-h-[70vh] flex items-center overflow-hidden"
         style={{
           background: `linear-gradient(135deg, ${colors.primary.darkTeal} 0%, ${colors.secondary.seaGreen} 30%, ${colors.secondary.tealMedium} 70%, ${colors.secondary.mintLight} 100%)`,
-          overflow: 'visible',
         }}
       >
         {/* Premium Animated Background */}
@@ -180,7 +179,7 @@ export default function KontaktPage() {
                 type: 'spring',
                 bounce: 0.4,
               }}
-              className="text-6xl md:text-8xl font-black tracking-tight relative overflow-visible mb-8 pb-4"
+              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight relative overflow-visible mb-8 pb-4"
               style={{
                 textShadow: `0 4px 20px ${colors.primary.darkTeal}60, 0 0 40px ${colors.secondary.tealMedium}40`,
                 zIndex: 30,
@@ -365,7 +364,7 @@ export default function KontaktPage() {
             {/* Godziny otwarcia */}
             <motion.div
               variants={fadeInUp}
-              className="group relative bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-200/50"
+              className="group relative bg-white rounded-2xl p-3 md:p-8 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-200/50"
               whileHover={{
                 y: -12,
                 rotateY: 5,
@@ -454,7 +453,7 @@ export default function KontaktPage() {
             {/* Adres */}
             <motion.div
               variants={fadeInUp}
-              className="group relative bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-200/50 cursor-pointer"
+              className="group relative bg-white rounded-2xl p-3 md:p-8 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-200/50 cursor-pointer"
               whileHover={{
                 y: -12,
                 rotateY: 5,
@@ -547,7 +546,7 @@ export default function KontaktPage() {
             {/* Kontakt */}
             <motion.div
               variants={fadeInUp}
-              className="group relative bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-200/50"
+              className="group relative bg-white rounded-2xl p-3 md:p-8 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-200/50"
               whileHover={{
                 y: -12,
                 rotateY: 5,
@@ -607,25 +606,27 @@ export default function KontaktPage() {
                 </motion.h3>
 
                 {/* Content */}
-                <div className="space-y-4">
+                <div className="space-y-3 md:space-y-4">
                   <a
                     href={`tel:${businessConstants.contact.phone}`}
                     className="flex items-center text-gray-600 hover:text-gray-800 transition-colors group/phone"
                   >
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: 10 }}
-                      className="mr-3 p-2 rounded-lg"
+                      className="mr-2 md:mr-3 p-1.5 md:p-2 rounded-lg flex-shrink-0"
                       style={{ backgroundColor: `${colors.brand.primary}20` }}
                     >
                       <HiOutlinePhone
-                        className="text-xl"
+                        className="text-base md:text-xl"
                         style={{ color: colors.brand.primary }}
                       />
                     </motion.div>
-                    <div>
-                      <p className="text-sm text-gray-500">Telefon</p>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs md:text-sm text-gray-500">
+                        Telefon
+                      </p>
                       <p
-                        className="font-bold text-lg"
+                        className="font-bold text-xs md:text-lg"
                         style={{ color: colors.brand.primary }}
                       >
                         {businessConstants.contact.phone}
@@ -639,21 +640,25 @@ export default function KontaktPage() {
                   >
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: 10 }}
-                      className="mr-3 p-2 rounded-lg"
+                      className="mr-2 md:mr-3 p-1.5 md:p-2 rounded-lg flex-shrink-0"
                       style={{ backgroundColor: `${colors.brand.primary}20` }}
                     >
                       <HiOutlineMail
-                        className="text-xl"
+                        className="text-base md:text-xl"
                         style={{ color: colors.brand.primary }}
                       />
                     </motion.div>
-                    <div>
-                      <p className="text-sm text-gray-500">
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs md:text-sm text-gray-500">
                         Email (Rejestracja wizyt)
                       </p>
                       <p
-                        className="font-bold text-lg"
-                        style={{ color: colors.brand.primary }}
+                        className="font-bold text-xs md:text-lg break-all leading-tight"
+                        style={{
+                          color: colors.brand.primary,
+                          wordBreak: 'break-all',
+                          overflowWrap: 'anywhere',
+                        }}
                       >
                         {businessConstants.contact.emailPrimary}
                       </p>
@@ -666,17 +671,23 @@ export default function KontaktPage() {
                   >
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: 10 }}
-                      className="mr-3 p-2 rounded-lg"
+                      className="mr-2 md:mr-3 p-1.5 md:p-2 rounded-lg flex-shrink-0"
                       style={{ backgroundColor: `${colors.brand.primary}20` }}
                     >
                       <HiOutlineMail
-                        className="text-xl"
+                        className="text-base md:text-xl"
                         style={{ color: colors.brand.primary }}
                       />
                     </motion.div>
-                    <div>
-                      <p className="text-sm text-gray-500">Email</p>
-                      <p className="font-medium text-base text-gray-600">
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs md:text-sm text-gray-500">Email</p>
+                      <p
+                        className="font-medium text-xs md:text-base text-gray-600 break-all leading-tight"
+                        style={{
+                          wordBreak: 'break-all',
+                          overflowWrap: 'anywhere',
+                        }}
+                      >
                         {businessConstants.contact.emailSecondary}
                       </p>
                     </div>
@@ -704,7 +715,7 @@ export default function KontaktPage() {
             className="relative group"
           >
             <div
-              className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl"
+              className="relative h-[350px] md:h-[500px] rounded-3xl overflow-hidden shadow-2xl"
               style={{
                 boxShadow: `0 20px 60px -10px ${colors.brand.primary}30`,
               }}
@@ -733,7 +744,7 @@ export default function KontaktPage() {
 
               {/* Overlay with location info - TYLKO TO KLIKALNE */}
               <motion.div
-                className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/50 max-w-sm cursor-pointer hover:bg-white transition-all duration-300 z-20"
+                className="absolute bottom-3 left-3 right-3 md:bottom-6 md:left-6 md:right-auto bg-white/95 backdrop-blur-sm rounded-xl md:rounded-2xl p-3 md:p-6 shadow-xl border border-white/50 md:max-w-sm cursor-pointer hover:bg-white transition-all duration-300 z-20"
                 onClick={() =>
                   window.open(
                     businessConstants.location.googleMapsUrl,
@@ -746,9 +757,9 @@ export default function KontaktPage() {
                   borderColor: `${colors.brand.primary}30`,
                 }}
               >
-                <div className="flex items-center space-x-3 mb-3">
+                <div className="flex items-center space-x-2 md:space-x-3 mb-2 md:mb-3">
                   <motion.div
-                    className="p-2 rounded-lg"
+                    className="p-1.5 md:p-2 rounded-lg flex-shrink-0"
                     style={{ backgroundColor: `${colors.brand.primary}20` }}
                     whileHover={{
                       scale: 1.1,
@@ -757,18 +768,20 @@ export default function KontaktPage() {
                     transition={{ duration: 0.2 }}
                   >
                     <HiOutlineLocationMarker
-                      className="text-2xl transition-colors duration-200"
+                      className="text-lg md:text-2xl transition-colors duration-200"
                       style={{ color: colors.brand.primary }}
                     />
                   </motion.div>
-                  <div>
-                    <h4 className="font-bold text-gray-900">Gabinet SONAMED</h4>
-                    <p className="text-sm text-gray-600">
+                  <div className="min-w-0 flex-1">
+                    <h4 className="font-bold text-sm md:text-base text-gray-900 truncate">
+                      Gabinet SONAMED
+                    </h4>
+                    <p className="text-xs md:text-sm text-gray-600 truncate">
                       Stomatologia i medycyna estetyczna
                     </p>
                   </div>
                 </div>
-                <p className="text-sm text-gray-700 leading-relaxed mb-2">
+                <p className="text-xs md:text-sm text-gray-700 leading-relaxed mb-2">
                   {businessConstants.contact.address.full}
                 </p>
                 <motion.div
@@ -778,7 +791,7 @@ export default function KontaktPage() {
                 >
                   <span>📍 Otwórz w Google Maps</span>
                   <motion.svg
-                    className="w-4 h-4 ml-1"
+                    className="w-3 h-3 md:w-4 md:h-4 ml-1"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -795,9 +808,9 @@ export default function KontaktPage() {
               </motion.div>
 
               {/* Floating action button for better map interaction */}
-              <div className="absolute top-6 right-6 z-20">
+              <div className="absolute top-3 right-3 md:top-6 md:right-6 z-20">
                 <motion.button
-                  className="p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-white/50 hover:bg-white transition-all duration-200"
+                  className="p-2 md:p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-white/50 hover:bg-white transition-all duration-200"
                   style={{ borderColor: `${colors.brand.primary}20` }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -810,7 +823,7 @@ export default function KontaktPage() {
                   title="Otwórz w Google Maps"
                 >
                   <svg
-                    className="w-5 h-5"
+                    className="w-4 h-4 md:w-5 md:h-5"
                     style={{ color: colors.brand.primary }}
                     fill="currentColor"
                     viewBox="0 0 20 20"

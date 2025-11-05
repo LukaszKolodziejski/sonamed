@@ -159,7 +159,7 @@ export default function PytaniaPage() {
         </motion.div>
 
         {/* Premium Main Content with Glass Effect */}
-        <div className="relative z-30 container mx-auto px-6 py-16">
+        <div className="relative z-30 container mx-auto px-4 py-8 md:px-6 md:py-16">
           <motion.div
             className="absolute inset-0 rounded-3xl"
             style={{
@@ -192,10 +192,10 @@ export default function PytaniaPage() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="mb-8"
+              className="mb-4 md:mb-8"
             >
               <motion.span
-                className="text-sm font-bold uppercase tracking-wider px-6 py-3 rounded-full border backdrop-blur-sm"
+                className="text-xs md:text-sm font-bold uppercase tracking-wider px-4 py-2 md:px-6 md:py-3 rounded-full border backdrop-blur-sm"
                 style={{
                   color: 'white',
                   background: `linear-gradient(135deg, ${colors.primary.darkTeal}80, ${colors.secondary.tealMedium}60)`,
@@ -229,7 +229,7 @@ export default function PytaniaPage() {
                 type: 'spring',
                 bounce: 0.4,
               }}
-              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight relative mb-8"
+              className="text-3xl md:text-5xl lg:text-7xl xl:text-8xl font-black tracking-tight relative mb-4 md:mb-8"
               style={{
                 textShadow: `0 4px 20px ${colors.primary.darkTeal}60, 0 0 40px ${colors.secondary.tealMedium}40`,
                 lineHeight: '1.1',
@@ -280,7 +280,7 @@ export default function PytaniaPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mt-8 p-8 rounded-2xl backdrop-blur-sm border max-w-4xl mx-auto"
+              className="mt-4 md:mt-8 p-4 md:p-8 rounded-2xl backdrop-blur-sm border max-w-4xl mx-auto"
               style={{
                 background: `linear-gradient(135deg, ${colors.primary.darkTeal}20, rgba(0,0,0,0.3))`,
                 borderColor: `${colors.secondary.tealMedium}30`,
@@ -288,7 +288,7 @@ export default function PytaniaPage() {
               }}
             >
               <motion.p
-                className="text-xl md:text-2xl leading-8 font-medium"
+                className="text-base md:text-xl lg:text-2xl leading-6 md:leading-8 font-medium"
                 style={{
                   color: 'white',
                   textShadow: '0 2px 4px rgba(0,0,0,0.5)',
@@ -306,14 +306,14 @@ export default function PytaniaPage() {
 
       {/* Premium FAQ Section */}
       <section
-        className="relative py-32 overflow-hidden"
+        className="relative py-12 md:py-24 lg:py-32 overflow-hidden"
         style={{
           // background: `linear-gradient(135deg, ${colors.secondary.mintLight} 0%, ${colors.neutral.almostWhiteGreenish} 30%, ${colors.secondary.tealSoft}20 70%, ${colors.secondary.mintLight} 100%)`,
           background: '#fff',
         }}
       >
         {/* Floating dental icons background */}
-        <div className="absolute inset-0 opacity-6">
+        <div className="absolute inset-0 opacity-6 hidden md:block">
           {[...Array(15)].map((_, i) => (
             <motion.div
               key={i}
@@ -332,17 +332,14 @@ export default function PytaniaPage() {
                 delay: Math.random() * 6,
               }}
             >
-              <FaTooth
-                className="text-6xl"
-                style={{ color: colors.brand.primary }}
-              />
+              <FaTooth className="text-6xl" style={{ color: '#F9FAFB' }} />
             </motion.div>
           ))}
         </div>
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-3 md:px-6 relative z-10">
           {/* Sekcje pytań */}
-          <div className="max-w-5xl mx-auto space-y-8">
+          <div className="max-w-5xl mx-auto space-y-4 md:space-y-8">
             {sections.map((section) => (
               <motion.div
                 key={section.id}
@@ -379,7 +376,7 @@ export default function PytaniaPage() {
                 >
                   <button
                     onClick={() => toggleSection(section.id)}
-                    className="w-full px-10 py-8 flex items-center justify-between text-left transition-all duration-300"
+                    className="w-full px-4 py-4 md:px-8 md:py-6 lg:px-10 lg:py-8 flex items-center justify-between text-left transition-all duration-300"
                     style={{
                       background:
                         openSection === section.id
@@ -389,7 +386,7 @@ export default function PytaniaPage() {
                   >
                     <div className="flex items-center">
                       <motion.div
-                        className="p-4 rounded-2xl mr-6 shadow-lg"
+                        className="p-2 md:p-3 lg:p-4 rounded-xl md:rounded-2xl mr-3 md:mr-4 lg:mr-6 shadow-lg"
                         style={{
                           background: `linear-gradient(135deg, ${section.color}40, ${section.color}25)`,
                           border: `2px solid ${section.color}50`,
@@ -401,12 +398,12 @@ export default function PytaniaPage() {
                         }}
                         transition={{ duration: 0.3 }}
                       >
-                        <div className="text-3xl filter drop-shadow-sm">
+                        <div className="text-xl md:text-2xl lg:text-3xl filter drop-shadow-sm">
                           {section.icon}
                         </div>
                       </motion.div>
                       <h2
-                        className="text-2xl md:text-3xl font-bold group-hover:scale-105 transition-transform duration-300"
+                        className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold group-hover:scale-105 transition-transform duration-300"
                         style={{
                           color: colors.primary.darkTeal,
                           textShadow: `0 2px 4px ${section.color}20`,
@@ -418,7 +415,7 @@ export default function PytaniaPage() {
                     <motion.div
                       animate={{ rotate: openSection === section.id ? 180 : 0 }}
                       transition={{ duration: 0.4, type: 'spring' }}
-                      className="p-3 rounded-full shadow-lg"
+                      className="p-2 md:p-3 rounded-full shadow-lg"
                       style={{
                         background:
                           openSection === section.id
@@ -432,7 +429,7 @@ export default function PytaniaPage() {
                       }}
                     >
                       <HiOutlineChevronDown
-                        className="text-3xl filter drop-shadow-sm"
+                        className="text-2xl md:text-3xl filter drop-shadow-sm"
                         style={{
                           color:
                             openSection === section.id
@@ -451,12 +448,12 @@ export default function PytaniaPage() {
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.5, ease: 'easeInOut' }}
-                      className="px-10 pb-8"
+                      className="px-2 pb-4 md:px-6 md:pb-6 lg:px-10 lg:pb-8"
                       style={{
                         background: `linear-gradient(135deg, ${section.color}05, transparent)`,
                       }}
                     >
-                      <div className="space-y-6">
+                      <div className="space-y-3 md:space-y-4 lg:space-y-6">
                         {section.questions.map((q) => (
                           <motion.div
                             key={q.id}
@@ -474,7 +471,7 @@ export default function PytaniaPage() {
                           >
                             <button
                               onClick={() => toggleQuestion(q.id)}
-                              className="w-full px-8 py-6 flex items-center justify-between text-left transition-all duration-300"
+                              className="w-full px-3 py-3 md:px-6 md:py-5 lg:px-8 lg:py-6 flex items-center justify-between text-left transition-all duration-300"
                               style={{
                                 background:
                                   openQuestion === q.id
@@ -483,7 +480,7 @@ export default function PytaniaPage() {
                               }}
                             >
                               <h3
-                                className="text-lg md:text-xl font-semibold pr-4 leading-relaxed"
+                                className="text-sm md:text-base lg:text-lg xl:text-xl font-semibold pr-2 md:pr-4 leading-snug md:leading-relaxed"
                                 style={{
                                   color: colors.primary.darkTeal,
                                   textShadow: `0 1px 2px ${section.color}20`,
@@ -528,14 +525,14 @@ export default function PytaniaPage() {
                                   animate={{ height: 'auto', opacity: 1 }}
                                   exit={{ height: 0, opacity: 0 }}
                                   transition={{ duration: 0.4 }}
-                                  className="px-8 pb-6"
+                                  className="px-3 pb-3 md:px-6 md:pb-5 lg:px-8 lg:pb-6"
                                   style={{
                                     background: `linear-gradient(135deg, ${section.color}05, transparent)`,
                                     borderTop: `2px solid ${section.color}20`,
                                   }}
                                 >
                                   <p
-                                    className="text-lg leading-8 pt-4 font-medium"
+                                    className="text-sm md:text-base lg:text-lg leading-6 md:leading-7 lg:leading-8 pt-2 md:pt-3 lg:pt-4 font-medium"
                                     style={{
                                       color: colors.primary.darkTeal,
                                       textShadow: `0 1px 2px ${colors.secondary.tealSoft}30`,
@@ -569,7 +566,7 @@ export default function PytaniaPage() {
 
       {/* Premium Contact Section */}
       <section
-        className="relative py-32 overflow-hidden"
+        className="relative py-12 md:py-24 lg:py-32 overflow-hidden"
         style={{
           background: `linear-gradient(135deg, ${colors.primary.darkTeal} 0%, ${colors.secondary.seaGreen} 50%, ${colors.secondary.tealMedium} 100%)`,
         }}
@@ -600,7 +597,7 @@ export default function PytaniaPage() {
         </div>
 
         {/* Floating dental icons */}
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-10 hidden md:block">
           {[...Array(8)].map((_, i) => (
             <motion.div
               key={i}
@@ -619,12 +616,12 @@ export default function PytaniaPage() {
                 delay: i * 1.5,
               }}
             >
-              <FaTooth className="text-6xl text-white" />
+              <FaTooth className="text-6xl" style={{ color: '#F3F4F6' }} />
             </motion.div>
           ))}
         </div>
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -633,7 +630,7 @@ export default function PytaniaPage() {
           >
             {/* Premium Glass Card */}
             <div
-              className="relative rounded-3xl p-12 backdrop-blur-sm border"
+              className="relative rounded-3xl p-6 md:p-10 lg:p-12 backdrop-blur-sm border"
               style={{
                 background: `linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05))`,
                 borderColor: `${colors.secondary.tealMedium}40`,
@@ -657,13 +654,13 @@ export default function PytaniaPage() {
                 </motion.div>
 
                 {/* Title */}
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-4 md:mb-6">
                   Nie znalazłeś odpowiedzi na swoje pytanie?
                 </h2>
 
                 {/* Subtitle */}
                 <p
-                  className="text-2xl mb-12 leading-relaxed"
+                  className="text-base md:text-lg lg:text-xl xl:text-2xl mb-8 md:mb-10 lg:mb-12 leading-relaxed"
                   style={{ color: colors.secondary.mintLight }}
                 >
                   Skontaktuj się z nami - chętnie odpowiemy na wszystkie Twoje
@@ -671,21 +668,21 @@ export default function PytaniaPage() {
                 </p>
 
                 {/* CTA Buttons */}
-                <div className="flex flex-col lg:flex-row items-center justify-center gap-8 mb-12">
+                <div className="flex flex-col lg:flex-row items-center justify-center gap-4 md:gap-6 lg:gap-8 mb-8 md:mb-10 lg:mb-12">
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     <Link
                       href="/umow-wizyte"
-                      className="group inline-flex items-center px-10 py-5 rounded-full text-white font-bold text-xl shadow-2xl relative overflow-hidden"
+                      className="group inline-flex items-center px-6 py-3 md:px-8 md:py-4 lg:px-10 lg:py-5 rounded-full text-white font-bold text-base md:text-lg lg:text-xl shadow-2xl relative overflow-hidden"
                       style={{
                         background: `linear-gradient(135deg, ${colors.secondary.tealMedium}, ${colors.secondary.aquaMedium})`,
                         boxShadow: `0 10px 40px -10px ${colors.secondary.tealMedium}60`,
                       }}
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <HiOutlinePhone className="mr-4 text-2xl relative z-10" />
+                      <HiOutlinePhone className="mr-2 md:mr-3 lg:mr-4 text-lg md:text-xl lg:text-2xl relative z-10" />
                       <span className="relative z-10">Umów wizytę online</span>
                     </Link>
                   </motion.div>
@@ -696,7 +693,7 @@ export default function PytaniaPage() {
                   >
                     <a
                       href={`tel:${businessConstants.contact.phone}`}
-                      className="group inline-flex items-center px-10 py-5 rounded-full border-4 font-bold text-xl transition-all duration-300 relative overflow-hidden text-white"
+                      className="group inline-flex items-center px-6 py-3 md:px-8 md:py-4 lg:px-10 lg:py-5 rounded-full border-2 md:border-4 font-bold text-base md:text-lg lg:text-xl transition-all duration-300 relative overflow-hidden text-white"
                       style={{
                         borderColor: 'white',
                         background: 'rgba(255, 255, 255, 0.1)',
@@ -712,27 +709,27 @@ export default function PytaniaPage() {
                         e.currentTarget.style.color = 'white';
                       }}
                     >
-                      <HiOutlinePhone className="mr-4 text-2xl" />
+                      <HiOutlinePhone className="mr-2 md:mr-3 lg:mr-4 text-lg md:text-xl lg:text-2xl" />
                       Zadzwoń: {businessConstants.contact.phone}
                     </a>
                   </motion.div>
                 </div>
 
                 {/* Additional Info */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 text-center">
                   {[
                     {
-                      icon: <FaUserMd className="text-3xl" />,
+                      icon: <FaUserMd className="text-2xl md:text-3xl" />,
                       title: 'Doświadczony zespół',
                       description: 'Lekarze z wieloletnią praktyką',
                     },
                     {
-                      icon: <HiOutlineHeart className="text-3xl" />,
+                      icon: <HiOutlineHeart className="text-2xl md:text-3xl" />,
                       title: 'Indywidualne podejście',
                       description: 'Każdy pacjent to priorytet',
                     },
                     {
-                      icon: <HiOutlineStar className="text-3xl" />,
+                      icon: <HiOutlineStar className="text-2xl md:text-3xl" />,
                       title: 'Najwyższa jakość',
                       description: 'Nowoczesne technologie',
                     },
@@ -746,7 +743,7 @@ export default function PytaniaPage() {
                       className="group"
                     >
                       <motion.div
-                        className="inline-flex p-4 rounded-2xl mb-4 text-white"
+                        className="inline-flex p-3 md:p-4 rounded-2xl mb-3 md:mb-4 text-white"
                         style={{
                           background: `linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1))`,
                         }}
@@ -758,11 +755,11 @@ export default function PytaniaPage() {
                       >
                         {feature.icon}
                       </motion.div>
-                      <h4 className="text-xl font-bold text-white mb-2 group-hover:text-gray-100">
+                      <h4 className="text-base md:text-lg lg:text-xl font-bold text-white mb-1 md:mb-2 group-hover:text-gray-100">
                         {feature.title}
                       </h4>
                       <p
-                        className="leading-relaxed"
+                        className="text-sm md:text-base leading-relaxed"
                         style={{ color: colors.secondary.mintLight }}
                       >
                         {feature.description}

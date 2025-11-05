@@ -161,15 +161,14 @@ export default function UmowWizytePage() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       <Toaster position="top-center" />
 
       {/* Hero Section - Premium Style */}
       <section
-        className="relative min-h-[70vh] flex items-center"
+        className="relative min-h-[70vh] flex items-center overflow-hidden"
         style={{
           background: `linear-gradient(135deg, ${colors.primary.darkTeal} 0%, ${colors.secondary.seaGreen} 30%, ${colors.secondary.tealMedium} 70%, ${colors.secondary.mintLight} 100%)`,
-          overflow: 'visible',
         }}
       >
         {/* Premium Animated Background */}
@@ -302,7 +301,7 @@ export default function UmowWizytePage() {
                 type: 'spring',
                 bounce: 0.4,
               }}
-              className="text-6xl md:text-8xl font-black tracking-tight relative overflow-visible mb-8 pb-4"
+              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight relative overflow-visible mb-8 pb-4"
               style={{
                 textShadow: `0 4px 20px ${colors.primary.darkTeal}60, 0 0 40px ${colors.secondary.tealMedium}40`,
                 zIndex: 30,
