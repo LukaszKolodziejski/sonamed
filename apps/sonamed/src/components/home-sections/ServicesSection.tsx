@@ -98,7 +98,7 @@ export default function ServicesSection() {
           </motion.div>
 
           <Link
-            href="/cennik"
+            href="/oferta"
             className="group inline-block hover:opacity-90 transition-opacity duration-300"
           >
             <h2 className="text-4xl md:text-6xl font-black tracking-tight mb-6">
@@ -290,7 +290,7 @@ export default function ServicesSection() {
         >
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
-              href="/cennik"
+              href="/oferta"
               className="group relative inline-flex items-center px-10 py-5 rounded-full text-white font-bold text-lg shadow-2xl overflow-hidden backdrop-blur-md border-2 border-white/30"
               style={{
                 background: `linear-gradient(135deg, ${colors.secondary.tealSoft}30, ${colors.secondary.aquaMedium}20)`,
@@ -323,7 +323,7 @@ export default function ServicesSection() {
                 }}
               />
 
-              <span className="relative z-10">Zobacz pełny cennik</span>
+              <span className="relative z-10">Zobacz pełną ofertę</span>
               <motion.svg
                 className="relative z-10 ml-3 w-6 h-6"
                 fill="none"

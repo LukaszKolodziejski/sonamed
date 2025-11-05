@@ -17,11 +17,6 @@ const routes = [
     changeFrequency: 'weekly',
   },
   {
-    url: '/cennik',
-    priority: 0.9,
-    changeFrequency: 'weekly',
-  },
-  {
     url: '/umow-wizyte',
     priority: 1.0,
     changeFrequency: 'always',
