@@ -1,6 +1,7 @@
 import './globals.css';
 import { Metadata, Viewport } from 'next';
 import { Poppins } from 'next/font/google';
+import localFont from 'next/font/local';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
@@ -9,6 +10,13 @@ const poppins = Poppins({
   weight: ['300', '400', '500', '600', '700', '800'],
   display: 'swap',
   variable: '--font-poppins',
+});
+
+const chennai = localFont({
+  src: '../../public/fonts/Chennai W00 Medium.ttf',
+  display: 'swap',
+  variable: '--font-chennai',
+  weight: '400 500 600',
 });
 
 export const viewport: Viewport = {
@@ -160,7 +168,7 @@ export default function RootLayout({ children }: Props) {
         />
       </head>
       <body
-        className={`${poppins.className} ${poppins.variable} bg-white dark:bg-gray-900 flex flex-col min-h-screen`}
+        className={`${poppins.className} ${poppins.variable} ${chennai.variable} bg-white dark:bg-gray-900 flex flex-col min-h-screen`}
       >
         <Navbar />
         <main

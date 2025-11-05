@@ -6,6 +6,7 @@ export interface OfferService {
   title: string;
   description: string;
   category: string;
+  available?: boolean; // Domyślnie true, jeśli nie podane
 }
 
 export interface ContactLocation {
@@ -35,13 +36,6 @@ export const PAGE_OFFERT_DATA = {
 
   // Lista usług oferowanych przez klinikę
   services: [
-    {
-      id: 'medycyna-estetyczna',
-      title: 'Medycyna estetyczna',
-      description:
-        'zabiegi wygładzające, ujędrniające i poprawiające jakość oraz wygląd skóry.',
-      category: 'estetyka',
-    },
     {
       id: 'diagnostyka-rtg',
       title: 'Diagnostyka RTG',
@@ -85,13 +79,6 @@ export const PAGE_OFFERT_DATA = {
       category: 'leczenie',
     },
     {
-      id: 'stomatologia-dziecieca',
-      title: 'Stomatologia dziecięca',
-      description:
-        'Nasi doświadczeni lekarze wiedzą, że oprócz wiedzy i umiejętności równie ważny jest czas, cierpliwość i bezpieczeństwo.',
-      category: 'specjalistyczne',
-    },
-    {
       id: 'chirurgia-stomatologiczna',
       title: 'Chirurgia stomatologiczna',
       description:
@@ -104,6 +91,22 @@ export const PAGE_OFFERT_DATA = {
       description:
         'Grupa zabiegów mających na celu polepszenie wyglądu uzębienia.',
       category: 'estetyka',
+    },
+    {
+      id: 'medycyna-estetyczna',
+      title: 'Medycyna estetyczna',
+      description:
+        'zabiegi wygładzające, ujędrniające i poprawiające jakość oraz wygląd skóry.',
+      category: 'estetyka',
+      available: false,
+    },
+    {
+      id: 'stomatologia-dziecieca',
+      title: 'Stomatologia dziecięca',
+      description:
+        'Nasi doświadczeni lekarze wiedzą, że oprócz wiedzy i umiejętności równie ważny jest czas, cierpliwość i bezpieczeństwo.',
+      category: 'specjalistyczne',
+      available: false,
     },
   ] as OfferService[],
 

@@ -15,6 +15,13 @@
     @apply bg-background text-text antialiased;
   }
 
+  /* Chennai tylko dla nagłówków */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-chennai), sans-serif !important;
+    line-height: 1.4 !important;
+    letter-spacing: 0.05em !important;
+  }
+
   h1 {
     @apply text-4xl font-bold md:text-5xl lg:text-6xl;
   }
@@ -35,5 +42,24 @@
 @layer components {
   .container {
     @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Klasa do zastosowania czcionki Chennai (dla logo SONAMED i tytułów stron) */
+  .font-chennai {
+    font-family: var(--font-chennai), sans-serif !important;
+    line-height: 1.4 !important;
+    letter-spacing: 0.05em !important;
+  }
+}
+
+/* Nadpisanie klas tracking-* dla nagłówków z czcionką Chennai */
+@layer utilities {
+  h1[class*="tracking"],
+  h2[class*="tracking"],
+  h3[class*="tracking"],
+  h4[class*="tracking"],
+  h5[class*="tracking"],
+  h6[class*="tracking"] {
+    letter-spacing: 0.05em !important;
   }
 }

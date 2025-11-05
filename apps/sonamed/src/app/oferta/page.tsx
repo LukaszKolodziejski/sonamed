@@ -354,139 +354,188 @@ export default function OfertaPage() {
             viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
           >
-            {PAGE_OFFERT_DATA.services.map((service, index) => (
-              <motion.div
-                key={service.id}
-                variants={fadeInUp}
-                className="group relative bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-200/50"
-                whileHover={{
-                  y: -12,
-                  rotateY: 5,
-                  scale: 1.02,
-                }}
-                style={{
-                  background:
-                    'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
-                  boxShadow: '0 10px 40px -10px rgba(60, 140, 125, 0.2)',
-                }}
-              >
-                {/* Animated background gradient on hover */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{
-                    background: `linear-gradient(135deg, ${colors.brand.primary}05 0%, ${colors.secondary.tealSoft}10 100%)`,
-                  }}
-                />
-
-                {/* Floating tooth icon */}
+            {PAGE_OFFERT_DATA.services.map((service, index) => {
+              const isAvailable = service.available !== false;
+              return (
                 <motion.div
-                  className="absolute -top-4 -right-4 opacity-5 group-hover:opacity-10 transition-opacity duration-300"
-                  animate={{
-                    rotate: [0, 10, -10, 0],
-                  }}
-                  transition={{
-                    duration: 6,
-                    repeat: Infinity,
+                  key={service.id}
+                  variants={fadeInUp}
+                  className={`group relative bg-white rounded-2xl p-8 shadow-xl transition-all duration-500 overflow-hidden border border-gray-200/50 ${
+                    !isAvailable ? 'opacity-60' : 'hover:shadow-2xl'
+                  }`}
+                  whileHover={
+                    isAvailable
+                      ? {
+                          y: -12,
+                          rotateY: 5,
+                          scale: 1.02,
+                        }
+                      : {}
+                  }
+                  style={{
+                    background: !isAvailable
+                      ? 'linear-gradient(135deg, #f5f5f5 0%, #e5e5e5 100%)'
+                      : 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
+                    boxShadow: !isAvailable
+                      ? '0 10px 40px -10px rgba(100, 100, 100, 0.2)'
+                      : '0 10px 40px -10px rgba(60, 140, 125, 0.2)',
                   }}
                 >
-                  <FaTooth
-                    className="text-8xl"
-                    style={{ color: colors.brand.primary }}
+                  {/* Animated background gradient on hover */}
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{
+                      background: `linear-gradient(135deg, ${colors.brand.primary}05 0%, ${colors.secondary.tealSoft}10 100%)`,
+                    }}
                   />
-                </motion.div>
 
-                <div className="relative z-10">
-                  {/* Icon and Category */}
-                  <div className="flex items-center justify-between mb-6">
-                    <motion.div
-                      className="p-4 rounded-2xl shadow-lg"
-                      style={{
-                        background: colors.gradients.simple,
-                      }}
-                      whileHover={{
-                        rotate: 360,
-                        scale: 1.1,
-                      }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      <Image
-                        src={`/icons/Offer-icons-${(index % 10) + 9}.png`}
-                        alt={service.title}
-                        width={40}
-                        height={40}
-                        className="w-10 h-10 filter brightness-0 invert"
-                      />
-                    </motion.div>
+                  {/* Floating tooth icon */}
+                  <motion.div
+                    className="absolute -top-4 -right-4 opacity-5 group-hover:opacity-10 transition-opacity duration-300"
+                    animate={{
+                      rotate: [0, 10, -10, 0],
+                    }}
+                    transition={{
+                      duration: 6,
+                      repeat: Infinity,
+                    }}
+                  >
+                    <FaTooth
+                      className="text-8xl"
+                      style={{ color: colors.brand.primary }}
+                    />
+                  </motion.div>
 
-                    <span
-                      className="text-xs font-bold px-3 py-2 rounded-full border-2 uppercase tracking-wider"
-                      style={{
-                        backgroundColor: `${colors.secondary.tealSoft}20`,
-                        color: colors.brand.primary,
-                        borderColor: `${colors.brand.primary}30`,
-                      }}
+                  <div className="relative z-10">
+                    {/* Icon and Category */}
+                    <div className="flex items-center justify-between mb-6">
+                      <motion.div
+                        className="p-4 rounded-2xl shadow-lg"
+                        style={{
+                          background: !isAvailable
+                            ? 'linear-gradient(135deg, #9ca3af 0%, #6b7280 100%)'
+                            : colors.gradients.simple,
+                        }}
+                        whileHover={
+                          isAvailable
+                            ? {
+                                rotate: 360,
+                                scale: 1.1,
+                              }
+                            : {}
+                        }
+                        transition={{ duration: 0.6 }}
+                      >
+                        <Image
+                          src={`/icons/Offer-icons-${(index % 10) + 9}.png`}
+                          alt={service.title}
+                          width={40}
+                          height={40}
+                          className={`w-10 h-10 filter brightness-0 invert ${
+                            !isAvailable ? 'opacity-50' : ''
+                          }`}
+                        />
+                      </motion.div>
+
+                      {!isAvailable ? (
+                        <span
+                          className="text-xs font-bold px-3 py-2 rounded-full border-2 uppercase tracking-wider"
+                          style={{
+                            backgroundColor: '#fbbf2420',
+                            color: '#f59e0b',
+                            borderColor: '#f59e0b30',
+                          }}
+                        >
+                          Wkrótce
+                        </span>
+                      ) : (
+                        <span
+                          className="text-xs font-bold px-3 py-2 rounded-full border-2 uppercase tracking-wider"
+                          style={{
+                            backgroundColor: `${colors.secondary.tealSoft}20`,
+                            color: colors.brand.primary,
+                            borderColor: `${colors.brand.primary}30`,
+                          }}
+                        >
+                          {
+                            PAGE_OFFERT_DATA.serviceCategories[
+                              service.category as keyof typeof PAGE_OFFERT_DATA.serviceCategories
+                            ]
+                          }
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Title */}
+                    <motion.h3
+                      className={`text-xl font-bold mb-4 ${
+                        !isAvailable
+                          ? 'text-gray-500'
+                          : 'text-gray-900 group-hover:text-gray-800'
+                      }`}
+                      whileHover={isAvailable ? { x: 4 } : {}}
                     >
-                      {
-                        PAGE_OFFERT_DATA.serviceCategories[
-                          service.category as keyof typeof PAGE_OFFERT_DATA.serviceCategories
-                        ]
-                      }
-                    </span>
+                      {service.title}
+                    </motion.h3>
+
+                    {/* Description */}
+                    <p
+                      className={`text-sm leading-relaxed mb-6 line-clamp-3 ${
+                        !isAvailable ? 'text-gray-400' : 'text-gray-600'
+                      }`}
+                    >
+                      {service.description}
+                    </p>
+
+                    {/* CTA */}
+                    {isAvailable ? (
+                      <motion.div
+                        className="pt-4 border-t-2 border-gray-100 group-hover:border-opacity-50"
+                        whileHover={{ y: -2 }}
+                      >
+                        <Link
+                          href="/pytania"
+                          className="inline-flex items-center font-semibold text-sm group-hover:translate-x-2 transition-all duration-300"
+                          style={{ color: colors.brand.primary }}
+                        >
+                          Dowiedz się więcej
+                          <motion.svg
+                            className="w-5 h-5 ml-2"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            whileHover={{ x: 4 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M17 8l4 4m0 0l-4 4m4-4H3"
+                            />
+                          </motion.svg>
+                        </Link>
+                      </motion.div>
+                    ) : (
+                      <div className="pt-4 border-t-2 border-gray-200">
+                        <span className="inline-flex items-center font-semibold text-sm text-gray-400">
+                          Dostępne wkrótce
+                        </span>
+                      </div>
+                    )}
                   </div>
 
-                  {/* Title */}
-                  <motion.h3
-                    className="text-xl font-bold mb-4 text-gray-900 group-hover:text-gray-800"
-                    whileHover={{ x: 4 }}
-                  >
-                    {service.title}
-                  </motion.h3>
-
-                  {/* Description */}
-                  <p className="text-gray-600 text-sm leading-relaxed mb-6 line-clamp-3">
-                    {service.description}
-                  </p>
-
-                  {/* CTA */}
-                  <motion.div
-                    className="pt-4 border-t-2 border-gray-100 group-hover:border-opacity-50"
-                    whileHover={{ y: -2 }}
-                  >
-                    <Link
-                      href="/pytania"
-                      className="inline-flex items-center font-semibold text-sm group-hover:translate-x-2 transition-all duration-300"
-                      style={{ color: colors.brand.primary }}
-                    >
-                      Dowiedz się więcej
-                      <motion.svg
-                        className="w-5 h-5 ml-2"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        whileHover={{ x: 4 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17 8l4 4m0 0l-4 4m4-4H3"
-                        />
-                      </motion.svg>
-                    </Link>
-                  </motion.div>
-                </div>
-
-                {/* Premium glow effect */}
-                <div
-                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{
-                    boxShadow: `inset 0 1px 0 0 rgba(255, 255, 255, 0.4), 
+                  {/* Premium glow effect */}
+                  <div
+                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{
+                      boxShadow: `inset 0 1px 0 0 rgba(255, 255, 255, 0.4), 
                                0 0 60px -10px ${colors.brand.primary}30`,
-                  }}
-                />
-              </motion.div>
-            ))}
+                    }}
+                  />
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>
