@@ -1,5 +1,4 @@
 import { privacyPolicyData } from '@/constants/privacy_policy';
-import { businessConstants } from '@/constants/constants';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
