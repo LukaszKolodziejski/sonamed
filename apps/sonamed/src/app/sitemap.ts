@@ -36,6 +36,11 @@ const routes = [
     priority: 0.8,
     changeFrequency: 'monthly',
   },
+  {
+    url: '/polityka-prywatnosci',
+    priority: 0.5,
+    changeFrequency: 'yearly',
+  },
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

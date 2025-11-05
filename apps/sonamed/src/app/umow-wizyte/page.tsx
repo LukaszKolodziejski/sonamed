@@ -14,6 +14,7 @@ import {
 } from 'react-icons/hi';
 import { FaTooth, FaPhoneAlt } from 'react-icons/fa';
 import Image from 'next/image';
+import Link from 'next/link';
 import { colors } from '@/constants/colors';
 import { businessConstants } from '@/constants/constants';
 import FloatingDentalIcons from '@/components/ux/FloatingDentalIcons';
@@ -32,6 +33,9 @@ export default function UmowWizytePage() {
     phone: '',
     message: '',
   });
+
+  // Zgoda RODO
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
   // Dostępne godziny wizyt
   const timeSlots = [
@@ -139,6 +143,10 @@ export default function UmowWizytePage() {
   const handleBookingAttempt = () => {
     if (!selectedDate || !selectedTime || !formData.name || !formData.phone) {
       toast.error('Wypełnij wszystkie wymagane pola');
+      return;
+    }
+    if (!privacyAccepted) {
+      toast.error('Musisz zaakceptować Politykę Prywatności');
       return;
     }
     setShowBookingConfirm(true);
@@ -785,10 +793,51 @@ export default function UmowWizytePage() {
                   </div>
                 </div>
 
+                {/* Zgoda RODO - WYMAGANE PRAWNIE */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                  className="mt-6 p-4 rounded-xl border-2"
+                  style={{
+                    borderColor: privacyAccepted
+                      ? `${colors.brand.primary}50`
+                      : '#e5e7eb',
+                    background: privacyAccepted
+                      ? `${colors.secondary.mintLight}10`
+                      : 'white',
+                  }}
+                >
+                  <label className="flex items-start cursor-pointer group">
+                    <input
+                      type="checkbox"
+                      checked={privacyAccepted}
+                      onChange={(e) => setPrivacyAccepted(e.target.checked)}
+                      className="mt-1 mr-3 w-5 h-5 rounded cursor-pointer flex-shrink-0"
+                      style={{
+                        accentColor: colors.brand.primary,
+                      }}
+                    />
+                    <span className="text-sm text-gray-700 leading-relaxed">
+                      Akceptuję{' '}
+                      <Link
+                        href="/polityka-prywatnosci"
+                        target="_blank"
+                        className="font-semibold hover:underline transition-colors"
+                        style={{ color: colors.brand.primary }}
+                      >
+                        Politykę Prywatności
+                      </Link>{' '}
+                      i wyrażam zgodę na przetwarzanie moich danych osobowych w
+                      celu umówienia wizyty zgodnie z przepisami RODO. *
+                    </span>
+                  </label>
+                </motion.div>
+
                 {/* Przycisk rezerwacji */}
                 <motion.button
                   onClick={handleBookingAttempt}
-                  className="w-full mt-6 px-6 py-4 rounded-full text-white font-bold text-lg shadow-2xl relative overflow-hidden"
+                  className="w-full mt-6 px-6 py-4 rounded-full text-white font-bold text-lg shadow-2xl relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
                   style={{
                     background: colors.gradients.primary,
                     boxShadow: `0 10px 40px -10px ${colors.brand.primary}50`,
@@ -799,7 +848,8 @@ export default function UmowWizytePage() {
                     !selectedDate ||
                     !selectedTime ||
                     !formData.name ||
-                    !formData.phone
+                    !formData.phone ||
+                    !privacyAccepted
                   }
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />

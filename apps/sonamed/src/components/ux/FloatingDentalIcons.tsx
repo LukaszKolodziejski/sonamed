@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { FaTooth } from 'react-icons/fa';
-import { colors } from '@/constants/colors';
 import { useMemo } from 'react';
 
 interface FloatingDentalIconsProps {

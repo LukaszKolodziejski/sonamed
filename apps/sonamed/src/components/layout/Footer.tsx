@@ -168,8 +168,24 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Polityki */}
+        <div className="mt-8 border-t border-gray-700/30 pt-6">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+            <Link
+              href="/polityka-prywatnosci"
+              className="text-sm text-gray-700 hover:text-[#3C8C7D] font-medium transition-colors"
+            >
+              Polityka Prywatności
+            </Link>
+            <span className="text-gray-400">|</span>
+            <span className="text-sm text-gray-400 cursor-not-allowed">
+              Polityka Cookies (wkrótce)
+            </span>
+          </div>
+        </div>
+
         {/* Copyright */}
-        <div className="mt-8 border-t border-gray-700/30 pt-8">
+        <div className="mt-6 pt-6 border-t border-gray-700/30">
           <p className="text-base text-gray-700 text-center">
             © {currentYear} {businessConstants.company.name}. Wszelkie prawa
             zastrzeżone. Strona stworzona przez{' '}
