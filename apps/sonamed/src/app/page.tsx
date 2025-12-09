@@ -7,7 +7,7 @@ import TechnologySection from '@/components/home-sections/TechnologySection';
 import StatsSection from '@/components/home-sections/StatsSection';
 import TreatmentProcessSection from '@/components/home-sections/TreatmentProcessSection';
 import ServicesSection from '@/components/home-sections/ServicesSection';
-import TestimonialsSection from '@/components/home-sections/TestimonialsSection';
+// import TestimonialsSection from '@/components/home-sections/TestimonialsSection'; // UKRYTE - brak prawdziwych opinii
 import FAQSection from '@/components/home-sections/FAQSection';
 import CTASection from '@/components/home-sections/CTASection';
 
@@ -63,7 +63,7 @@ export default function HomePage() {
       />
       <TreatmentProcessSection />
       <ServicesSection />
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */} {/* UKRYTE - brak prawdziwych opinii od klientów */}
       <FAQSection />
       <CTASection />
     </>
