@@ -18,7 +18,7 @@ const zespolStomatologiczny = [
     name: PAGE_ONAS_DATA.additionalSections.team.management,
     role: 'Lekarz / Menadżer',
     experience: 'Menadżer gabinetu',
-    specialization: 'Konsultacje lekarskie ogólne, Medycyna stylu życia',
+    specialization: 'Medycyna stylu życia',
     image: '/images/nina/photo-7.jpeg',
   },
   {
